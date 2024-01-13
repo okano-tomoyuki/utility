@@ -9,7 +9,7 @@
 #include <ctime>
 #include <stdexcept>
 
-#ifndef UTILITY_HEADER_ONLY
+#ifdef GLOBAL_USE_BUILD_LIBLARY
 
 namespace Utility
 {
@@ -185,8 +185,7 @@ public:
     void operator=(const DateTime& other)
     {
         year_ = other.year_; mon_  = other.mon_; day_ = other.day_; 
-        hour_ = other.hour_; min_  = other.min_; sec_ = other.sec_; 
-        msec_ = other.msec_; usec_ = other.usec_;
+        hour_ = other.hour_; min_  = other.min_; sec_ = other.sec_; msec_ = other.msec_; usec_ = other.usec_;
     }
 
     bool operator==(const DateTime& other) const { return (to_time_point() == other.to_time_point()); }

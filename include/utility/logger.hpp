@@ -21,40 +21,19 @@ private:
     std::string new_line_;
 
 public:
-    enum Color 
-    {
-        WHITE,
-        YELLOW,
-        GREEN,
-        BLUE,
-        RED
-    };
+    enum Color { WHITE, YELLOW, GREEN, BLUE, RED };
 
     explicit Logger(const std::string& separator=" ", const std::string& new_line="\n")
      : separator_(separator), new_line_(new_line)
     {}
 
-    Logger& flush()
-    {
-        buffer_.str("");
-        buffer_.clear(std::stringstream::goodbit);
-        return *this;
-    }
-
     template<typename T>
-    Logger& add(const T& val)
-    {
-        buffer_ << val;
-        return *this;
-    }
+    Logger& add(const T& val) 
+    { buffer_ << val; return *this; }
 
     template<typename T, typename... Remain>
-    Logger& add(const T& val, const Remain&... remain)
-    {
-        buffer_ << val << separator_;
-        add(remain...);
-        return *this;
-    }
+    Logger& add(const T& val, const Remain&... remain) 
+    { buffer_ << val << separator_; add(remain...); return *this; }
 
     template<typename T>
     Logger& add(const std::vector<T>& val)
@@ -76,27 +55,6 @@ public:
         result.pop_back();
         buffer_ << "[" << result << "]" << separator_;
         add(remain...);
-        return *this;
-    }
-
-    Logger& endl()
-    {
-        buffer_ << new_line_;
-        return *this;
-    }
-
-    template<typename T>
-    Logger& add_line(const T& val)
-    {
-        buffer_ << val << new_line_;
-        return *this;
-    }
-
-    template<typename T, typename... Remain>
-    Logger& add_line(const T& val, const Remain&... remain)
-    {
-        buffer_ << val << separator_;
-        add_line(remain...);
         return *this;
     }
 
@@ -123,46 +81,14 @@ public:
         return *this;
     }
 
-    Logger& set_separator(const std::string& separator)
+    Logger& print(const enum Color& color = WHITE)
     {
-        separator_ = separator;
+        if     ( color ==  WHITE ) std::cout << "\033[m"   << buffer_.str() << "\033[m";
+        else if( color == YELLOW ) std::cout << "\033[33m" << buffer_.str() << "\033[m";
+        else if( color ==  GREEN ) std::cout << "\033[32m" << buffer_.str() << "\033[m";
+        else if( color ==   BLUE ) std::cout << "\033[34m" << buffer_.str() << "\033[m";
+        else if( color ==    RED ) std::cout << "\033[31m" << buffer_.str() << "\033[m";
         return *this;
-    }
-
-    Logger& set_new_line(const std::string& new_line)
-    {
-        new_line_ = new_line;
-        return *this;
-    }
-
-    Logger& print(const enum Color& color=WHITE)
-    {
-        std::string escape_color;
-        if(color==WHITE)
-            escape_color = "\033[m";
-        else if(color==YELLOW)
-            escape_color = "\033[33m";
-        else if(color==GREEN)
-            escape_color = "\033[32m";
-        else if(color==BLUE)
-            escape_color = "\033[34m";
-        else if(color==RED)
-            escape_color = "\033[31m";
-        std::cout << escape_color << buffer_.str() << "\033[m";
-        return *this;
-    }
-
-    Logger& save(const std::string& file_path, const std::ios_base::openmode& mode = std::ios_base::app)
-    {
-        std::ofstream ofs;
-        ofs.open(file_path, mode);
-        ofs << buffer_.str();
-        return *this;
-    }
-
-    size_t size() const
-    {
-        return buffer_.str().size();
     }
 
     template<typename... Args>
@@ -176,10 +102,47 @@ public:
         return std::string(buf.get(), buf.get() + size - 1 );
     }
 
-    std::string get_buffer() const
-    {
-        return buffer_.str();
+    Logger& flush() 
+    { buffer_.str(""); buffer_.clear(std::stringstream::goodbit); return *this; }
+
+    Logger& endl() 
+    { buffer_ << new_line_; return *this; }
+
+    template<typename T> 
+    Logger& add_line(const T& val) 
+    { 
+        buffer_ << val << new_line_; 
+        return *this; 
     }
+
+    template<typename T, typename... Remain>
+    Logger& add_line(const T& val, const Remain&... remain) 
+    { 
+        buffer_ << val << separator_; 
+        add_line(remain...); 
+        return *this; 
+    }
+
+    Logger& set_separator(const std::string& separator) 
+    { 
+        separator_ = separator; 
+        return *this; 
+    }
+    
+    Logger& set_new_line(const std::string& new_line)   
+    { 
+        new_line_ = new_line; 
+        return *this; 
+    }
+    
+    size_t size() const 
+    { return buffer_.str().size(); }
+    
+    std::string get_buffer() const 
+    { return buffer_.str(); }
+
+    Logger& save(const std::string& file_path, const std::ios_base::openmode& mode = std::ios_base::app)
+    { std::ofstream ofs; ofs.open(file_path, mode); ofs << buffer_.str(); return *this; }
 
 };
 

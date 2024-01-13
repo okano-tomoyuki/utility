@@ -18,12 +18,11 @@
 #include <windows.h>
 #endif
 
-#ifndef UTILITY_HEADER_ONLY
+#ifdef GLOBAL_USE_BUILD_LIBLARY
 
 namespace Utility
 {
 
-template<typename T>
 class SharedMemory final
 {
 
@@ -36,31 +35,69 @@ using Handle = HANDLE;
 private:
     Handle shmem_handle_;
     Handle mutex_handle_;
-    T* data_;
+    char* data_;
     int buffer_size_;
+    bool is_persistence_;
 
 #ifdef __unix__
     /**! 
      * ftokの代替として文字列から4byteハッシュ値を生成するために使用。
-     * 参考リンク：https://norizn.hatenablog.com/entry/2020/10/18/145628
+     * https://norizn.hatenablog.com/entry/2020/10/18/145628
      */
-    static const std::array<uint32_t, 256> CRC32_TABLE();
-    static uint32_t make_hash(const char* str, const int& size);
+    static uint32_t make_hash(const char* str, const size_t& size);
 #endif
     static Handle create_mutex(const char* mutex_name);
 
 public:
 
-    explicit SharedMemory(const char* shmem_name, const char* mutex_name = "");
+    explicit SharedMemory(const char* shmem_name, const size_t& size, const char* mutex_name = "");
     ~SharedMemory();
-    Handle mutex() const;
-    T* get();
-    bool try_write(const T* data, const int& timeout_msec = 0);
-    bool try_read(T* data, const int& timeout_msec = 0);
-    bool try_write(const T& data, const int& timeout_msec = 0);
-    bool try_read(T& data, const int& timeout_msec = 0);
+    Handle mutex() const { return mutex_handle_; }
     bool wait_for_single_object(const Handle& mutex_handle, const int& timeout_msec = 0) const;
     void release_mutex(const Handle& mutex_handle) const;
+
+    template<typename T> 
+    T* get() { return (T*)data_; };
+
+    template<typename T>
+    bool try_write(const T* data, const int& timeout_msec = 0)
+    {
+        if(!wait_for_single_object(mutex_handle_, timeout_msec))
+            return false;
+        std::memcpy(data_, data, buffer_size_);
+        release_mutex(mutex_handle_);
+        return true;
+    }
+
+    template<typename T>
+    bool try_read(T* data, const int& timeout_msec = 0)
+    {
+        if(!wait_for_single_object(mutex_handle_, timeout_msec))
+            return false;
+        std::memcpy(data, data_, buffer_size_);
+        release_mutex(mutex_handle_);
+        return true;
+    }
+
+    template<typename T>
+    bool try_write(const T& data, const int& timeout_msec = 0)
+    {
+        if(!wait_for_single_object(mutex_handle_, timeout_msec))
+            return false;
+        std::memcpy(data_, &data, buffer_size_);
+        release_mutex(mutex_handle_);
+        return true;
+    }
+
+    template<typename T>
+    bool try_read(T& data, const int& timeout_msec = 0)
+    {
+        if(!wait_for_single_object(mutex_handle_, timeout_msec))
+            return false;
+        std::memcpy(&data, data_, buffer_size_);
+        release_mutex(mutex_handle_);
+        return true;
+    }
 };
 
 }
@@ -70,7 +107,6 @@ public:
 namespace Utility
 {
 
-template<typename T>
 class SharedMemory final
 {
 
@@ -83,13 +119,14 @@ using Handle = HANDLE;
 private:
     Handle shmem_handle_;
     Handle mutex_handle_;
-    T* data_;
+    char* data_;
     int buffer_size_;
 
 #ifdef __unix__
-    static const std::array<uint32_t, 256> CRC32_TABLE() 
+
+    static uint32_t make_hash(const char* str, const size_t& size)
     {
-        return {
+        const uint32_t CRC32_TABLE[256] = {
             0x00000000, 0x04C11DB7, 0x09823B6E, 0x0D4326D9,
             0x130476DC, 0x17C56B6B, 0x1A864DB2, 0x1E475005,
             0x2608EDB8, 0x22C9F00F, 0x2F8AD6D6, 0x2B4BCB61,
@@ -158,13 +195,9 @@ private:
             0xAFB010B1, 0xAB710D06, 0xA6322BDF, 0xA2F33668,
             0xBCB4666D, 0xB8757BDA, 0xB5365D03, 0xB1F740B4
         };
-    };
-
-    static uint32_t make_hash(const char* str, const int& size)
-    {
         uint32_t digest = 0xffffffff;
         for (size_t i = 0; i < size; i++)
-            digest = (digest << 8) ^ CRC32_TABLE().at(((digest >> 24) ^ str[i]) & 0xff);
+            digest = (digest << 8) ^ CRC32_TABLE[((digest >> 24) ^ str[i]) & 0xff];
         return digest;        
     }
 
@@ -219,8 +252,8 @@ private:
 
 public:
 
-    explicit SharedMemory(const char* shmem_name, const char* mutex_name = "")
-     :  buffer_size_(sizeof(T))
+    explicit SharedMemory(const char* shmem_name, const size_t& size, const char* mutex_name = "")
+     :  buffer_size_(size)
     {
         bool is_first = false;
 #ifdef __unix__
@@ -237,7 +270,7 @@ public:
                 throw std::runtime_error(ss.str());
             }
         }  
-        data_ = (T*)shmat(shmem_handle_, 0, 0);
+        data_ = (char*)shmat(shmem_handle_, 0, 0);
         if(data_ == (void*)-1)
         {
             std::stringstream ss;
@@ -247,8 +280,8 @@ public:
         }
 #else
         std::string temp(shmem_name);
-        int size = MultiByteToWideChar(CP_UTF8, 0, &temp[0], (int)temp.size(), NULL, 0);
-        std::wstring fname(size, 0);
+        int str_size = MultiByteToWideChar(CP_UTF8, 0, &temp[0], (int)temp.size(), NULL, 0);
+        std::wstring fname(str_size, 0);
         MultiByteToWideChar(CP_UTF8, 0, &temp[0], (int)temp.size(), &fname[0], size);
         shmem_handle_ = CreateFileMappingW(INVALID_HANDLE_VALUE, 0, PAGE_READWRITE, 0, buffer_size_, fname.c_str());
         if (shmem_handle_ == 0)
@@ -258,7 +291,7 @@ public:
             ss << "shmem name : " << shmem_name << std::endl;
             throw std::runtime_error(ss.str());                
         }
-        data_ = (T*)MapViewOfFile(shmem_handle_, FILE_MAP_ALL_ACCESS, 0, 0, buffer_size_);
+        data_ = (char*)MapViewOfFile(shmem_handle_, FILE_MAP_ALL_ACCESS, 0, 0, buffer_size_);
         if (data_ == NULL)
         {
             std::stringstream ss;
@@ -297,16 +330,12 @@ public:
 #endif
     }
 
-    Handle mutex() const
-    {
-        return mutex_handle_;
-    }
+    Handle mutex() const { return mutex_handle_; }
 
-    T* get()
-    {
-        return data_;
-    }
+    template<typename T> 
+    T* get() { return (T*)data_; };
 
+    template<typename T>
     bool try_write(const T* data, const int& timeout_msec = 0)
     {
         if(!wait_for_single_object(mutex_handle_, timeout_msec))
@@ -317,32 +346,32 @@ public:
         return true;
     }
 
+    template<typename T>
     bool try_read(T* data, const int& timeout_msec = 0)
     {
         if(!wait_for_single_object(mutex_handle_, timeout_msec))
             return false;
-
         std::memcpy(data, data_, buffer_size_);
         release_mutex(mutex_handle_);
         return true;
     }
 
+    template<typename T>
     bool try_write(const T& data, const int& timeout_msec = 0)
     {
         if(!wait_for_single_object(mutex_handle_, timeout_msec))
             return false;
-
-        std::memcpy(&data, data_, buffer_size_);
+        std::memcpy(data_, &data, buffer_size_);
         release_mutex(mutex_handle_);
         return true;
     }
 
+    template<typename T>
     bool try_read(T& data, const int& timeout_msec = 0)
     {
         if(!wait_for_single_object(mutex_handle_, timeout_msec))
             return false;
-
-        std::memcpy(data_, &data, buffer_size_);
+        std::memcpy(&data, data_, buffer_size_);
         release_mutex(mutex_handle_);
         return true;
     }

@@ -10,6 +10,7 @@
 #include <fcntl.h>
 #include <sys/shm.h>
 #include <sys/sem.h>
+#include <sys/mman.h>
 #else
 #include <stdio.h>
 #include <windows.h>
@@ -27,10 +28,9 @@ using Handle = HANDLE;
 
 #ifdef __unix__
 
-template<typename T>
-const std::array<uint32_t, 256> SharedMemory<T>::CRC32_TABLE() 
+uint32_t SharedMemory::make_hash(const char* str, const size_t& size)
 {
-    return {
+    const uint32_t CRC32_TABLE[256] = {
         0x00000000, 0x04C11DB7, 0x09823B6E, 0x0D4326D9,
         0x130476DC, 0x17C56B6B, 0x1A864DB2, 0x1E475005,
         0x2608EDB8, 0x22C9F00F, 0x2F8AD6D6, 0x2B4BCB61,
@@ -99,21 +99,15 @@ const std::array<uint32_t, 256> SharedMemory<T>::CRC32_TABLE()
         0xAFB010B1, 0xAB710D06, 0xA6322BDF, 0xA2F33668,
         0xBCB4666D, 0xB8757BDA, 0xB5365D03, 0xB1F740B4
     };
-};
-
-template<typename T>
-uint32_t SharedMemory<T>::make_hash(const char* str, const int& size)
-{
     uint32_t digest = 0xffffffff;
     for (size_t i = 0; i < size; i++)
-        digest = (digest << 8) ^ CRC32_TABLE().at(((digest >> 24) ^ str[i]) & 0xff);
+        digest = (digest << 8) ^ CRC32_TABLE[((digest >> 24) ^ str[i]) & 0xff];
     return digest;        
 }
 
 #endif
 
-template<typename T>
-Handle SharedMemory<T>::create_mutex(const char* mutex_name) 
+Handle SharedMemory::create_mutex(const char* mutex_name) 
 {
 #ifdef __unix__
     bool is_first = false;
@@ -160,9 +154,8 @@ Handle SharedMemory<T>::create_mutex(const char* mutex_name)
     return mutex_handle;
 }
 
-template<typename T>
-SharedMemory<T>::SharedMemory(const char* shmem_name, const char* mutex_name)
- :  buffer_size_(sizeof(T))
+SharedMemory::SharedMemory(const char* shmem_name, const size_t& size, const char* mutex_name)
+ :  buffer_size_(size)
 {
     bool is_first = false;
 #ifdef __unix__
@@ -179,7 +172,7 @@ SharedMemory<T>::SharedMemory(const char* shmem_name, const char* mutex_name)
             throw std::runtime_error(ss.str());
         }
     }  
-    data_ = (T*)shmat(shmem_handle_, 0, 0);
+    data_ = (char*)shmat(shmem_handle_, 0, 0);
     if(data_ == (void*)-1)
     {
         std::stringstream ss;
@@ -200,7 +193,7 @@ SharedMemory<T>::SharedMemory(const char* shmem_name, const char* mutex_name)
         ss << "shmem name : " << shmem_name << std::endl;
         throw std::runtime_error(ss.str());                
     }
-    data_ = (T*)MapViewOfFile(shmem_handle_, FILE_MAP_ALL_ACCESS, 0, 0, buffer_size_);
+    data_ = (char*)MapViewOfFile(shmem_handle_, FILE_MAP_ALL_ACCESS, 0, 0, buffer_size_);
     if (data_ == NULL)
     {
         std::stringstream ss;
@@ -215,8 +208,7 @@ SharedMemory<T>::SharedMemory(const char* shmem_name, const char* mutex_name)
     mutex_handle_ = create_mutex(mutex_name_str.c_str());        
 }
 
-template<typename T>
-SharedMemory<T>::~SharedMemory()
+SharedMemory::~SharedMemory()
 {
 #ifdef __unix__
     shmdt(data_);        
@@ -227,7 +219,7 @@ SharedMemory<T>::~SharedMemory()
         shmctl(shmem_handle_, IPC_RMID, NULL);
         semctl(mutex_handle_, IPC_RMID, 0);
     }
-    data_ = NULL;
+    data_ = nullptr;
 #else
     UnmapViewOfFile(data_);
     if (shmem_handle_ != INVALID_HANDLE_VALUE)
@@ -236,68 +228,11 @@ SharedMemory<T>::~SharedMemory()
         shmem_handle_ = INVALID_HANDLE_VALUE;
     }
     CloseHandle(mutex_handle_);
-    data_ = NULL;
+    data_ = nullptr;
 #endif
 }
 
-template<typename T>
-Handle SharedMemory<T>::mutex() const
-{
-    return mutex_handle_;
-}
-
-template<typename T>
-T* SharedMemory<T>::get()
-{
-    return data_;
-}
-
-template<typename T>
-bool SharedMemory<T>::try_write(const T* data, const int& timeout_msec)
-{
-    if(!wait_for_single_object(mutex_handle_, timeout_msec))
-        return false;
-
-    std::memcpy(data_, data, buffer_size_);
-    release_mutex(mutex_handle_);
-    return true;
-}
-
-template<typename T>
-bool SharedMemory<T>::try_read(T* data, const int& timeout_msec)
-{
-    if(!wait_for_single_object(mutex_handle_, timeout_msec))
-        return false;
-
-    std::memcpy(data, data_, buffer_size_);
-    release_mutex(mutex_handle_);
-    return true;
-}
-
-template<typename T>
-bool SharedMemory<T>::try_write(const T& data, const int& timeout_msec)
-{
-    if(!wait_for_single_object(mutex_handle_, timeout_msec))
-        return false;
-
-    std::memcpy(&data, data_, buffer_size_);
-    release_mutex(mutex_handle_);
-    return true;
-}
-
-template<typename T>
-bool SharedMemory<T>::try_read(T& data, const int& timeout_msec)
-{
-    if(!wait_for_single_object(mutex_handle_, timeout_msec))
-        return false;
-
-    std::memcpy(data_, &data, buffer_size_);
-    release_mutex(mutex_handle_);
-    return true;
-}
-
-template<typename T>
-bool SharedMemory<T>::wait_for_single_object(const Handle& mutex_handle, const int& timeout_msec) const
+bool SharedMemory::wait_for_single_object(const Handle& mutex_handle, const int& timeout_msec) const
 {
 #ifdef __unix__
     using std::chrono::milliseconds;
@@ -306,9 +241,7 @@ bool SharedMemory<T>::wait_for_single_object(const Handle& mutex_handle, const i
     sop.sem_num =  0;    
     sop.sem_op  = -1;
     sop.sem_flg = (timeout_msec>0) ? IPC_NOWAIT : 0;
-
     auto end_time = system_clock::now() + milliseconds(timeout_msec);
-    
     while(true)
     {
         if(semop(mutex_handle, &sop, 1) == 0)
@@ -319,21 +252,19 @@ bool SharedMemory<T>::wait_for_single_object(const Handle& mutex_handle, const i
             ss << "semop lock failed. error code : " << errno << std::endl;
             throw std::runtime_error(ss.str());
         }
-
         if(system_clock::now() > end_time)
             return false;
     }     
 #else
     int timeout = (timeout_msec>0) ? timeout_msec : INFINITE;
-    if(WaitForSingleObject(mutex_handle, timeout) == WAIT_OBJECT_0)
+    if(WaitForSingleObject(mutex_handle, timeout) == WAIT_OBJECT_0) 
         return true;
-    else
+    else 
         return false;
 #endif
 }
 
-template<typename T>
-void SharedMemory<T>::release_mutex(const Handle& mutex_handle) const
+void SharedMemory::release_mutex(const Handle& mutex_handle) const
 {
 #ifdef __unix__
     struct sembuf sop;

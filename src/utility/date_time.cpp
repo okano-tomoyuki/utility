@@ -77,6 +77,41 @@ void DateTime::parse(std::string& dt_str, std::string& fmt_str, const char* fmt,
     }
 }
 
+DateTime DateTime::from_str(const char* date_time_str, const char* format)
+{
+    std::string dt_str(date_time_str);
+    std::string fmt_str(format);
+    int year, mon, day, hour, min, sec, msec, usec;
+    year = 1970; mon = day = 1; day = hour = min = sec = msec = usec = 0;
+    int days_of_month[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    
+    try 
+    {
+        parse(dt_str, fmt_str,   "yyyy", year, 1970,    2300);
+        if(year%4==0 && !(year%100==0 && year%400!=0))
+            days_of_month[1]++;
+        
+        parse(dt_str, fmt_str,     "mm",  mon,    1,      12);
+        parse(dt_str, fmt_str,     "dd",  day,    1, days_of_month[mon-1]);
+        parse(dt_str, fmt_str,     "hh", hour,    0,      23);
+        parse(dt_str, fmt_str,     "nn",  min,    0,      59);
+        parse(dt_str, fmt_str,     "ss",  sec,    0,      59);
+        parse(dt_str, fmt_str, "zzzzzz", usec,    0,  999999);
+        msec = usec/1000; usec=usec%1000;
+        parse(dt_str, fmt_str,    "zzz", msec,    0,    999);
+    } 
+    catch(const std::runtime_error& e) 
+    {
+        std::stringstream ss;
+        ss << __func__      << " failed. "
+            << date_time_str << " couldn't parse to " 
+            << format        << "." << e.what();
+        throw std::runtime_error(ss.str());
+    }
+
+    return DateTime(year, mon, day, hour, min, sec, msec, usec);
+}
+
 DateTime::DateTime(const system_clock::time_point& tP)
 {
     using std::chrono::duration_cast;
@@ -142,41 +177,6 @@ std::string DateTime::to_str(const char *format) const
     dump(result,    "zzz", zero_fill(std::to_string(msec_), 3));
 
     return std::string(result);
-}
-
-DateTime DateTime::from_str(const char* date_time_str, const char* format)
-{
-    std::string dt_str(date_time_str);
-    std::string fmt_str(format);
-    int year, mon, day, hour, min, sec, msec, usec;
-    year = 1970; mon = day = 1; day = hour = min = sec = msec = usec = 0;
-    int days_of_month[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-    
-    try 
-    {
-        parse(dt_str, fmt_str,   "yyyy", year, 1970,    2300);
-        if(year%4==0 && !(year%100==0 && year%400!=0))
-            days_of_month[1]++;
-        
-        parse(dt_str, fmt_str,     "mm",  mon,    1,      12);
-        parse(dt_str, fmt_str,     "dd",  day,    1, days_of_month[mon-1]);
-        parse(dt_str, fmt_str,     "hh", hour,    0,      23);
-        parse(dt_str, fmt_str,     "nn",  min,    0,      59);
-        parse(dt_str, fmt_str,     "ss",  sec,    0,      59);
-        parse(dt_str, fmt_str, "zzzzzz", usec,    0,  999999);
-        msec = usec/1000; usec=usec%1000;
-        parse(dt_str, fmt_str,    "zzz", msec,    0,    999);
-    } 
-    catch(const std::runtime_error& e) 
-    {
-        std::stringstream ss;
-        ss << __func__      << " failed. "
-            << date_time_str << " couldn't parse to " 
-            << format        << "." << e.what();
-        throw std::runtime_error(ss.str());
-    }
-
-    return DateTime(year, mon, day, hour, min, sec, msec, usec);
 }
 
 std::chrono::system_clock::time_point DateTime::to_time_point() const

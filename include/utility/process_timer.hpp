@@ -7,7 +7,7 @@
 #include <iostream>
 #include <thread>
 
-#ifndef UTILITY_HEADER_ONLY
+#ifdef GLOBAL_USE_BUILD_LIBLARY
 
 namespace Utility
 {
@@ -58,7 +58,6 @@ public:
      :  interval_(0), name_(name), base_time_(system_clock::now())
     {
     }
-
 
     ~ProcessTimer()
     {
