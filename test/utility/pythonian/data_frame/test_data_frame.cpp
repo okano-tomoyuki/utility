@@ -6,7 +6,7 @@ int main()
     using Utility::DataFrame;
 
     // header true, separator charactor ';'
-    auto df = DataFrame::read_csv("./winequality-red.csv", true, ';');
+    auto df = DataFrame::read_csv("winequality-white.csv", true, ';');
     df.describe();
     df.show();
 
@@ -25,5 +25,5 @@ int main()
     df.show();
 
     // save csv
-    df.to_csv("./output.csv");
+    df.to_csv("output.csv");
 }

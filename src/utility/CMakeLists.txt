@@ -1,7 +1,3 @@
-if(${GLOBAL_USE_BUILD_LIBLARY})
-
-add_compile_definitions(GLOBAL_USE_BUILD_LIBLARY)
-
 add_library(date_time 
     STATIC 
         date_time.cpp
@@ -24,4 +20,4 @@ target_include_directories(date_time     PUBLIC ${PROJECT_SOURCE_DIR}/include)
 target_include_directories(process_timer PUBLIC ${PROJECT_SOURCE_DIR}/include)
 target_include_directories(shared_memory PUBLIC ${PROJECT_SOURCE_DIR}/include)
 
-endif()
+add_subdirectory(pythonian)

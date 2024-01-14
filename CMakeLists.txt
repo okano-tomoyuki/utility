@@ -10,6 +10,7 @@ else()
 endif()
 
 if(${GLOBAL_USE_BUILD_LIBLARY})
+    add_compile_definitions(GLOBAL_USE_BUILD_LIBLARY)
     add_subdirectory(src)
     add_subdirectory(test)
 else()

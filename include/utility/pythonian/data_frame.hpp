@@ -29,14 +29,18 @@ namespace Utility
 
 class DataFrame final
 {
-using VS  = std::vector<std::string>;
-using VVS = std::vector<VS>;
+
 private:
-    VS header_;
-    VVS data_;
-    static std::string concat(const VS& origin, const char& separator=',');
-    static VS split(const std::string& origin, const char& separator=',');
-    explicit DataFrame(const VS& header, const VVS& data)
+    std::vector<std::string> header_;
+    std::vector<std::vector<std::string>> data_;
+#ifdef __unix__
+    std::string delim_ = "\n";
+#else
+    std::string delim_ = "\r\n";
+#endif
+    static std::string concat(const std::vector<std::string>& origin, const char& separator=',');
+    static std::vector<std::string> split(const std::string& origin, const char& separator=',');
+    explicit DataFrame(const std::vector<std::string>& header, const std::vector<std::vector<std::string>>& data)
      : header_(header), data_(data)
     {}
 
@@ -47,12 +51,13 @@ public:
     void operator=(const DataFrame& other);
     void to_csv(const std::string& file_path, const bool& append=true, const bool& header=true, const char& separator=',') const;
     DataFrame operator[](const std::string& target_column) const;
-    DataFrame operator[](const VS& target_columns) const;
+    DataFrame operator[](const std::vector<std::string>& target_columns) const;
     DataFrame operator[](const int& target_row) const;
     DataFrame operator[](const std::pair<int, int>& range) const;
     DataFrame operator[](const std::initializer_list<std::string>& target_columns) const;
     DataFrame& rename(const std::initializer_list<std::string>& header);
-    DataFrame& rename(const VS header);
+    DataFrame& rename(const std::vector<std::string> header);
+    std::vector<std::vector<std::string>> data() const;
     void show(const enum Format& format=SIMPLE) const;
     void describe() const;
 
@@ -102,19 +107,16 @@ namespace Utility
 class DataFrame final
 {
 
-using VS  = std::vector<std::string>;
-using VVS = std::vector<VS>;
-
 private:
-    VS  header_;
-    VVS data_;
+    std::vector<std::string>  header_;
+    std::vector<std::vector<std::string>> data_;
 #ifdef __unix__
     std::string delim_ = "\n";
 #else
     std::string delim_ = "\r\n";
 #endif
 
-    static std::string concat(const VS& origin, const char& separator=',')
+    static std::string concat(const std::vector<std::string>& origin, const char& separator=',')
     {
         std::string result;
         for (const auto& str : origin)
@@ -123,9 +125,9 @@ private:
         return result;
     }
 
-    static VS split(const std::string& origin, const char& separator=',')
+    static std::vector<std::string> split(const std::string& origin, const char& separator=',')
     {
-        VS result;
+        std::vector<std::string> result;
         std::string element;
         std::istringstream iss(origin);
         while(std::getline(iss, element, separator))
@@ -133,7 +135,7 @@ private:
         return result;
     }
 
-    explicit DataFrame(const VS& header, const VVS& data)
+    explicit DataFrame(const std::vector<std::string>& header, const std::vector<std::vector<std::string>>& data)
      : header_(header), data_(data)
     {}
 
@@ -149,8 +151,8 @@ public:
 
     static DataFrame read_csv(const std::string& file_path, const bool& header=true, const char& separator=',')
     {
-        VS header_row;
-        VVS data;
+        std::vector<std::string> header_row;
+        std::vector<std::vector<std::string>> data;
 
         std::ifstream ifs(file_path);
         if(!ifs)
@@ -219,8 +221,8 @@ public:
         }
 
         int index = std::distance(header_.begin(), itr);
-        VS header = {header_.at(index)};
-        VVS data;
+        std::vector<std::string> header = {header_.at(index)};
+        std::vector<std::vector<std::string>> data;
 
         for(const auto& row : data_)
             data.push_back({row.at(index)});
@@ -229,7 +231,7 @@ public:
         return df;
     }
 
-    DataFrame operator[](const VS& target_columns) const
+    DataFrame operator[](const std::vector<std::string>& target_columns) const
     {
         std::vector<int> indices;
         for (const auto& column : target_columns)
@@ -241,12 +243,12 @@ public:
             indices.push_back(index);
         }
 
-        VS header;
+        std::vector<std::string> header;
         for(const auto& index : indices)
             header.push_back(header_.at(index));
 
-        VS row_data;
-        VVS data;
+        std::vector<std::string> row_data;
+        std::vector<std::vector<std::string>> data;
         for(const auto& row : data_)
         {
             row_data.clear();
@@ -266,7 +268,7 @@ public:
         if (index < 0 || index >= data_.size())
             throw std::out_of_range("index number [" + std::to_string(target_row) + "] was out of range");
         
-        VVS data = {data_.at(index)};
+        std::vector<std::vector<std::string>> data = {data_.at(index)};
         DataFrame df(header_, data);
         return df;
     }
@@ -282,7 +284,7 @@ public:
         if (start_index > end_index)
             throw std::out_of_range("end index must be larger than start index.");
         
-        VVS data;
+        std::vector<std::vector<std::string>> data;
         for(auto& i=start_index;i<end_index;i++)
             data.push_back(data_.at(i));
 
@@ -292,18 +294,18 @@ public:
 
     DataFrame operator[](const std::initializer_list<std::string>& target_columns) const
     {
-        VS v(target_columns.begin(), target_columns.end());
+        std::vector<std::string> v(target_columns.begin(), target_columns.end());
         return this->operator[](v);
     }
 
     DataFrame& rename(const std::initializer_list<std::string>& header)
     {
-        VS v(header);
+        std::vector<std::string> v(header);
         this->rename(v);
         return *this;
     }
 
-    DataFrame& rename(const VS header)
+    DataFrame& rename(const std::vector<std::string> header)
     {
         if(header.size()!=header_.size())
             throw std::runtime_error("header size is different");
@@ -323,6 +325,11 @@ public:
         std::cout << "header names: {" << concat(header_) << "}" << std::endl;
         std::cout << "    row size: " << data_.size() << std::endl;
         std::cout << " column size: " << header_.size() << std::endl;
+    }
+
+    std::vector<std::vector<std::string>> data() const
+    {
+        return data_;
     }
 
     template<typename T>

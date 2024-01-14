@@ -23,9 +23,10 @@ if(${GLOBAL_USE_BUILD_LIBLARY})
         date_time 
         process_timer
     )
-    target_include_directories(test_shared_memory_1 PUBLIC ${PROJECT_SOURCE_DIR}/include)
-    target_include_directories(test_shared_memory_2 PUBLIC ${PROJECT_SOURCE_DIR}/include)
 else()
     add_executable(test_shared_memory_1 test_shared_memory_1.cpp ${HEADERS})
     add_executable(test_shared_memory_2 test_shared_memory_2.cpp ${HEADERS})
 endif()
+
+target_include_directories(test_shared_memory_1 PUBLIC ${PROJECT_SOURCE_DIR}/include)
+target_include_directories(test_shared_memory_2 PUBLIC ${PROJECT_SOURCE_DIR}/include)

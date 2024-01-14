@@ -8,7 +8,8 @@ if(${GLOBAL_USE_BUILD_LIBLARY})
         process_timer 
         date_time
     )
-    target_include_directories(test_process_timer PUBLIC ${PROJECT_SOURCE_DIR}/include)
 else()
     add_executable(test_process_timer test_process_timer.cpp ${HEADERS})
 endif()
+
+target_include_directories(test_process_timer PUBLIC ${PROJECT_SOURCE_DIR}/include)
