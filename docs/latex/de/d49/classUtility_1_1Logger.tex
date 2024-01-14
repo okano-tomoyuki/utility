@@ -1,0 +1,80 @@
+\hypertarget{classUtility_1_1Logger}{}\doxysection{Utility\+::Logger Class Reference}
+\label{classUtility_1_1Logger}\index{Utility::Logger@{Utility::Logger}}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classUtility_1_1Logger_ad62a3a76b2668dfcc580cb1389ad84d4}\label{classUtility_1_1Logger_ad62a3a76b2668dfcc580cb1389ad84d4}} 
+enum {\bfseries Color} \{ \newline
+{\bfseries WHITE}
+, {\bfseries YELLOW}
+, {\bfseries GREEN}
+, {\bfseries BLUE}
+, \newline
+{\bfseries RED}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classUtility_1_1Logger_a0ecf03480f5f20c17bb9833343d93f7e}\label{classUtility_1_1Logger_a0ecf03480f5f20c17bb9833343d93f7e}} 
+{\bfseries Logger} (const std\+::string \&separator=\char`\"{} \char`\"{}, const std\+::string \&new\+\_\+line=\char`\"{}\textbackslash{}n\char`\"{})
+\item 
+\mbox{\Hypertarget{classUtility_1_1Logger_adad6e78339cc54c8868f2bdc61fd6661}\label{classUtility_1_1Logger_adad6e78339cc54c8868f2bdc61fd6661}} 
+{\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{classUtility_1_1Logger}{Logger}} \& {\bfseries add} (const T \&val)
+\item 
+\mbox{\Hypertarget{classUtility_1_1Logger_acf06d9b6625dcb000e40e61f2fbd1a6b}\label{classUtility_1_1Logger_acf06d9b6625dcb000e40e61f2fbd1a6b}} 
+{\footnotesize template$<$typename T , typename... Remain$>$ }\\\mbox{\hyperlink{classUtility_1_1Logger}{Logger}} \& {\bfseries add} (const T \&val, const Remain \&... remain)
+\item 
+\mbox{\Hypertarget{classUtility_1_1Logger_ae94f844cd95c404f80ad8b056b16c4ef}\label{classUtility_1_1Logger_ae94f844cd95c404f80ad8b056b16c4ef}} 
+{\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{classUtility_1_1Logger}{Logger}} \& {\bfseries add} (const std\+::vector$<$ T $>$ \&val)
+\item 
+\mbox{\Hypertarget{classUtility_1_1Logger_a664937df112f1c75c43f6d44e41d38a4}\label{classUtility_1_1Logger_a664937df112f1c75c43f6d44e41d38a4}} 
+{\footnotesize template$<$typename T , typename... Remain$>$ }\\\mbox{\hyperlink{classUtility_1_1Logger}{Logger}} \& {\bfseries add} (const std\+::vector$<$ T $>$ \&val, const Remain \&... remain)
+\item 
+\mbox{\Hypertarget{classUtility_1_1Logger_adaa1357da26ac28cacdd4a228c13bc9d}\label{classUtility_1_1Logger_adaa1357da26ac28cacdd4a228c13bc9d}} 
+{\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{classUtility_1_1Logger}{Logger}} \& {\bfseries add\+\_\+line} (const std\+::vector$<$ T $>$ \&val)
+\item 
+\mbox{\Hypertarget{classUtility_1_1Logger_ac95f3babdccb52cfa2ae0cf5703a6d5c}\label{classUtility_1_1Logger_ac95f3babdccb52cfa2ae0cf5703a6d5c}} 
+{\footnotesize template$<$typename T , typename... Remain$>$ }\\\mbox{\hyperlink{classUtility_1_1Logger}{Logger}} \& {\bfseries add\+\_\+line} (const std\+::vector$<$ T $>$ \&val, const Remain \&... remain)
+\item 
+\mbox{\Hypertarget{classUtility_1_1Logger_af199b515cdaf96db8882e973a9466857}\label{classUtility_1_1Logger_af199b515cdaf96db8882e973a9466857}} 
+\mbox{\hyperlink{classUtility_1_1Logger}{Logger}} \& {\bfseries print} (const enum Color \&color=WHITE)
+\item 
+\mbox{\Hypertarget{classUtility_1_1Logger_a2965c0308cae1134d8d679775a728ca7}\label{classUtility_1_1Logger_a2965c0308cae1134d8d679775a728ca7}} 
+\mbox{\hyperlink{classUtility_1_1Logger}{Logger}} \& {\bfseries flush} ()
+\item 
+\mbox{\Hypertarget{classUtility_1_1Logger_aa9b366153c63452708371e93c819597f}\label{classUtility_1_1Logger_aa9b366153c63452708371e93c819597f}} 
+\mbox{\hyperlink{classUtility_1_1Logger}{Logger}} \& {\bfseries endl} ()
+\item 
+\mbox{\Hypertarget{classUtility_1_1Logger_a141b3c5fceb40ffbf31056c5edc91700}\label{classUtility_1_1Logger_a141b3c5fceb40ffbf31056c5edc91700}} 
+{\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{classUtility_1_1Logger}{Logger}} \& {\bfseries add\+\_\+line} (const T \&val)
+\item 
+\mbox{\Hypertarget{classUtility_1_1Logger_a6e230dadf957c707a426876d9e22d6f9}\label{classUtility_1_1Logger_a6e230dadf957c707a426876d9e22d6f9}} 
+{\footnotesize template$<$typename T , typename... Remain$>$ }\\\mbox{\hyperlink{classUtility_1_1Logger}{Logger}} \& {\bfseries add\+\_\+line} (const T \&val, const Remain \&... remain)
+\item 
+\mbox{\Hypertarget{classUtility_1_1Logger_ab111df6e710de645f34385aa7da450f5}\label{classUtility_1_1Logger_ab111df6e710de645f34385aa7da450f5}} 
+\mbox{\hyperlink{classUtility_1_1Logger}{Logger}} \& {\bfseries set\+\_\+separator} (const std\+::string \&separator)
+\item 
+\mbox{\Hypertarget{classUtility_1_1Logger_a60695031ef0bc63340e40ed841ec55d3}\label{classUtility_1_1Logger_a60695031ef0bc63340e40ed841ec55d3}} 
+\mbox{\hyperlink{classUtility_1_1Logger}{Logger}} \& {\bfseries set\+\_\+new\+\_\+line} (const std\+::string \&new\+\_\+line)
+\item 
+\mbox{\Hypertarget{classUtility_1_1Logger_a67ce302d4953e0f1b353adef3a71d5b7}\label{classUtility_1_1Logger_a67ce302d4953e0f1b353adef3a71d5b7}} 
+size\+\_\+t {\bfseries size} () const
+\item 
+\mbox{\Hypertarget{classUtility_1_1Logger_ace548ef3e8665324ef2256b85065793e}\label{classUtility_1_1Logger_ace548ef3e8665324ef2256b85065793e}} 
+std\+::string {\bfseries get\+\_\+buffer} () const
+\item 
+\mbox{\Hypertarget{classUtility_1_1Logger_a305eb71968dc73a81b928ccd315f9fa3}\label{classUtility_1_1Logger_a305eb71968dc73a81b928ccd315f9fa3}} 
+\mbox{\hyperlink{classUtility_1_1Logger}{Logger}} \& {\bfseries save} (const std\+::string \&file\+\_\+path, const std\+::ios\+\_\+base\+::openmode \&mode=std\+::ios\+\_\+base\+::app)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classUtility_1_1Logger_a9457b3a8148143727ceefe1c175cdd86}\label{classUtility_1_1Logger_a9457b3a8148143727ceefe1c175cdd86}} 
+{\footnotesize template$<$typename... Args$>$ }\\static std\+::string {\bfseries format} (const std\+::string \&format, const Args \&... args)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/utility/\mbox{\hyperlink{logger_8hpp}{logger.\+hpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,24 @@
+name: automatic document generation by doxygen
+on:
+  push:
+    tags:
+      - document-*.*.*
+jobs:
+  doxygen:
+    runs-on: ubuntu-latest
+    permissions: 
+      contents: write
+    steps:
+      - name: Checkout develop branch
+        uses: actions/checkout@v4
+
+      - name: Doxygen Action
+        uses: mattnotmitt/doxygen-action@1.9.5
+
+      - name: Git config, commit, and push. 
+        run: |
+          git config --local user.email "okano.development@gmail.com"
+          git config --local user.name "okano-tomoyuki"
+          git add .
+          git commit -m "add action #"$(echo ${GITHUB_SHA::7})
+          git push origin master

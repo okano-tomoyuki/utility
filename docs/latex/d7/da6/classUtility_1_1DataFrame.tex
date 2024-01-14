@@ -1,0 +1,65 @@
+\hypertarget{classUtility_1_1DataFrame}{}\doxysection{Utility\+::Data\+Frame Class Reference}
+\label{classUtility_1_1DataFrame}\index{Utility::DataFrame@{Utility::DataFrame}}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classUtility_1_1DataFrame_a9c75ea18c1af60e79127341f0306b808}\label{classUtility_1_1DataFrame_a9c75ea18c1af60e79127341f0306b808}} 
+enum {\bfseries Axis} \{ {\bfseries COLUMN}
+, {\bfseries ROW}
+ \}
+\item 
+\mbox{\Hypertarget{classUtility_1_1DataFrame_a3abd42404dec63088abccba58d3e6d92}\label{classUtility_1_1DataFrame_a3abd42404dec63088abccba58d3e6d92}} 
+enum {\bfseries Format} \{ {\bfseries SIMPLE}
+, {\bfseries PRETTY}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classUtility_1_1DataFrame_aba31d05d556e4bd108979d5ba69a8be3}\label{classUtility_1_1DataFrame_aba31d05d556e4bd108979d5ba69a8be3}} 
+void {\bfseries operator=} (const \mbox{\hyperlink{classUtility_1_1DataFrame}{Data\+Frame}} \&other)
+\item 
+\mbox{\Hypertarget{classUtility_1_1DataFrame_a538c90c94e1d53d3f08898a1b1a10a47}\label{classUtility_1_1DataFrame_a538c90c94e1d53d3f08898a1b1a10a47}} 
+void {\bfseries to\+\_\+csv} (const std\+::string \&file\+\_\+path, const bool \&append=true, const bool \&header=true, const char \&separator=\textquotesingle{},\textquotesingle{}) const
+\item 
+\mbox{\Hypertarget{classUtility_1_1DataFrame_acadcd7c7729fc851a3fe0b4fffa502b5}\label{classUtility_1_1DataFrame_acadcd7c7729fc851a3fe0b4fffa502b5}} 
+\mbox{\hyperlink{classUtility_1_1DataFrame}{Data\+Frame}} {\bfseries operator\mbox{[}$\,$\mbox{]}} (const std\+::string \&target\+\_\+column) const
+\item 
+\mbox{\Hypertarget{classUtility_1_1DataFrame_a4bfc6a3c5b3eec553194d7e056dc9b23}\label{classUtility_1_1DataFrame_a4bfc6a3c5b3eec553194d7e056dc9b23}} 
+\mbox{\hyperlink{classUtility_1_1DataFrame}{Data\+Frame}} {\bfseries operator\mbox{[}$\,$\mbox{]}} (const VS \&target\+\_\+columns) const
+\item 
+\mbox{\Hypertarget{classUtility_1_1DataFrame_a8b6eb4ed652089aafcf89c4ac5786066}\label{classUtility_1_1DataFrame_a8b6eb4ed652089aafcf89c4ac5786066}} 
+\mbox{\hyperlink{classUtility_1_1DataFrame}{Data\+Frame}} {\bfseries operator\mbox{[}$\,$\mbox{]}} (const int \&target\+\_\+row) const
+\item 
+\mbox{\Hypertarget{classUtility_1_1DataFrame_a100981f30f346bdbed2e2eba235977fd}\label{classUtility_1_1DataFrame_a100981f30f346bdbed2e2eba235977fd}} 
+\mbox{\hyperlink{classUtility_1_1DataFrame}{Data\+Frame}} {\bfseries operator\mbox{[}$\,$\mbox{]}} (const std\+::pair$<$ int, int $>$ \&range) const
+\item 
+\mbox{\Hypertarget{classUtility_1_1DataFrame_a07fb01cff9178c0c8858aee9e7564fe2}\label{classUtility_1_1DataFrame_a07fb01cff9178c0c8858aee9e7564fe2}} 
+\mbox{\hyperlink{classUtility_1_1DataFrame}{Data\+Frame}} {\bfseries operator\mbox{[}$\,$\mbox{]}} (const std\+::initializer\+\_\+list$<$ std\+::string $>$ \&target\+\_\+columns) const
+\item 
+\mbox{\Hypertarget{classUtility_1_1DataFrame_a1fdbf35fa493d2a03b74f5dcc32b5e2d}\label{classUtility_1_1DataFrame_a1fdbf35fa493d2a03b74f5dcc32b5e2d}} 
+\mbox{\hyperlink{classUtility_1_1DataFrame}{Data\+Frame}} \& {\bfseries rename} (const std\+::initializer\+\_\+list$<$ std\+::string $>$ \&header)
+\item 
+\mbox{\Hypertarget{classUtility_1_1DataFrame_af67a9e07fedc3b3b9282eae147542c35}\label{classUtility_1_1DataFrame_af67a9e07fedc3b3b9282eae147542c35}} 
+\mbox{\hyperlink{classUtility_1_1DataFrame}{Data\+Frame}} \& {\bfseries rename} (const VS header)
+\item 
+\mbox{\Hypertarget{classUtility_1_1DataFrame_a0165c93fa18bd95b0c0f394125704a62}\label{classUtility_1_1DataFrame_a0165c93fa18bd95b0c0f394125704a62}} 
+void {\bfseries show} (const enum Format \&format=SIMPLE) const
+\item 
+\mbox{\Hypertarget{classUtility_1_1DataFrame_a9822454c1194d7e37e89baa9333c6ce4}\label{classUtility_1_1DataFrame_a9822454c1194d7e37e89baa9333c6ce4}} 
+void {\bfseries describe} () const
+\item 
+\mbox{\Hypertarget{classUtility_1_1DataFrame_ac4e541b56c8634094ac37f4929d4ea40}\label{classUtility_1_1DataFrame_ac4e541b56c8634094ac37f4929d4ea40}} 
+{\footnotesize template$<$typename T $>$ }\\std\+::vector$<$ T $>$ {\bfseries to\+\_\+vector} (const enum Axis \&axis=COLUMN) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classUtility_1_1DataFrame_a88755f9ec9c259fa529cb2a92f5588c8}\label{classUtility_1_1DataFrame_a88755f9ec9c259fa529cb2a92f5588c8}} 
+static \mbox{\hyperlink{classUtility_1_1DataFrame}{Data\+Frame}} {\bfseries read\+\_\+csv} (const std\+::string \&file\+\_\+path, const bool \&header=true, const char \&separator=\textquotesingle{},\textquotesingle{})
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/utility/pythonian/\mbox{\hyperlink{data__frame_8hpp}{data\+\_\+frame.\+hpp}}\end{DoxyCompactItemize}

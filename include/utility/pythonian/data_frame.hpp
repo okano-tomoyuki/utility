@@ -1,3 +1,14 @@
+/**
+ * @file utility/pythonian/data_frame.hpp
+ * @author okano tomoyuki (okano.development@gmail.com)
+ * @brief class library for python's data frame handling.
+ * @version 0.1
+ * @date 2024-01-14
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #ifndef _DATA_FRAME_HPP_
 #define _DATA_FRAME_HPP_
 
@@ -13,49 +24,137 @@
 
 #ifdef GLOBAL_USE_BUILD_LIBLARY
 
+namespace Utility
+{
+
 class DataFrame final
 {
+using VS  = std::vector<std::string>;
+using VVS = std::vector<VS>;
 private:
-    std::vector<std::string> header_;
-    std::vector<std::vector<std::string>> data_;
-
-    static std::string concat(const std::vector<std::string>& origin, const char& separator=',') noexcept
-    {
-        std::string result;
-        for (const auto& str : origin)
-        {
-            result += str + separator;
-        }
-        result.pop_back(); // erase separator character placed in end.
-        return result;
-    }
-
-    static std::vector<std::string> split(const std::string& origin, const char& separator=',') noexcept
-    {
-        std::vector<std::string> result;
-        std::string element;
-        std::istringstream iss(origin);
-        while(std::getline(iss, element, separator))
-        {
-            result.push_back(element);
-        }
-        return result;
-    }
-
-    explicit DataFrame(const std::vector<std::string>& header, const std::vector<std::vector<std::string>>& data)
+    VS header_;
+    VVS data_;
+    static std::string concat(const VS& origin, const char& separator=',');
+    static VS split(const std::string& origin, const char& separator=',');
+    explicit DataFrame(const VS& header, const VVS& data)
      : header_(header), data_(data)
     {}
 
 public:
+    enum Axis   { COLUMN, ROW    };
+    enum Format { SIMPLE, PRETTY };
+    static DataFrame read_csv(const std::string& file_path, const bool& header=true, const char& separator=',');
+    void operator=(const DataFrame& other);
+    void to_csv(const std::string& file_path, const bool& append=true, const bool& header=true, const char& separator=',') const;
+    DataFrame operator[](const std::string& target_column) const;
+    DataFrame operator[](const VS& target_columns) const;
+    DataFrame operator[](const int& target_row) const;
+    DataFrame operator[](const std::pair<int, int>& range) const;
+    DataFrame operator[](const std::initializer_list<std::string>& target_columns) const;
+    DataFrame& rename(const std::initializer_list<std::string>& header);
+    DataFrame& rename(const VS header);
+    void show(const enum Format& format=SIMPLE) const;
+    void describe() const;
+
+    template<typename T>
+    std::vector<T> to_vector(const enum Axis& axis=COLUMN) const
+    {
+        if(axis==ROW && data_.size()!=1)
+            throw std::runtime_error("to_vector method can be used to 1 raw DataFrame only.");
+        if(axis==COLUMN && header_.size()!=1)
+            throw std::runtime_error("to_vector method can be used to 1 column DataFrame only.");
+        
+        T element;
+        std::vector<T> result;
+        std::stringstream ss;
+
+        if(axis==COLUMN)
+        {
+            for(const auto& row : data_)
+            {
+                ss << row.at(0);
+                ss >> element;
+                result.push_back(element);
+                ss.clear();
+            }
+        }
+        else // ROW
+        {
+            for(const auto& e : data_.at(0))
+            {
+                ss << e;
+                ss >> element;
+                result.push_back(element);
+                ss.clear();
+            }
+        }
+        return result;
+    }
+};
+
+}
+
+#else
+
+namespace Utility
+{
+
+class DataFrame final
+{
+
+using VS  = std::vector<std::string>;
+using VVS = std::vector<VS>;
+
+private:
+    VS  header_;
+    VVS data_;
+#ifdef __unix__
+    std::string delim_ = "\n";
+#else
+    std::string delim_ = "\r\n";
+#endif
+
+    static std::string concat(const VS& origin, const char& separator=',')
+    {
+        std::string result;
+        for (const auto& str : origin)
+            result += str + separator;
+        result.pop_back(); // erase separator character placed in end.
+        return result;
+    }
+
+    static VS split(const std::string& origin, const char& separator=',')
+    {
+        VS result;
+        std::string element;
+        std::istringstream iss(origin);
+        while(std::getline(iss, element, separator))
+            result.push_back(element);
+        return result;
+    }
+
+    explicit DataFrame(const VS& header, const VVS& data)
+     : header_(header), data_(data)
+    {}
+
+public:
+    enum Axis   { COLUMN, ROW    };
+    enum Format { SIMPLE, PRETTY };
+
+    void operator=(const DataFrame& other)
+    {
+        header_ = other.header_;
+        data_   = other.data_;
+    }
 
     static DataFrame read_csv(const std::string& file_path, const bool& header=true, const char& separator=',')
     {
-        std::vector<std::string> header_row;
-        std::vector<std::vector<std::string>> data;
+        VS header_row;
+        VVS data;
 
         std::ifstream ifs(file_path);
-        if(!ifs) 
-            throw std::runtime_error("file doesn't exist.");
+        if(!ifs)
+            throw std::runtime_error("file \"" + file_path + "\" doesn't exist.");
 
         std::string line;
         std::getline(ifs, line);
@@ -87,7 +186,7 @@ public:
         std::ofstream ofs;
         append ? ofs.open(file_path, std::ios::app) : ofs.open(file_path); // switching append or overwrite.
         if(!ofs) 
-            throw std::runtime_error("file path doesn't exist.");
+            throw std::runtime_error("file path \"" + file_path + "\" doesn't exist.");
 
         // writing header
         if(header)
@@ -96,42 +195,41 @@ public:
         // writing each row data.
         // if Windows environment, write CRLF.
         // if Unix like environment, write LF.
-        std::string s;
+        std::stringstream ss;
         for (const auto& row : data_)
-        {
-#ifndef __unix__
-            s += concat(row) + '\r' + '\n';
-#else
-            s += concat(row) + '\n';
-#endif
-        }
-        s.pop_back(); // erase latest '\n'
-#ifndef __unix__
-        s.pop_back(); // erase latest '\r'
-#endif
-        ofs << s;
+            ss << concat(row, separator) << delim_;
+        
+        std::string result = ss.str();
+        int pop_size = delim_.size();
+        while(pop_size--)
+            result.pop_back();
+
+        ofs << result;
     }
 
     DataFrame operator[](const std::string& target_column) const
     {
         auto itr = std::find(header_.begin(), header_.end(), target_column);
+        
         if (itr==header_.end())
-            throw std::runtime_error("target column was not found.");
-        int index = std::distance(header_.begin(), itr);
+        {
+            std::stringstream ss;
+            ss << "target column \"" << target_column << "\" was not found.";
+            throw std::runtime_error(ss.str());
+        }
 
-        std::vector<std::string> header = {header_.at(index)};
-        std::vector<std::vector<std::string>> data;
+        int index = std::distance(header_.begin(), itr);
+        VS header = {header_.at(index)};
+        VVS data;
 
         for(const auto& row : data_)
-        {
             data.push_back({row.at(index)});
-        }
 
         DataFrame df(header, data);
         return df;
     }
 
-    DataFrame operator[](const std::vector<std::string>& target_columns) const
+    DataFrame operator[](const VS& target_columns) const
     {
         std::vector<int> indices;
         for (const auto& column : target_columns)
@@ -143,12 +241,12 @@ public:
             indices.push_back(index);
         }
 
-        std::vector<std::string> header;
+        VS header;
         for(const auto& index : indices)
             header.push_back(header_.at(index));
 
-        std::vector<std::string> row_data;
-        std::vector<std::vector<std::string>> data;
+        VS row_data;
+        VVS data;
         for(const auto& row : data_)
         {
             row_data.clear();
@@ -166,27 +264,25 @@ public:
         int index;
         index = target_row >= 0 ? target_row : data_.size() + target_row;
         if (index < 0 || index >= data_.size())
-            throw std::out_of_range("index number was out of range");
+            throw std::out_of_range("index number [" + std::to_string(target_row) + "] was out of range");
         
-        std::vector<std::vector<std::string>> data = {data_.at(index)};
+        VVS data = {data_.at(index)};
         DataFrame df(header_, data);
-
         return df;
     }
 
     DataFrame operator[](const std::pair<int, int>& range) const
     {
-        int start_index, end_index;
-        start_index = range.first >= 0 ? range.first : data_.size() + range.first;
-        end_index = range.second >= 0 ? range.second : data_.size() + range.second;
+        int start_index = (range.first  >= 0) ? range.first  : data_.size() + range.first;
+        int end_index   = (range.second >= 0) ? range.second : data_.size() + range.second;
         if (start_index < 0 || start_index >= data_.size())
             throw std::out_of_range("start index number was out of range");
-        if (end_index < 0 || end_index >= data_.size())
+        if (end_index   < 0 || end_index   >= data_.size())
             throw std::out_of_range("end index number was out of range");
         if (start_index > end_index)
             throw std::out_of_range("end index must be larger than start index.");
         
-        std::vector<std::vector<std::string>> data;
+        VVS data;
         for(auto& i=start_index;i<end_index;i++)
             data.push_back(data_.at(i));
 
@@ -196,18 +292,18 @@ public:
 
     DataFrame operator[](const std::initializer_list<std::string>& target_columns) const
     {
-        std::vector<std::string> v(target_columns.begin(), target_columns.end());
+        VS v(target_columns.begin(), target_columns.end());
         return this->operator[](v);
     }
 
     DataFrame& rename(const std::initializer_list<std::string>& header)
     {
-        std::vector<std::string> v(header);
+        VS v(header);
         this->rename(v);
         return *this;
     }
 
-    DataFrame& rename(const std::vector<std::string> header)
+    DataFrame& rename(const VS header)
     {
         if(header.size()!=header_.size())
             throw std::runtime_error("header size is different");
@@ -215,16 +311,14 @@ public:
         return *this;
     }
 
-    void show() const
+    void show(const enum Format& format=SIMPLE) const
     {
         std::cout << concat(header_) << std::endl;
         for (const auto& row : data_)
-        {
             std::cout << concat(row) << std::endl;
-        }
     }
 
-    void describe() const noexcept
+    void describe() const
     {
         std::cout << "header names: {" << concat(header_) << "}" << std::endl;
         std::cout << "    row size: " << data_.size() << std::endl;
@@ -232,28 +326,42 @@ public:
     }
 
     template<typename T>
-    std::vector<T> to_vector() const
+    std::vector<T> to_vector(const enum Axis& axis=COLUMN) const
     {
-        if(header_.size()!=1)
-            throw std::runtime_error("to_vector method can be used 1 column DataFrame only.");
-
+        if(axis==ROW && data_.size()!=1)
+            throw std::runtime_error("to_vector method can be used to 1 raw DataFrame only.");
+        if(axis==COLUMN && header_.size()!=1)
+            throw std::runtime_error("to_vector method can be used to 1 column DataFrame only.");
+        
+        T element;
         std::vector<T> result;
         std::stringstream ss;
-        for(const auto& row : data_)
-        {
-            T element;
-            ss << row.at(0);
-            ss >> element;
-            result.push_back(element);
-            ss.clear();
-        }
 
+        if(axis==COLUMN)
+        {
+            for(const auto& row : data_)
+            {
+                ss << row.at(0);
+                ss >> element;
+                result.push_back(element);
+                ss.clear();
+            }
+        }
+        else // ROW
+        {
+            for(const auto& e : data_.at(0))
+            {
+                ss << e;
+                ss >> element;
+                result.push_back(element);
+                ss.clear();
+            }
+        }
         return result;
     }
-
 };
 
-#else
+}
 
 #endif
 

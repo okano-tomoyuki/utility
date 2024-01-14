@@ -1,3 +1,14 @@
+/**
+ * @file logger.hpp
+ * @author okano tomoyuki (okano.development@gmail.com)
+ * @brief class library for csv logging or console debug.
+ * @version 0.1
+ * @date 2024-01-14
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #ifndef _UTILITY_LOGGER_HPP_
 #define _UTILITY_LOGGER_HPP_
 

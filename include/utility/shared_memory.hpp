@@ -1,3 +1,18 @@
+/**
+ * @file shared_memory.hpp
+ * @author okano tomoyuki (okano.development@gmail.com)
+ * @brief cross-plattform class library for handling shared memory object.
+ * @note highly inspired by https://github.com/husty530/mmap-template
+ * @note reffered system v shared memory man page in ubuntu https://manpages.ubuntu.com/manpages/focal/ja/man2/shmdt.2.html
+ * @note reffered system v semaphore man page in ubuntu https://manpages.ubuntu.com/manpages/focal/ja/man2/semget.2.html
+ * @note create 32bit hash from string https://norizn.hatenablog.com/entry/2020/10/18/145628
+ * @version 0.1
+ * @date 2024-01-14
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #ifndef _UTILITY_SHARED_MEMORY_HPP_
 #define _UTILITY_SHARED_MEMORY_HPP_
 
@@ -40,10 +55,6 @@ private:
     bool is_persistence_;
 
 #ifdef __unix__
-    /**! 
-     * ftokの代替として文字列から4byteハッシュ値を生成するために使用。
-     * https://norizn.hatenablog.com/entry/2020/10/18/145628
-     */
     static uint32_t make_hash(const char* str, const size_t& size);
 #endif
     static Handle create_mutex(const char* mutex_name);

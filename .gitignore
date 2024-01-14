@@ -1,6 +1,9 @@
 # build directory
 build/**
 
+# ini file
+*.ini
+
 # Prerequisites
 *.d
 

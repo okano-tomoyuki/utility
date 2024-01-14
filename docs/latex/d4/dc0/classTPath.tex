@@ -1,0 +1,118 @@
+\hypertarget{classTPath}{}\doxysection{TPath Class Reference}
+\label{classTPath}\index{TPath@{TPath}}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTPath_a655e258203dbc1f0b76b4319dcb0c2d6}\label{classTPath_a655e258203dbc1f0b76b4319dcb0c2d6}} 
+enum {\bfseries Path\+Type} \{ {\bfseries windows\+Path} = 0
+, {\bfseries posix\+Path} = 1
+, {\bfseries native\+Path} = windows\+Path
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTPath_a1785db1e0f75c06f5206b4a230bb3004}\label{classTPath_a1785db1e0f75c06f5206b4a230bb3004}} 
+{\bfseries TPath} (const \mbox{\hyperlink{classTPath}{TPath}} \&path)
+\item 
+\mbox{\Hypertarget{classTPath_ad0a4f3f53ef881411a6fbe7ae1ed786a}\label{classTPath_ad0a4f3f53ef881411a6fbe7ae1ed786a}} 
+{\bfseries TPath} (\mbox{\hyperlink{classTPath}{TPath}} \&\&path)
+\item 
+\mbox{\Hypertarget{classTPath_a06d2c6adc5877403868325e7b23fe636}\label{classTPath_a06d2c6adc5877403868325e7b23fe636}} 
+{\bfseries TPath} (const char $\ast$string)
+\item 
+\mbox{\Hypertarget{classTPath_a42c165ffcaec497743c51187d283e90b}\label{classTPath_a42c165ffcaec497743c51187d283e90b}} 
+{\bfseries TPath} (const std\+::string \&string)
+\item 
+\mbox{\Hypertarget{classTPath_a7ddb577bb4dc07d7c7045845d503ab57}\label{classTPath_a7ddb577bb4dc07d7c7045845d503ab57}} 
+{\bfseries TPath} (const std\+::wstring \&wstring)
+\item 
+\mbox{\Hypertarget{classTPath_ab17c807117705ea9ea78007673044b64}\label{classTPath_ab17c807117705ea9ea78007673044b64}} 
+{\bfseries TPath} (const wchar\+\_\+t $\ast$wstring)
+\item 
+\mbox{\Hypertarget{classTPath_a7e081e396b874b9dde691c17c59b170e}\label{classTPath_a7e081e396b874b9dde691c17c59b170e}} 
+size\+\_\+t {\bfseries length} () const
+\item 
+\mbox{\Hypertarget{classTPath_ad2a5fe06e509903f626e7a7c1ef83578}\label{classTPath_ad2a5fe06e509903f626e7a7c1ef83578}} 
+bool {\bfseries empty} () const
+\item 
+\mbox{\Hypertarget{classTPath_acc57686e4a4243070729ffdb53fb9097}\label{classTPath_acc57686e4a4243070729ffdb53fb9097}} 
+bool {\bfseries is\+Absolute} () const
+\item 
+\mbox{\Hypertarget{classTPath_a82f8eaa32bc93184bddfda3844f250e6}\label{classTPath_a82f8eaa32bc93184bddfda3844f250e6}} 
+\mbox{\hyperlink{classTPath}{TPath}} {\bfseries make\+\_\+absolute} () const
+\item 
+\mbox{\Hypertarget{classTPath_a966436493914d8d12ec01ad93afbe729}\label{classTPath_a966436493914d8d12ec01ad93afbe729}} 
+bool {\bfseries exists} () const
+\item 
+\mbox{\Hypertarget{classTPath_ae236fe83aca1935136637a43f7683af2}\label{classTPath_ae236fe83aca1935136637a43f7683af2}} 
+size\+\_\+t {\bfseries file\+\_\+size} () const
+\item 
+\mbox{\Hypertarget{classTPath_acfd8917b958efd62d45d90fac362123a}\label{classTPath_acfd8917b958efd62d45d90fac362123a}} 
+bool {\bfseries is\+\_\+directory} () const
+\item 
+\mbox{\Hypertarget{classTPath_aea2fc1516822bc0d5f4f460d19d80d9b}\label{classTPath_aea2fc1516822bc0d5f4f460d19d80d9b}} 
+bool {\bfseries is\+\_\+file} () const
+\item 
+\mbox{\Hypertarget{classTPath_aa0171620f5031d61c880f565a4bdba95}\label{classTPath_aa0171620f5031d61c880f565a4bdba95}} 
+std\+::string {\bfseries extension} () const
+\item 
+\mbox{\Hypertarget{classTPath_a1a04b33655a1a9aebce2aea310ba076b}\label{classTPath_a1a04b33655a1a9aebce2aea310ba076b}} 
+std\+::string {\bfseries filename} () const
+\item 
+\mbox{\Hypertarget{classTPath_ae487962f147e6a587b6a0e4b6d01efb9}\label{classTPath_ae487962f147e6a587b6a0e4b6d01efb9}} 
+\mbox{\hyperlink{classTPath}{TPath}} {\bfseries parent\+\_\+path} () const
+\item 
+\mbox{\Hypertarget{classTPath_aad3849a1dbd65e97b13b3f90a34f02e3}\label{classTPath_aad3849a1dbd65e97b13b3f90a34f02e3}} 
+\mbox{\hyperlink{classTPath}{TPath}} {\bfseries operator/} (const \mbox{\hyperlink{classTPath}{TPath}} \&other) const
+\item 
+\mbox{\Hypertarget{classTPath_a4c21a27bdf8226da5ce1709929f0da57}\label{classTPath_a4c21a27bdf8226da5ce1709929f0da57}} 
+std\+::string {\bfseries str} (Path\+Type type=native\+Path) const
+\item 
+\mbox{\Hypertarget{classTPath_ac4171717e74220180e306b54ab626a06}\label{classTPath_ac4171717e74220180e306b54ab626a06}} 
+void {\bfseries set} (const std\+::string \&str, Path\+Type type=native\+Path)
+\item 
+\mbox{\Hypertarget{classTPath_ac150843c2c75c03be9de013903a3728c}\label{classTPath_ac150843c2c75c03be9de013903a3728c}} 
+\mbox{\hyperlink{classTPath}{TPath}} \& {\bfseries operator=} (const \mbox{\hyperlink{classTPath}{TPath}} \&path)
+\item 
+\mbox{\Hypertarget{classTPath_a0272593f3e3a4e162d5dcca9985d682b}\label{classTPath_a0272593f3e3a4e162d5dcca9985d682b}} 
+\mbox{\hyperlink{classTPath}{TPath}} \& {\bfseries operator=} (\mbox{\hyperlink{classTPath}{TPath}} \&\&path)
+\item 
+\mbox{\Hypertarget{classTPath_af61f3f55ecf26b974470acac885606c4}\label{classTPath_af61f3f55ecf26b974470acac885606c4}} 
+bool {\bfseries remove\+\_\+file} ()
+\item 
+\mbox{\Hypertarget{classTPath_a9b48f90ae6d5c697bac2153fa7a0c61d}\label{classTPath_a9b48f90ae6d5c697bac2153fa7a0c61d}} 
+bool {\bfseries resize\+\_\+file} (size\+\_\+t target\+\_\+length)
+\item 
+\mbox{\Hypertarget{classTPath_a27a05a53b0648bb6993f8450dd586663}\label{classTPath_a27a05a53b0648bb6993f8450dd586663}} 
+std\+::wstring {\bfseries wstr} (Path\+Type type=native\+Path) const
+\item 
+\mbox{\Hypertarget{classTPath_a65495171727f6e99a09925e390bdfacb}\label{classTPath_a65495171727f6e99a09925e390bdfacb}} 
+void {\bfseries set} (const std\+::wstring \&wstring, Path\+Type type=native\+Path)
+\item 
+\mbox{\Hypertarget{classTPath_a5c80f7f7eb659bb734eed3e5ad026775}\label{classTPath_a5c80f7f7eb659bb734eed3e5ad026775}} 
+\mbox{\hyperlink{classTPath}{TPath}} \& {\bfseries operator=} (const std\+::wstring \&str)
+\item 
+\mbox{\Hypertarget{classTPath_a7917a5968b4ac5d21e55102d57cfe011}\label{classTPath_a7917a5968b4ac5d21e55102d57cfe011}} 
+bool {\bfseries operator==} (const \mbox{\hyperlink{classTPath}{TPath}} \&p) const
+\item 
+\mbox{\Hypertarget{classTPath_afa1b27815c08b9e639396de577c1738b}\label{classTPath_afa1b27815c08b9e639396de577c1738b}} 
+bool {\bfseries operator!=} (const \mbox{\hyperlink{classTPath}{TPath}} \&p) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTPath_a1b1f3e7f7d4836f09a7a80386560d71d}\label{classTPath_a1b1f3e7f7d4836f09a7a80386560d71d}} 
+static \mbox{\hyperlink{classTPath}{TPath}} {\bfseries getcwd} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTPath_a33fedb2c96a843f86e0b3db015ec89d6}\label{classTPath_a33fedb2c96a843f86e0b3db015ec89d6}} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&os, const \mbox{\hyperlink{classTPath}{TPath}} \&path)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/builder\+\_\+alternative/System.\+hpp\end{DoxyCompactItemize}

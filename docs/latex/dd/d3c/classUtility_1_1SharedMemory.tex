@@ -1,0 +1,37 @@
+\hypertarget{classUtility_1_1SharedMemory}{}\doxysection{Utility\+::Shared\+Memory Class Reference}
+\label{classUtility_1_1SharedMemory}\index{Utility::SharedMemory@{Utility::SharedMemory}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classUtility_1_1SharedMemory_a8adb9ad5cd59deac895edabe06cf967d}\label{classUtility_1_1SharedMemory_a8adb9ad5cd59deac895edabe06cf967d}} 
+{\bfseries Shared\+Memory} (const char $\ast$shmem\+\_\+name, const size\+\_\+t \&size, const char $\ast$mutex\+\_\+name=\char`\"{}\char`\"{})
+\item 
+\mbox{\Hypertarget{classUtility_1_1SharedMemory_aad834086051535c15b8b0b276bd91f21}\label{classUtility_1_1SharedMemory_aad834086051535c15b8b0b276bd91f21}} 
+Handle {\bfseries mutex} () const
+\item 
+\mbox{\Hypertarget{classUtility_1_1SharedMemory_ad244538cabb5f6bbc0d6021482c73bfd}\label{classUtility_1_1SharedMemory_ad244538cabb5f6bbc0d6021482c73bfd}} 
+{\footnotesize template$<$typename T $>$ }\\T $\ast$ {\bfseries get} ()
+\item 
+\mbox{\Hypertarget{classUtility_1_1SharedMemory_a41ae29ba81e7946a4572443551cb901a}\label{classUtility_1_1SharedMemory_a41ae29ba81e7946a4572443551cb901a}} 
+{\footnotesize template$<$typename T $>$ }\\bool {\bfseries try\+\_\+write} (const T $\ast$data, const int \&timeout\+\_\+msec=0)
+\item 
+\mbox{\Hypertarget{classUtility_1_1SharedMemory_aa2d3dc57eb7e6d94c497c908f729e888}\label{classUtility_1_1SharedMemory_aa2d3dc57eb7e6d94c497c908f729e888}} 
+{\footnotesize template$<$typename T $>$ }\\bool {\bfseries try\+\_\+read} (T $\ast$data, const int \&timeout\+\_\+msec=0)
+\item 
+\mbox{\Hypertarget{classUtility_1_1SharedMemory_a23f2018af388c8e71b2177d8f763b796}\label{classUtility_1_1SharedMemory_a23f2018af388c8e71b2177d8f763b796}} 
+{\footnotesize template$<$typename T $>$ }\\bool {\bfseries try\+\_\+write} (const T \&data, const int \&timeout\+\_\+msec=0)
+\item 
+\mbox{\Hypertarget{classUtility_1_1SharedMemory_ac263aae8693052f8d7b6388aafe74ef9}\label{classUtility_1_1SharedMemory_ac263aae8693052f8d7b6388aafe74ef9}} 
+{\footnotesize template$<$typename T $>$ }\\bool {\bfseries try\+\_\+read} (T \&data, const int \&timeout\+\_\+msec=0)
+\item 
+\mbox{\Hypertarget{classUtility_1_1SharedMemory_a911b784ba0a30adab3928a3dd623ca28}\label{classUtility_1_1SharedMemory_a911b784ba0a30adab3928a3dd623ca28}} 
+bool {\bfseries wait\+\_\+for\+\_\+single\+\_\+object} (const Handle \&mutex\+\_\+handle, const int \&timeout\+\_\+msec=0) const
+\item 
+\mbox{\Hypertarget{classUtility_1_1SharedMemory_a9ae95475387d34a9903653c37f3781b9}\label{classUtility_1_1SharedMemory_a9ae95475387d34a9903653c37f3781b9}} 
+void {\bfseries release\+\_\+mutex} (const Handle \&mutex\+\_\+handle) const
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/utility/\mbox{\hyperlink{shared__memory_8hpp}{shared\+\_\+memory.\+hpp}}\end{DoxyCompactItemize}

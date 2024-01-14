@@ -1,3 +1,14 @@
+/**
+ * @file utility/pythonian/enumerate.hpp
+ * @author okano tomoyuki (okano.development@gmail.com)
+ * @brief function of range-based for loop with index like python's enumerate. 
+ * @version 0.1
+ * @date 2024-01-14
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #ifndef _UTILITY_ENUMERATE_HPP_
 #define _UTILITY_ENUMERATE_HPP_
 

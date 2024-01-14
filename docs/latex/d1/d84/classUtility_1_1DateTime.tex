@@ -1,0 +1,92 @@
+\hypertarget{classUtility_1_1DateTime}{}\doxysection{Utility\+::Date\+Time Class Reference}
+\label{classUtility_1_1DateTime}\index{Utility::DateTime@{Utility::DateTime}}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classUtility_1_1DateTime_ad0f2d98de02873bb198db4b205b9c263}\label{classUtility_1_1DateTime_ad0f2d98de02873bb198db4b205b9c263}} 
+enum {\bfseries Unit} \{ \newline
+{\bfseries HOUR}
+, {\bfseries MIN}
+, {\bfseries SEC}
+, {\bfseries MSEC}
+, \newline
+{\bfseries USEC}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classUtility_1_1DateTime_a4582187eeec9773b1c69970f8e371ca4}\label{classUtility_1_1DateTime_a4582187eeec9773b1c69970f8e371ca4}} 
+{\bfseries Date\+Time} (const system\+\_\+clock\+::time\+\_\+point \&tP=system\+\_\+clock\+::now())
+\item 
+\mbox{\Hypertarget{classUtility_1_1DateTime_a8e018f7705b2ef98a72972f4e73d78ee}\label{classUtility_1_1DateTime_a8e018f7705b2ef98a72972f4e73d78ee}} 
+{\bfseries Date\+Time} (const char $\ast$str, const char $\ast$fmt)
+\item 
+\mbox{\Hypertarget{classUtility_1_1DateTime_a1dd07af2584f32b064fcc7e8d7b7baa4}\label{classUtility_1_1DateTime_a1dd07af2584f32b064fcc7e8d7b7baa4}} 
+{\bfseries Date\+Time} (const int \&year, const int \&mon, const int \&day, const int \&hour, const int \&min, const int \&sec, const int \&msec, const int \&usec)
+\item 
+\mbox{\Hypertarget{classUtility_1_1DateTime_a0abff1c815c02f29cd112c625c9a2bbe}\label{classUtility_1_1DateTime_a0abff1c815c02f29cd112c625c9a2bbe}} 
+{\bfseries Date\+Time} (const \mbox{\hyperlink{classUtility_1_1DateTime}{Date\+Time}} \&other)
+\item 
+\mbox{\Hypertarget{classUtility_1_1DateTime_a5c730a0509c961ba43718f9628d0bdcd}\label{classUtility_1_1DateTime_a5c730a0509c961ba43718f9628d0bdcd}} 
+void {\bfseries operator=} (const \mbox{\hyperlink{classUtility_1_1DateTime}{Date\+Time}} \&other)
+\item 
+\mbox{\Hypertarget{classUtility_1_1DateTime_ab4801f9c6fca0b2d7b46db314114382c}\label{classUtility_1_1DateTime_ab4801f9c6fca0b2d7b46db314114382c}} 
+bool {\bfseries operator==} (const \mbox{\hyperlink{classUtility_1_1DateTime}{Date\+Time}} \&other) const
+\item 
+\mbox{\Hypertarget{classUtility_1_1DateTime_ad6149f48757845fb4ec050b9b091234f}\label{classUtility_1_1DateTime_ad6149f48757845fb4ec050b9b091234f}} 
+bool {\bfseries operator!=} (const \mbox{\hyperlink{classUtility_1_1DateTime}{Date\+Time}} \&other) const
+\item 
+\mbox{\Hypertarget{classUtility_1_1DateTime_a2861aff00483e5f5d7096f69e07625c6}\label{classUtility_1_1DateTime_a2861aff00483e5f5d7096f69e07625c6}} 
+bool {\bfseries operator$<$} (const \mbox{\hyperlink{classUtility_1_1DateTime}{Date\+Time}} \&other) const
+\item 
+\mbox{\Hypertarget{classUtility_1_1DateTime_a498971d5a3597ca2e0d3b4c489589b05}\label{classUtility_1_1DateTime_a498971d5a3597ca2e0d3b4c489589b05}} 
+bool {\bfseries operator$>$} (const \mbox{\hyperlink{classUtility_1_1DateTime}{Date\+Time}} \&other) const
+\item 
+\mbox{\Hypertarget{classUtility_1_1DateTime_a8f3277df7031f5637538b3c384818467}\label{classUtility_1_1DateTime_a8f3277df7031f5637538b3c384818467}} 
+int {\bfseries year} () const
+\item 
+\mbox{\Hypertarget{classUtility_1_1DateTime_aa64ca0a2eebbfb5a572d839a09bfecab}\label{classUtility_1_1DateTime_aa64ca0a2eebbfb5a572d839a09bfecab}} 
+int {\bfseries month} () const
+\item 
+\mbox{\Hypertarget{classUtility_1_1DateTime_a52dafaf703b530e163e7909d5871a279}\label{classUtility_1_1DateTime_a52dafaf703b530e163e7909d5871a279}} 
+int {\bfseries day} () const
+\item 
+\mbox{\Hypertarget{classUtility_1_1DateTime_ad55180f441e27303b7f7649b9fb1704e}\label{classUtility_1_1DateTime_ad55180f441e27303b7f7649b9fb1704e}} 
+int {\bfseries hour} () const
+\item 
+\mbox{\Hypertarget{classUtility_1_1DateTime_a724f9985511ec07700259d1ed33baa96}\label{classUtility_1_1DateTime_a724f9985511ec07700259d1ed33baa96}} 
+int {\bfseries minute} () const
+\item 
+\mbox{\Hypertarget{classUtility_1_1DateTime_ad50bcb506dd762aa1c25facad87f24a2}\label{classUtility_1_1DateTime_ad50bcb506dd762aa1c25facad87f24a2}} 
+int {\bfseries second} () const
+\item 
+\mbox{\Hypertarget{classUtility_1_1DateTime_ac8cba3d16bd07e45d900af904617e947}\label{classUtility_1_1DateTime_ac8cba3d16bd07e45d900af904617e947}} 
+int {\bfseries millisecond} () const
+\item 
+\mbox{\Hypertarget{classUtility_1_1DateTime_ab28d2dd146e028d08279e0bb12fd21c5}\label{classUtility_1_1DateTime_ab28d2dd146e028d08279e0bb12fd21c5}} 
+int {\bfseries microsecond} () const
+\item 
+\mbox{\Hypertarget{classUtility_1_1DateTime_adce4bef2e29b9a11901a2f70039ebc60}\label{classUtility_1_1DateTime_adce4bef2e29b9a11901a2f70039ebc60}} 
+std\+::string {\bfseries to\+\_\+str} (const char $\ast$format) const
+\item 
+\mbox{\Hypertarget{classUtility_1_1DateTime_afe865c3a8f037da1c5c32b74ada9114a}\label{classUtility_1_1DateTime_afe865c3a8f037da1c5c32b74ada9114a}} 
+system\+\_\+clock\+::time\+\_\+point {\bfseries to\+\_\+time\+\_\+point} () const
+\item 
+\mbox{\Hypertarget{classUtility_1_1DateTime_a6393386361b78a1249c96db0661fe2a8}\label{classUtility_1_1DateTime_a6393386361b78a1249c96db0661fe2a8}} 
+\mbox{\hyperlink{classUtility_1_1DateTime}{Date\+Time}} \& {\bfseries add} (const int \&increment, const enum Unit \&unit=Date\+Time\+::\+MSEC)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classUtility_1_1DateTime_a35272052a2e375a2c3aa561db989a3ee}\label{classUtility_1_1DateTime_a35272052a2e375a2c3aa561db989a3ee}} 
+static \mbox{\hyperlink{classUtility_1_1DateTime}{Date\+Time}} {\bfseries from\+\_\+str} (const char $\ast$date\+\_\+time\+\_\+str, const char $\ast$format)
+\item 
+\mbox{\Hypertarget{classUtility_1_1DateTime_ac6d8b0a40d923e06b78a45fbd54545f8}\label{classUtility_1_1DateTime_ac6d8b0a40d923e06b78a45fbd54545f8}} 
+static \mbox{\hyperlink{classUtility_1_1DateTime}{Date\+Time}} {\bfseries add} (const \mbox{\hyperlink{classUtility_1_1DateTime}{Date\+Time}} \&other, const int \&increment, const enum Unit \&unit=Date\+Time\+::\+MSEC)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/utility/date\+\_\+time.\+hpp\end{DoxyCompactItemize}

@@ -1,3 +1,15 @@
+/**
+ * @file ini.hpp
+ * @author okano tomoyuki (okano.development@gmail.com)
+ * @brief class library of handling date and time like C++ Builder's TDateTime.
+ * @note reffered Embacadero Technologies's web site
+ * @version 0.1
+ * @date 2024-01-14
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #ifndef _UTILITY_DATE_TIME_HPP_
 #define _UTILITY_DATE_TIME_HPP_
 
@@ -57,7 +69,6 @@ public:
     system_clock::time_point to_time_point() const;
     DateTime& add(const int& increment, const enum Unit& unit);
     static DateTime add(const DateTime& other, const int& increment, const enum Unit& unit);
-
 };
 
 }

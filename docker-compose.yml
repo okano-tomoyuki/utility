@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  doxygen:
+    container_name: doxygen
+    image: httpd:2.4-alpine
+    ports:
+      - 8080:80
+    volumes:
+      - ./httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - ./docs/:/usr/local/apache2/htdocs/
