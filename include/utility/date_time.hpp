@@ -56,12 +56,12 @@ public:
     bool operator!=(const DateTime& other) const; 
     bool operator<(const DateTime& other)  const; 
     bool operator>(const DateTime& other)  const;
-    int year()        const;
-    int month()       const;
-    int day()         const;
-    int hour()        const;
-    int minute()      const;
-    int second()      const;
+    int year() const;
+    int month() const;
+    int day() const;
+    int hour() const;
+    int minute() const;
+    int second() const;
     int millisecond() const;
     int microsecond() const;
     std::string to_str(const char *format) const;

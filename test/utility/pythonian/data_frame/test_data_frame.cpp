@@ -3,6 +3,8 @@
 
 int main()
 {
+    using Utility::DataFrame;
+
     // header true, separator charactor ';'
     auto df = DataFrame::read_csv("./winequality-red.csv", true, ';');
     df.describe();

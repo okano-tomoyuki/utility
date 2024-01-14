@@ -2,7 +2,7 @@ name: automatic document generation by doxygen
 on:
   push:
     tags:
-      - document-*.*.*
+      - 'document-v*.*.*'
 jobs:
   doxygen:
     runs-on: ubuntu-latest
