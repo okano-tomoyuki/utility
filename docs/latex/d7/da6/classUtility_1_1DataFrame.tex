@@ -1,16 +1,25 @@
 \hypertarget{classUtility_1_1DataFrame}{}\doxysection{Utility\+::Data\+Frame Class Reference}
 \label{classUtility_1_1DataFrame}\index{Utility::DataFrame@{Utility::DataFrame}}
+
+
+Pythonにおける表形式データハンドリング用ライブラリ\+Pandasの代替ライブラリ  
+
+
+
+
+{\ttfamily \#include $<$data\+\_\+frame.\+hpp$>$}
+
 \doxysubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{classUtility_1_1DataFrame_a9c75ea18c1af60e79127341f0306b808}\label{classUtility_1_1DataFrame_a9c75ea18c1af60e79127341f0306b808}} 
-enum {\bfseries Axis} \{ {\bfseries COLUMN}
-, {\bfseries ROW}
+enum {\bfseries Axis} \{ {\bfseries C\+O\+L\+U\+MN}, 
+{\bfseries R\+OW}
  \}
 \item 
 \mbox{\Hypertarget{classUtility_1_1DataFrame_a3abd42404dec63088abccba58d3e6d92}\label{classUtility_1_1DataFrame_a3abd42404dec63088abccba58d3e6d92}} 
-enum {\bfseries Format} \{ {\bfseries SIMPLE}
-, {\bfseries PRETTY}
+enum {\bfseries Format} \{ {\bfseries S\+I\+M\+P\+LE}, 
+{\bfseries P\+R\+E\+T\+TY}
  \}
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions}
@@ -19,14 +28,13 @@ enum {\bfseries Format} \{ {\bfseries SIMPLE}
 \mbox{\Hypertarget{classUtility_1_1DataFrame_aba31d05d556e4bd108979d5ba69a8be3}\label{classUtility_1_1DataFrame_aba31d05d556e4bd108979d5ba69a8be3}} 
 void {\bfseries operator=} (const \mbox{\hyperlink{classUtility_1_1DataFrame}{Data\+Frame}} \&other)
 \item 
-\mbox{\Hypertarget{classUtility_1_1DataFrame_a538c90c94e1d53d3f08898a1b1a10a47}\label{classUtility_1_1DataFrame_a538c90c94e1d53d3f08898a1b1a10a47}} 
-void {\bfseries to\+\_\+csv} (const std\+::string \&file\+\_\+path, const bool \&append=true, const bool \&header=true, const char \&separator=\textquotesingle{},\textquotesingle{}) const
-\item 
+void \mbox{\hyperlink{classUtility_1_1DataFrame_a542b8401bce85917bb5d1af2e39b3c07}{to\+\_\+csv}} (const std\+::string \&file\+\_\+path, const bool \&append=true, const bool \&header=true, const char \&separator=\textquotesingle{},\textquotesingle{}) const
+\begin{DoxyCompactList}\small\item\em csvファイルへの書込メソッド \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classUtility_1_1DataFrame_acadcd7c7729fc851a3fe0b4fffa502b5}\label{classUtility_1_1DataFrame_acadcd7c7729fc851a3fe0b4fffa502b5}} 
 \mbox{\hyperlink{classUtility_1_1DataFrame}{Data\+Frame}} {\bfseries operator\mbox{[}$\,$\mbox{]}} (const std\+::string \&target\+\_\+column) const
 \item 
-\mbox{\Hypertarget{classUtility_1_1DataFrame_a4bfc6a3c5b3eec553194d7e056dc9b23}\label{classUtility_1_1DataFrame_a4bfc6a3c5b3eec553194d7e056dc9b23}} 
-\mbox{\hyperlink{classUtility_1_1DataFrame}{Data\+Frame}} {\bfseries operator\mbox{[}$\,$\mbox{]}} (const VS \&target\+\_\+columns) const
+\mbox{\Hypertarget{classUtility_1_1DataFrame_a9e18b0da36b144c21488589217fdee9b}\label{classUtility_1_1DataFrame_a9e18b0da36b144c21488589217fdee9b}} 
+\mbox{\hyperlink{classUtility_1_1DataFrame}{Data\+Frame}} {\bfseries operator\mbox{[}$\,$\mbox{]}} (const std\+::vector$<$ std\+::string $>$ \&target\+\_\+column\+\_\+list) const
 \item 
 \mbox{\Hypertarget{classUtility_1_1DataFrame_a8b6eb4ed652089aafcf89c4ac5786066}\label{classUtility_1_1DataFrame_a8b6eb4ed652089aafcf89c4ac5786066}} 
 \mbox{\hyperlink{classUtility_1_1DataFrame}{Data\+Frame}} {\bfseries operator\mbox{[}$\,$\mbox{]}} (const int \&target\+\_\+row) const
@@ -34,30 +42,116 @@ void {\bfseries to\+\_\+csv} (const std\+::string \&file\+\_\+path, const bool \
 \mbox{\Hypertarget{classUtility_1_1DataFrame_a100981f30f346bdbed2e2eba235977fd}\label{classUtility_1_1DataFrame_a100981f30f346bdbed2e2eba235977fd}} 
 \mbox{\hyperlink{classUtility_1_1DataFrame}{Data\+Frame}} {\bfseries operator\mbox{[}$\,$\mbox{]}} (const std\+::pair$<$ int, int $>$ \&range) const
 \item 
-\mbox{\Hypertarget{classUtility_1_1DataFrame_a07fb01cff9178c0c8858aee9e7564fe2}\label{classUtility_1_1DataFrame_a07fb01cff9178c0c8858aee9e7564fe2}} 
-\mbox{\hyperlink{classUtility_1_1DataFrame}{Data\+Frame}} {\bfseries operator\mbox{[}$\,$\mbox{]}} (const std\+::initializer\+\_\+list$<$ std\+::string $>$ \&target\+\_\+columns) const
+\mbox{\Hypertarget{classUtility_1_1DataFrame_aea49a5e5b9d79e143b9fba0f7250b5eb}\label{classUtility_1_1DataFrame_aea49a5e5b9d79e143b9fba0f7250b5eb}} 
+\mbox{\hyperlink{classUtility_1_1DataFrame}{Data\+Frame}} {\bfseries operator\mbox{[}$\,$\mbox{]}} (const std\+::initializer\+\_\+list$<$ std\+::string $>$ \&target\+\_\+column\+\_\+list) const
 \item 
 \mbox{\Hypertarget{classUtility_1_1DataFrame_a1fdbf35fa493d2a03b74f5dcc32b5e2d}\label{classUtility_1_1DataFrame_a1fdbf35fa493d2a03b74f5dcc32b5e2d}} 
 \mbox{\hyperlink{classUtility_1_1DataFrame}{Data\+Frame}} \& {\bfseries rename} (const std\+::initializer\+\_\+list$<$ std\+::string $>$ \&header)
 \item 
-\mbox{\Hypertarget{classUtility_1_1DataFrame_af67a9e07fedc3b3b9282eae147542c35}\label{classUtility_1_1DataFrame_af67a9e07fedc3b3b9282eae147542c35}} 
-\mbox{\hyperlink{classUtility_1_1DataFrame}{Data\+Frame}} \& {\bfseries rename} (const VS header)
+\mbox{\Hypertarget{classUtility_1_1DataFrame_a0618f397c68750b67f71424eb1af5b4e}\label{classUtility_1_1DataFrame_a0618f397c68750b67f71424eb1af5b4e}} 
+\mbox{\hyperlink{classUtility_1_1DataFrame}{Data\+Frame}} \& {\bfseries rename} (const std\+::vector$<$ std\+::string $>$ header)
 \item 
-\mbox{\Hypertarget{classUtility_1_1DataFrame_a0165c93fa18bd95b0c0f394125704a62}\label{classUtility_1_1DataFrame_a0165c93fa18bd95b0c0f394125704a62}} 
-void {\bfseries show} (const enum Format \&format=SIMPLE) const
-\item 
-\mbox{\Hypertarget{classUtility_1_1DataFrame_a9822454c1194d7e37e89baa9333c6ce4}\label{classUtility_1_1DataFrame_a9822454c1194d7e37e89baa9333c6ce4}} 
-void {\bfseries describe} () const
-\item 
-\mbox{\Hypertarget{classUtility_1_1DataFrame_ac4e541b56c8634094ac37f4929d4ea40}\label{classUtility_1_1DataFrame_ac4e541b56c8634094ac37f4929d4ea40}} 
-{\footnotesize template$<$typename T $>$ }\\std\+::vector$<$ T $>$ {\bfseries to\+\_\+vector} (const enum Axis \&axis=COLUMN) const
-\end{DoxyCompactItemize}
+std\+::vector$<$ std\+::vector$<$ std\+::string $>$ $>$ \mbox{\hyperlink{classUtility_1_1DataFrame_a9913dbd491a11c915ee9960f638e26e4}{data}} () const
+\begin{DoxyCompactList}\small\item\em 2次元ベクトルの\+Getterメソッド \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classUtility_1_1DataFrame_a7a88a88854e3f29affdb99a848b6bca3}\label{classUtility_1_1DataFrame_a7a88a88854e3f29affdb99a848b6bca3}} 
+void \mbox{\hyperlink{classUtility_1_1DataFrame_a7a88a88854e3f29affdb99a848b6bca3}{show}} (const enum Format \&format=S\+I\+M\+P\+LE) const
+\begin{DoxyCompactList}\small\item\em ヘッダー部・データ部の表示メソッド \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classUtility_1_1DataFrame_a23ba31e9c449bdaec7ba6a352b9ddcf8}\label{classUtility_1_1DataFrame_a23ba31e9c449bdaec7ba6a352b9ddcf8}} 
+void \mbox{\hyperlink{classUtility_1_1DataFrame_a23ba31e9c449bdaec7ba6a352b9ddcf8}{describe}} () const
+\begin{DoxyCompactList}\small\item\em メタ情報取得表示メソッド \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\std\+::vector$<$ T $>$ \mbox{\hyperlink{classUtility_1_1DataFrame_aeeb8f00435b2a80da7ef15f6260b087c}{to\+\_\+vector}} (const enum Axis \&axis=C\+O\+L\+U\+MN) const
+\begin{DoxyCompactList}\small\item\em 列・行いずれかを指定の型の1次元ベクターに変換するメソッド \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classUtility_1_1DataFrame_a88755f9ec9c259fa529cb2a92f5588c8}\label{classUtility_1_1DataFrame_a88755f9ec9c259fa529cb2a92f5588c8}} 
-static \mbox{\hyperlink{classUtility_1_1DataFrame}{Data\+Frame}} {\bfseries read\+\_\+csv} (const std\+::string \&file\+\_\+path, const bool \&header=true, const char \&separator=\textquotesingle{},\textquotesingle{})
-\end{DoxyCompactItemize}
+static \mbox{\hyperlink{classUtility_1_1DataFrame}{Data\+Frame}} \mbox{\hyperlink{classUtility_1_1DataFrame_afb2c2a0c27d4ad6056b3137d5d28201e}{read\+\_\+csv}} (const std\+::string \&file\+\_\+path, const bool \&header=true, const char \&separator=\textquotesingle{},\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em C\+S\+V読取メソッド (Factory Method) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Pythonにおける表形式データハンドリング用ライブラリ\+Pandasの代替ライブラリ 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classUtility_1_1DataFrame_a9913dbd491a11c915ee9960f638e26e4}\label{classUtility_1_1DataFrame_a9913dbd491a11c915ee9960f638e26e4}} 
+\index{Utility::DataFrame@{Utility::DataFrame}!data@{data}}
+\index{data@{data}!Utility::DataFrame@{Utility::DataFrame}}
+\doxysubsubsection{\texorpdfstring{data()}{data()}}
+{\footnotesize\ttfamily Utility\+::\+Data\+Frame\+::data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+2次元ベクトルの\+Getterメソッド 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::vector$<$std\+::string$>$ data 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classUtility_1_1DataFrame_afb2c2a0c27d4ad6056b3137d5d28201e}\label{classUtility_1_1DataFrame_afb2c2a0c27d4ad6056b3137d5d28201e}} 
+\index{Utility::DataFrame@{Utility::DataFrame}!read\_csv@{read\_csv}}
+\index{read\_csv@{read\_csv}!Utility::DataFrame@{Utility::DataFrame}}
+\doxysubsubsection{\texorpdfstring{read\_csv()}{read\_csv()}}
+{\footnotesize\ttfamily Utility\+::\+Data\+Frame\+::read\+\_\+csv (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+\_\+path,  }\item[{const bool \&}]{header = {\ttfamily true},  }\item[{const char \&}]{separator = {\ttfamily \textquotesingle{},\textquotesingle{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+C\+S\+V読取メソッド (Factory Method) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::string} & file\+\_\+path csvのファイルパス \\
+\hline
+{\em bool} & header ヘッダー有無 \\
+\hline
+{\em char} & separator 要素の分割文字 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classUtility_1_1DataFrame}{Data\+Frame}} 読取後\+Data\+Frameインスタンス 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classUtility_1_1DataFrame_a542b8401bce85917bb5d1af2e39b3c07}\label{classUtility_1_1DataFrame_a542b8401bce85917bb5d1af2e39b3c07}} 
+\index{Utility::DataFrame@{Utility::DataFrame}!to\_csv@{to\_csv}}
+\index{to\_csv@{to\_csv}!Utility::DataFrame@{Utility::DataFrame}}
+\doxysubsubsection{\texorpdfstring{to\_csv()}{to\_csv()}}
+{\footnotesize\ttfamily Utility\+::\+Data\+Frame\+::to\+\_\+csv (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+\_\+path,  }\item[{const bool \&}]{append = {\ttfamily true},  }\item[{const bool \&}]{header = {\ttfamily true},  }\item[{const char \&}]{separator = {\ttfamily \textquotesingle{},\textquotesingle{}} }\end{DoxyParamCaption}) const}
+
+
+
+csvファイルへの書込メソッド 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::stirng} & file\+\_\+path 書込先ファイルパス \\
+\hline
+{\em append} & 追記モードか、上書きモードか \\
+\hline
+{\em header} & ヘッダーを出力データに含めるか \\
+\hline
+{\em separator} & 区切り文字 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classUtility_1_1DataFrame_aeeb8f00435b2a80da7ef15f6260b087c}\label{classUtility_1_1DataFrame_aeeb8f00435b2a80da7ef15f6260b087c}} 
+\index{Utility::DataFrame@{Utility::DataFrame}!to\_vector@{to\_vector}}
+\index{to\_vector@{to\_vector}!Utility::DataFrame@{Utility::DataFrame}}
+\doxysubsubsection{\texorpdfstring{to\_vector()}{to\_vector()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+Utility\+::\+Data\+Frame\+::to\+\_\+vector (\begin{DoxyParamCaption}\item[{const enum Axis \&}]{axis = {\ttfamily COLUMN} }\end{DoxyParamCaption}) const}
+
+
+
+列・行いずれかを指定の型の1次元ベクターに変換するメソッド 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em enum} & Axis axis 行・列 \{ R\+OW, C\+O\+L\+U\+MN \} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$\+T$>$ 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

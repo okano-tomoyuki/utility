@@ -1,5 +1,5 @@
 /**
- * @file ini.hpp
+ * @file date_time.hpp
  * @author okano tomoyuki (okano.development@gmail.com)
  * @brief class library of handling date and time like C++ Builder's TDateTime.
  * @note reffered Embacadero Technologies's web site
@@ -26,6 +26,11 @@
 namespace Utility
 {
 
+/**
+ * @class DateTime
+ * @brief 日時を管理するクラス
+ * 
+ */
 class DateTime final
 {
 
@@ -56,17 +61,124 @@ public:
     bool operator!=(const DateTime& other) const; 
     bool operator<(const DateTime& other)  const; 
     bool operator>(const DateTime& other)  const;
+
+    /**
+     * @fn year
+     * @brief 年 取得用Getterメソッド
+     * 
+     * @return int インスタンスが示す 年 情報を返却する。
+     * @note 1970 ~ 2030
+     */
     int year() const;
+
+    /**
+     * @fn month
+     * @brief 月 取得用Getterメソッド
+     * 
+     * @return int インスタンスが示す 月 情報を返却する。
+     * @note 1 ~ 12
+     */
     int month() const;
+
+    /**
+     * @fn day
+     * @brief 日 取得用Getterメソッド
+     * 
+     * @return int インスタンスが示す 日 情報を返却する。
+     * @note 1 ~ その月の最大日数
+     */
     int day() const;
+
+    /**
+     * @fn hour
+     * @brief 時 取得用Getterメソッド
+     * 
+     * @return int インスタンスが示す 時 情報を返却する。
+     * @note 0 ~ 23
+     */
     int hour() const;
+
+    /**
+     * @fn minute
+     * @brief 分 取得用Getterメソッド
+     * 
+     * @return int インスタンスが示す 分 情報を返却する。
+     * @note 0 ~ 59 
+     */
     int minute() const;
+
+    /**
+     * @fn second
+     * @brief 秒 取得用Getterメソッド
+     * 
+     * @return int インスタンスが示す 秒 情報を返却する。
+     * @note 0 ~ 59
+     */
     int second() const;
+
+    /**
+     * @fn millisecond
+     * @brief ミリ秒 取得用Getterメソッド
+     * 
+     * @return int インスタンスが示す 秒 情報を返却する。
+     * @note 0 ~ 999
+     */
     int millisecond() const;
+
+    /**
+     * @fn millisecond
+     * @brief マイクロ秒 取得用Getterメソッド
+     * 
+     * @return int インスタンスが示す マイクロ秒 情報を返却する。
+     * @note 0 ~ 999
+     */
     int microsecond() const;
+
+    /**
+     * @fn to_str
+     * @brief フォーマット指定した文字列化メソッド
+     * 
+     * @return int インスタンスが示す マイクロ秒 情報を返却する。
+     * @note 出力時のフォーマット指定方法は以下のフォーマットに従う。
+     * @n yyyy   西暦4桁                      1970  ~   2030   
+     * @n mm     0埋めされた月                  01  ~     12
+     * @n dd     0埋めされた日                  01  ~     31
+     * @n hh     0埋めされた時                  00  ~     23
+     * @n nn     0埋めされた分                  00  ~     59
+     * @n ss     0埋めされた秒                  00  ~     59
+     * @n zzz    0埋めされたミリ秒             000  ~    999
+     * @n zzzzzz 0埋めされたミリ+マイクロ秒 000000  ~ 999999
+     */
     std::string to_str(const char *format) const;
+
+    /**
+     * @fn from_str
+     * @brief フォーマット指定し文字列からDateTimeインスタンスを生成するメソッド(Factory Method)
+     * 
+     * @return int インスタンスが示す マイクロ秒 情報を返却する。
+     * @note 出力時のフォーマット指定方法は以下のフォーマットに従う。
+     * @n yyyy   西暦4桁                      1970  ~   2030   
+     * @n mm     0埋めされた月                  01  ~     12
+     * @n dd     0埋めされた日                  01  ~     31
+     * @n hh     0埋めされた時                  00  ~     23
+     * @n nn     0埋めされた分                  00  ~     59
+     * @n ss     0埋めされた秒                  00  ~     59
+     * @n zzz    0埋めされたミリ秒             000  ~    999
+     * @n zzzzzz 0埋めされたミリ+マイクロ秒 000000  ~ 999999
+     * @n 
+     * @n インスタンスメソッドでないことに注意
+     */
     static DateTime from_str(const char* date_time_str, const char* format);
+
+    /**
+     * @fn to_time_point
+     * @brief time_point型への変換メソッド
+     * 
+     * @return system_clock::time_point 
+     */
     system_clock::time_point to_time_point() const;
+
+
     DateTime& add(const int& increment, const enum Unit& unit);
     static DateTime add(const DateTime& other, const int& increment, const enum Unit& unit);
 };

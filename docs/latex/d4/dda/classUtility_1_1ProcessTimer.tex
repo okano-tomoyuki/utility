@@ -1,20 +1,109 @@
 \hypertarget{classUtility_1_1ProcessTimer}{}\doxysection{Utility\+::Process\+Timer Class Reference}
 \label{classUtility_1_1ProcessTimer}\index{Utility::ProcessTimer@{Utility::ProcessTimer}}
+
+
+自動待機/計測用タイマークラス  
+
+
+
+
+{\ttfamily \#include $<$process\+\_\+timer.\+hpp$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classUtility_1_1ProcessTimer_a554342212a8da284233cb21bcd4f2ce3}\label{classUtility_1_1ProcessTimer_a554342212a8da284233cb21bcd4f2ce3}} 
+enum \mbox{\hyperlink{classUtility_1_1ProcessTimer_a554342212a8da284233cb21bcd4f2ce3}{Wait\+Type}} \{ {\bfseries B\+U\+S\+SY}, 
+{\bfseries S\+L\+E\+EP}
+ \}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classUtility_1_1ProcessTimer_a42ba644420e84fa0286159174e73208b}{create\+\_\+auto\+\_\+wait}} における待機仕様 \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classUtility_1_1ProcessTimer_affd40df8eff8c72592679318367c8d20}\label{classUtility_1_1ProcessTimer_affd40df8eff8c72592679318367c8d20}} 
-{\bfseries Process\+Timer} (const int \&interval)
-\item 
-\mbox{\Hypertarget{classUtility_1_1ProcessTimer_adc696e34c75c76765be3d4e36d2da14b}\label{classUtility_1_1ProcessTimer_adc696e34c75c76765be3d4e36d2da14b}} 
-{\bfseries Process\+Timer} (const std\+::string \&name)
-\item 
-\mbox{\Hypertarget{classUtility_1_1ProcessTimer_aca9a73bfbc13a66511a9a57647cccff2}\label{classUtility_1_1ProcessTimer_aca9a73bfbc13a66511a9a57647cccff2}} 
-void {\bfseries restart} ()
-\item 
+\mbox{\hyperlink{classUtility_1_1ProcessTimer_ab134587e7d996fdf10ca4ca733cc535f}{$\sim$\+Process\+Timer}} ()
+\begin{DoxyCompactList}\small\item\em デストラクタ \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classUtility_1_1ProcessTimer_a8575fbd3a2733d8b049923973d236e8d}\label{classUtility_1_1ProcessTimer_a8575fbd3a2733d8b049923973d236e8d}} 
+void \mbox{\hyperlink{classUtility_1_1ProcessTimer_a8575fbd3a2733d8b049923973d236e8d}{restart}} ()
+\begin{DoxyCompactList}\small\item\em 計測開始時刻のリセット処理 \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classUtility_1_1ProcessTimer_adfa490a4ab259616b6670a8ce874e8d4}\label{classUtility_1_1ProcessTimer_adfa490a4ab259616b6670a8ce874e8d4}} 
 std\+::string {\bfseries measure} () const
 \end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classUtility_1_1ProcessTimer}{Process\+Timer}} \mbox{\hyperlink{classUtility_1_1ProcessTimer_a42ba644420e84fa0286159174e73208b}{create\+\_\+auto\+\_\+wait}} (const int \&interval, const enum \mbox{\hyperlink{classUtility_1_1ProcessTimer_a554342212a8da284233cb21bcd4f2ce3}{Wait\+Type}} \&wait\+\_\+type=B\+U\+S\+SY)
+\begin{DoxyCompactList}\small\item\em 一定周期で特定の動作を実行させるための自動待機タイマーを生成する\+Factory Method \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classUtility_1_1ProcessTimer}{Process\+Timer}} \mbox{\hyperlink{classUtility_1_1ProcessTimer_aeaacffa3d52f0bfcb745f42db7e15837}{create\+\_\+mesure}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em 処理時間計測用タイマーインスタンス生成する\+Factory Method \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+自動待機/計測用タイマークラス 
+
+\begin{DoxyNote}{Note}
+本クラスは直接コンストラクタを呼び出さず、用途に応じて2種類の\+Factory\+Methodを使用してインスタンス化する。 ~\newline
+ \mbox{\hyperlink{classUtility_1_1ProcessTimer_a42ba644420e84fa0286159174e73208b}{create\+\_\+auto\+\_\+wait}} ~\newline
+ \mbox{\hyperlink{classUtility_1_1ProcessTimer_aeaacffa3d52f0bfcb745f42db7e15837}{create\+\_\+mesure}} ~\newline
+ 本ライブラリは\+S\+O\+L\+I\+Dの原則のうち、単一責任の原則に違反しているため今後変更する可能性がある。 ~\newline
+ \mbox{\hyperlink{}{https\+://qiita.\+com/baby-\/degu/items/d058a62f145235a0f007}} 
+\end{DoxyNote}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classUtility_1_1ProcessTimer_ab134587e7d996fdf10ca4ca733cc535f}\label{classUtility_1_1ProcessTimer_ab134587e7d996fdf10ca4ca733cc535f}} 
+\index{Utility::ProcessTimer@{Utility::ProcessTimer}!````~ProcessTimer@{$\sim$ProcessTimer}}
+\index{````~ProcessTimer@{$\sim$ProcessTimer}!Utility::ProcessTimer@{Utility::ProcessTimer}}
+\doxysubsubsection{\texorpdfstring{$\sim$ProcessTimer()}{~ProcessTimer()}}
+{\footnotesize\ttfamily Utility\+::\+Process\+Timer\+::$\sim$\+Process\+Timer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+デストラクタ 
+
+\begin{DoxyNote}{Note}
+
+\end{DoxyNote}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classUtility_1_1ProcessTimer_a42ba644420e84fa0286159174e73208b}\label{classUtility_1_1ProcessTimer_a42ba644420e84fa0286159174e73208b}} 
+\index{Utility::ProcessTimer@{Utility::ProcessTimer}!create\_auto\_wait@{create\_auto\_wait}}
+\index{create\_auto\_wait@{create\_auto\_wait}!Utility::ProcessTimer@{Utility::ProcessTimer}}
+\doxysubsubsection{\texorpdfstring{create\_auto\_wait()}{create\_auto\_wait()}}
+{\footnotesize\ttfamily Utility\+::\+Process\+Timer\+::create\+\_\+auto\+\_\+wait (\begin{DoxyParamCaption}\item[{const int \&}]{interval,  }\item[{const enum \mbox{\hyperlink{classUtility_1_1ProcessTimer_a554342212a8da284233cb21bcd4f2ce3}{Wait\+Type}} \&}]{wait\+\_\+type = {\ttfamily BUSSY} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+一定周期で特定の動作を実行させるための自動待機タイマーを生成する\+Factory Method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em int} & interval 動作周期\mbox{[}ミリ秒\mbox{]} \\
+\hline
+{\em enum} & Wait\+Type wait\+\_\+type デストラクタ呼出時の待機方法 \{ B\+U\+S\+SY \+: スリープせず待機, S\+L\+E\+EP \+: スリープして待機 \} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classUtility_1_1ProcessTimer}{Process\+Timer}} 自動待機タイマーとしてインスタンス化された\+Process\+Timerインスタンス 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classUtility_1_1ProcessTimer_aeaacffa3d52f0bfcb745f42db7e15837}\label{classUtility_1_1ProcessTimer_aeaacffa3d52f0bfcb745f42db7e15837}} 
+\index{Utility::ProcessTimer@{Utility::ProcessTimer}!create\_mesure@{create\_mesure}}
+\index{create\_mesure@{create\_mesure}!Utility::ProcessTimer@{Utility::ProcessTimer}}
+\doxysubsubsection{\texorpdfstring{create\_mesure()}{create\_mesure()}}
+{\footnotesize\ttfamily Utility\+::\+Process\+Timer\+::create\+\_\+mesure (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+処理時間計測用タイマーインスタンス生成する\+Factory Method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::string} & name 処理時間計測用タイマー名 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classUtility_1_1ProcessTimer}{Process\+Timer}} 処理時間計測用タイマーとしてインスタンス化された\+Process\+Timerインスタンス 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

@@ -1,0 +1,96 @@
+\hypertarget{namespaceUtility}{}\doxysection{Utility Namespace Reference}
+\label{namespaceUtility}\index{Utility@{Utility}}
+
+
+インフラストラクチャー層を中心に関係各者が再利用できるクラス、関数を定義する名前空間  
+
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classUtility_1_1DataFrame}{Data\+Frame}}
+\begin{DoxyCompactList}\small\item\em Pythonにおける表形式データハンドリング用ライブラリ\+Pandasの代替ライブラリ \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classUtility_1_1DateTime}{Date\+Time}}
+\begin{DoxyCompactList}\small\item\em 日時を管理するクラス \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classUtility_1_1Enumerate}{Enumerate}}
+\item 
+class \mbox{\hyperlink{classUtility_1_1Ini}{Ini}}
+\begin{DoxyCompactList}\small\item\em Iniファイルパース用クラス \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classUtility_1_1Logger}{Logger}}
+\begin{DoxyCompactList}\small\item\em C\+SV ファイルにロギングするためのライブラリ \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classUtility_1_1ProcessTimer}{Process\+Timer}}
+\begin{DoxyCompactList}\small\item\em 自動待機/計測用タイマークラス \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classUtility_1_1SharedMemory}{Shared\+Memory}}
+\begin{DoxyCompactList}\small\item\em 共有メモリを管理するためのクラス \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classUtility_1_1UdpSocket}{Udp\+Socket}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceUtility_a67a639d36c03aa812d3c6553e3bd3f7a}\label{namespaceUtility_a67a639d36c03aa812d3c6553e3bd3f7a}} 
+double {\bfseries radians} (const double \&value) noexcept
+\item 
+\mbox{\Hypertarget{namespaceUtility_a1ab9d720af4b57cc6a46b62b3246e5e2}\label{namespaceUtility_a1ab9d720af4b57cc6a46b62b3246e5e2}} 
+double {\bfseries degrees} (const double \&value) noexcept
+\item 
+\mbox{\Hypertarget{namespaceUtility_a2ca5cb0f76fbc8a543faee76df35a440}\label{namespaceUtility_a2ca5cb0f76fbc8a543faee76df35a440}} 
+double {\bfseries meter\+\_\+per\+\_\+seconds} (const double \&value) noexcept
+\item 
+\mbox{\Hypertarget{namespaceUtility_ab6033ec10966b44590630df965ecabe0}\label{namespaceUtility_ab6033ec10966b44590630df965ecabe0}} 
+double {\bfseries knots} (const double \&value) noexcept
+\item 
+\mbox{\Hypertarget{namespaceUtility_aba3dde3dd856cd5648695d6083ad910c}\label{namespaceUtility_aba3dde3dd856cd5648695d6083ad910c}} 
+{\footnotesize template$<$typename T $>$ }\\T {\bfseries limit} (const T \&value, const T \&limit) noexcept
+\item 
+\mbox{\Hypertarget{namespaceUtility_ab3484e80b2aab17d66c281cf6fdc3e70}\label{namespaceUtility_ab3484e80b2aab17d66c281cf6fdc3e70}} 
+{\footnotesize template$<$typename T $>$ }\\T {\bfseries limit} (const T \&value, const T \&lower\+\_\+limit, const T \&upper\+\_\+limit) noexcept
+\item 
+\mbox{\Hypertarget{namespaceUtility_a4b53a154a7e1c11aa88fee21d1da9277}\label{namespaceUtility_a4b53a154a7e1c11aa88fee21d1da9277}} 
+double {\bfseries adjust\+\_\+pi} (const double \&value) noexcept
+\item 
+\mbox{\Hypertarget{namespaceUtility_a6aa8f538664f6ce797b645142643659b}\label{namespaceUtility_a6aa8f538664f6ce797b645142643659b}} 
+double {\bfseries adjust\+\_\+180} (const double \&value) noexcept
+\item 
+\mbox{\Hypertarget{namespaceUtility_a4a981669ecb3a16092b230ed42e394d6}\label{namespaceUtility_a4a981669ecb3a16092b230ed42e394d6}} 
+{\footnotesize template$<$typename T $>$ }\\std\+::string {\bfseries concat} (const std\+::vector$<$ T $>$ \&origin, const std\+::string \&separator) noexcept
+\item 
+\mbox{\Hypertarget{namespaceUtility_a07357805b7a795be6bc1f0b23596df79}\label{namespaceUtility_a07357805b7a795be6bc1f0b23596df79}} 
+std\+::vector$<$ std\+::string $>$ {\bfseries split} (const std\+::string \&origin, const std\+::string \&separator)
+\item 
+\mbox{\Hypertarget{namespaceUtility_a92f568aac5570db16c615b81e0482a82}\label{namespaceUtility_a92f568aac5570db16c615b81e0482a82}} 
+std\+::vector$<$ int $>$ {\bfseries range} (const int \&end) noexcept
+\item 
+\mbox{\Hypertarget{namespaceUtility_ac672a172e44c70be260c4d74b324de9b}\label{namespaceUtility_ac672a172e44c70be260c4d74b324de9b}} 
+std\+::vector$<$ int $>$ {\bfseries range} (const int \&start, const int \&end, const int \&interval=1) noexcept
+\item 
+\mbox{\Hypertarget{namespaceUtility_acc1b82cbfcfb9f42e06ca57931b2dbab}\label{namespaceUtility_acc1b82cbfcfb9f42e06ca57931b2dbab}} 
+{\footnotesize template$<$typename T $>$ }\\void {\bfseries show} (T e) noexcept
+\item 
+\mbox{\Hypertarget{namespaceUtility_a1cd3a6648835cdc4cd26d79e77030eb4}\label{namespaceUtility_a1cd3a6648835cdc4cd26d79e77030eb4}} 
+{\footnotesize template$<$typename T $>$ }\\void {\bfseries show} (const std\+::vector$<$ T $>$ \&v) noexcept
+\item 
+\mbox{\Hypertarget{namespaceUtility_ab193b968ad8574e74f05dac0fb8e2854}\label{namespaceUtility_ab193b968ad8574e74f05dac0fb8e2854}} 
+{\footnotesize template$<$typename T $>$ }\\void {\bfseries show} (const std\+::vector$<$ std\+::vector$<$ T $>$$>$ \&vv) noexcept
+\item 
+\mbox{\Hypertarget{namespaceUtility_a2176b98f2f97c82c92157075916540fc}\label{namespaceUtility_a2176b98f2f97c82c92157075916540fc}} 
+std\+::string {\bfseries zero\+\_\+fill} (const int \&number, const int \&digits) noexcept
+\item 
+\mbox{\Hypertarget{namespaceUtility_af8a42ac238c1c0945f96d4d5659e018b}\label{namespaceUtility_af8a42ac238c1c0945f96d4d5659e018b}} 
+{\footnotesize template$<$typename T $>$ }\\std\+::string {\bfseries get\+\_\+type} (const T \&t)
+\item 
+\mbox{\Hypertarget{namespaceUtility_ab02d8d631426e7855fe8d5584b18d960}\label{namespaceUtility_ab02d8d631426e7855fe8d5584b18d960}} 
+void {\bfseries sleep} (const int \&milli\+\_\+second) noexcept
+\item 
+\mbox{\Hypertarget{namespaceUtility_a096bbadfc40527cf5cc045d1313d7e52}\label{namespaceUtility_a096bbadfc40527cf5cc045d1313d7e52}} 
+{\footnotesize template$<$typename T $>$ }\\bool {\bfseries is\+\_\+exist} (const T \&val, const std\+::vector$<$ T $>$ \&list)
+\item 
+\mbox{\Hypertarget{namespaceUtility_ad97cfc9656f27ad9da11410f1e4f380c}\label{namespaceUtility_ad97cfc9656f27ad9da11410f1e4f380c}} 
+{\footnotesize template$<$typename Iter $>$ }\\\mbox{\hyperlink{classUtility_1_1Enumerate}{Enumerate}}$<$ Iter $>$ {\bfseries enumerate} (Iter \&\&iter)
+\item 
+\mbox{\Hypertarget{namespaceUtility_a0d158e2859e5d6250e15a2e990be707d}\label{namespaceUtility_a0d158e2859e5d6250e15a2e990be707d}} 
+{\footnotesize template$<$typename Iter $>$ }\\\mbox{\hyperlink{classUtility_1_1Enumerate}{Enumerate}}$<$ Iter $>$ {\bfseries enumerate} (const Iter \&iter)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+インフラストラクチャー層を中心に関係各者が再利用できるクラス、関数を定義する名前空間 

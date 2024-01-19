@@ -3,19 +3,32 @@
 #include <sstream>
 #include <iostream>
 #include <thread>
+#include <stdexcept>
 
 #include "utility/process_timer.hpp"
 
 using namespace Utility;
 
-ProcessTimer::ProcessTimer(const int& interval) 
- :  interval_(interval), name_(std::string()), base_time_(system_clock::now())
+ProcessTimer::ProcessTimer(const std::string& name, const int& interval, const enum WaitType& wait_type) 
+ :  name_(std::string()), interval_(interval), wait_type_(wait_type), base_time_(system_clock::now())
 {
 }
 
-ProcessTimer::ProcessTimer(const std::string& name) 
- :  interval_(0), name_(name), base_time_(system_clock::now())
+ProcessTimer ProcessTimer::create_auto_wait(const int& interval, const enum WaitType& wait_type=BUSSY)
 {
+    if(interval<=0)
+    {
+        std::stringstream ss;
+        ss << "Exception throw by " << __func__ << ".";
+        ss << "If you use auto wait timer instance, interval value must be larger than 0."; 
+        throw std::runtime_error(ss.str());
+    }
+    return ProcessTimer(std::string(), interval, wait_type);
+}
+
+ProcessTimer ProcessTimer::create_mesure(const std::string& name)
+{
+    return ProcessTimer(name, 0, BUSSY);
 }
 
 ProcessTimer::~ProcessTimer()
@@ -25,8 +38,17 @@ ProcessTimer::~ProcessTimer()
         
     if(interval_>0)
     {
-        auto waste = milliseconds{interval_ - duration_cast<milliseconds>(system_clock::now()-base_time_).count()};
-        std::this_thread::sleep_for(waste);
+        if(wait_type_ == BUSSY)
+        {
+            while(true)
+                if(system_clock::now() >= base_time_ + milliseconds{interval_})
+                    break;
+        }
+        else // wait_type_ == SLEEP
+        {
+            auto waste = milliseconds{interval_ - duration_cast<milliseconds>(system_clock::now()-base_time_).count()};
+            std::this_thread::sleep_for(waste);
+        }
     }
     else
         std::cout << name_ << " : mesured time " << measure() << std::endl;

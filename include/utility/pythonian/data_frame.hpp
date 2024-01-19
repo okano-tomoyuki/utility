@@ -27,6 +27,12 @@
 namespace Utility
 {
 
+/**
+ * @class DataFrame
+ * @brief Pythonにおける表形式データハンドリング用ライブラリPandasの代替ライブラリ
+ * 
+ * 
+ */
 class DataFrame final
 {
 
@@ -47,20 +53,131 @@ private:
 public:
     enum Axis   { COLUMN, ROW    };
     enum Format { SIMPLE, PRETTY };
+
+    /**
+     * @fn read_csv
+     * @brief CSV読取メソッド (Factory Method)
+     * 
+     * @param std::string file_path csvのファイルパス
+     * @param bool header ヘッダー有無
+     * @param char separator 要素の分割文字 
+     * @return DataFrame 読取後DataFrameインスタンス
+     */
     static DataFrame read_csv(const std::string& file_path, const bool& header=true, const char& separator=',');
+
+    /**
+     * @fn operator=
+     * @brief コピー
+     * 
+     * @param DataFrame other コピー対象のDataFrameインスタンス 
+     */
     void operator=(const DataFrame& other);
+
+    /**
+     * @fn to_csv
+     * @brief csvファイルへの書込メソッド
+     * 
+     * @param std::stirng file_path 書込先ファイルパス 
+     * @param append 追記モードか、上書きモードか
+     * @param header ヘッダーを出力データに含めるか
+     * @param separator 区切り文字
+     */
     void to_csv(const std::string& file_path, const bool& append=true, const bool& header=true, const char& separator=',') const;
+
+    /**
+     * @fn operator[]
+     * @brief 列名によるDataFrameの切出メソッド
+     * 
+     * @param std::stirng target_column 取得対象の列名
+     * @return DataFrame 切出処理後の新たなDataFrameインスタンス
+     */
     DataFrame operator[](const std::string& target_column) const;
-    DataFrame operator[](const std::vector<std::string>& target_columns) const;
+
+    /**
+     * @fn operator[]
+     * @brief 列名によるDataFrameの切出メソッド
+     * 
+     * @param std::vector<std::stirng> target_column_list 取得対象の列名のリスト
+     * @return DataFrame 切出処理後の新たなDataFrameインスタンス
+     */
+    DataFrame operator[](const std::vector<std::string>& target_column_list) const;
+
+    /**
+     * @fn operator[]
+     * @brief 行インデックスによるDataFrameの切出メソッド
+     * 
+     * @param std::stirng target_row 取得対象の行インデックス
+     * @return DataFrame 切出処理後の新たなDataFrameインスタンス
+     * @note 負数を指定した場合の取得対象行のインデックスはpandasの仕様に従う。
+     * @n    --例--  df[-1] == df[0] ... true
+     */
     DataFrame operator[](const int& target_row) const;
+
+    /**
+     * @fn operator[]
+     * @brief 行インデックスの開始・終了指定によるDataFrameの切出メソッド
+     * 
+     * @param std::pair<int, int> range 開始インデックス・終了インデックス 
+     * @return DataFrame 切出処理後の新たなDataFrameインスタンス
+     */
     DataFrame operator[](const std::pair<int, int>& range) const;
-    DataFrame operator[](const std::initializer_list<std::string>& target_columns) const;
+
+    /**
+     * @fn operator[]
+     * @brief 列名によるDataFrameの切出メソッド
+     * 
+     * @param std::initializer_list<std::stirng> target_column_list 取得対象の列名のリスト
+     * @return DataFrame 切出処理後の新たなDataFrameインスタンス
+     */
+    DataFrame operator[](const std::initializer_list<std::string>& target_column_list) const;
+
+    /**
+     * @fn rename
+     * @brief 列名のリネームメソッド
+     * 
+     * @param std::initializer_list<std::stirng> header リネーム後のヘッダー名のリスト 
+     * @return DataFrame& リネーム後の自身のインスタンス
+     */
     DataFrame& rename(const std::initializer_list<std::string>& header);
+
+    /**
+     * @fn rename
+     * @brief 列名のリネームメソッド
+     * 
+     * @param std::vector<std::stirng> header リネーム後のヘッダー名のリスト 
+     * @return DataFrame& リネーム後の自身のインスタンス
+     */
     DataFrame& rename(const std::vector<std::string> header);
+
+    /**
+     * @fn data
+     * @brief 2次元ベクトルのGetterメソッド
+     *  
+     * @return std::vector<std::vector<std::string> data 
+     */   
     std::vector<std::vector<std::string>> data() const;
+
+    /**
+     * @fn show
+     * @brief ヘッダー部・データ部の表示メソッド
+     */ 
     void show(const enum Format& format=SIMPLE) const;
+
+
+    /**
+     * @fn describe
+     * @brief メタ情報取得表示メソッド
+     */ 
     void describe() const;
 
+    /**
+     * @fn to_vector
+     * @brief 列・行いずれかを指定の型の1次元ベクターに変換するメソッド
+     * 
+     * @tparam T 
+     * @param enum Axis axis 行・列 { ROW, COLUMN } 
+     * @return std::vector<T> 
+     */
     template<typename T>
     std::vector<T> to_vector(const enum Axis& axis=COLUMN) const
     {
@@ -231,10 +348,10 @@ public:
         return df;
     }
 
-    DataFrame operator[](const std::vector<std::string>& target_columns) const
+    DataFrame operator[](const std::vector<std::string>& target_column_list) const
     {
         std::vector<int> indices;
-        for (const auto& column : target_columns)
+        for (const auto& column : target_column_list)
         {
             auto itr = std::find(header_.begin(), header_.end(), column);
             if (itr==header_.end())
@@ -292,9 +409,9 @@ public:
         return df;
     }
 
-    DataFrame operator[](const std::initializer_list<std::string>& target_columns) const
+    DataFrame operator[](const std::initializer_list<std::string>& target_column_list) const
     {
-        std::vector<std::string> v(target_columns.begin(), target_columns.end());
+        std::vector<std::string> v(target_column_list.begin(), target_column_list.end());
         return this->operator[](v);
     }
 

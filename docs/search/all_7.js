@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['shared_5fmemory_2ehpp_13',['shared_memory.hpp',['../d9/dad/shared__memory_8hpp.html',1,'']]],
-  ['sharedmemory_14',['SharedMemory',['../dd/d3c/classUtility_1_1SharedMemory.html',1,'Utility']]]
+  ['ini_18',['Ini',['../d0/d68/classUtility_1_1Ini.html',1,'Utility::Ini'],['../d0/d68/classUtility_1_1Ini.html#ab7ddad6489981dfa72b0561b8dc866c9',1,'Utility::Ini::Ini()']]],
+  ['ini_2ehpp_19',['ini.hpp',['../d7/dfd/ini_8hpp.html',1,'']]]
 ];

@@ -1,44 +1,280 @@
 \hypertarget{classUtility_1_1Ini}{}\doxysection{Utility\+::Ini Class Reference}
 \label{classUtility_1_1Ini}\index{Utility::Ini@{Utility::Ini}}
+
+
+Iniファイルパース用クラス  
+
+
+
+
+{\ttfamily \#include $<$ini.\+hpp$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classUtility_1_1Ini_a6aecc5ce2c956f24f148241b4b5711ff}\label{classUtility_1_1Ini_a6aecc5ce2c956f24f148241b4b5711ff}} 
-{\bfseries Ini} (const std\+::string \&ini\+File\+Path, const bool \&is\+\_\+quiet=true)
-\item 
-\mbox{\Hypertarget{classUtility_1_1Ini_a4feff27ffc711dcd3a718b87e40bc4cd}\label{classUtility_1_1Ini_a4feff27ffc711dcd3a718b87e40bc4cd}} 
-\mbox{\hyperlink{classUtility_1_1Ini}{Ini}} \& {\bfseries set\+\_\+field\+\_\+separator} (const char field\+\_\+separator)
-\item 
-\mbox{\Hypertarget{classUtility_1_1Ini_a6549b808b42ebfb4092f72c9e3e775ee}\label{classUtility_1_1Ini_a6549b808b42ebfb4092f72c9e3e775ee}} 
-\mbox{\hyperlink{classUtility_1_1Ini}{Ini}} \& {\bfseries set\+\_\+comment\+\_\+prefix\+\_\+list} (const std\+::vector$<$ std\+::string $>$ \&comment\+\_\+prefix\+\_\+list)
-\item 
-\mbox{\Hypertarget{classUtility_1_1Ini_a6e41329c8f54eb3d8c3f26c8c00265a7}\label{classUtility_1_1Ini_a6e41329c8f54eb3d8c3f26c8c00265a7}} 
-bool {\bfseries read\+\_\+bool} (const std\+::string \&section\+\_\+name, const std\+::string \&field\+\_\+name, const bool \&default\+\_\+value) const
-\item 
-\mbox{\Hypertarget{classUtility_1_1Ini_a8f1b2383c7c0325cee13b9c210e80c05}\label{classUtility_1_1Ini_a8f1b2383c7c0325cee13b9c210e80c05}} 
-int {\bfseries read\+\_\+int} (const std\+::string \&section\+\_\+name, const std\+::string \&field\+\_\+name, const int \&default\+\_\+value) const
-\item 
-\mbox{\Hypertarget{classUtility_1_1Ini_a5d68fb7b3504e819d19b3adf472344f3}\label{classUtility_1_1Ini_a5d68fb7b3504e819d19b3adf472344f3}} 
-double {\bfseries read\+\_\+double} (const std\+::string \&section\+\_\+name, const std\+::string \&field\+\_\+name, const double \&default\+\_\+value) const
-\item 
-\mbox{\Hypertarget{classUtility_1_1Ini_a2f1ad7971059b665dafc241444f2826f}\label{classUtility_1_1Ini_a2f1ad7971059b665dafc241444f2826f}} 
-std\+::string {\bfseries read\+\_\+str} (const std\+::string \&section\+\_\+name, const std\+::string \&field\+\_\+name, const std\+::string \&default\+\_\+value) const
-\item 
-\mbox{\Hypertarget{classUtility_1_1Ini_a27def16257bcea7e82b295115941b737}\label{classUtility_1_1Ini_a27def16257bcea7e82b295115941b737}} 
-void {\bfseries write\+\_\+bool} (const std\+::string \&section\+\_\+name, const std\+::string \&field\+\_\+name, const bool \&value) const
-\item 
-\mbox{\Hypertarget{classUtility_1_1Ini_a166b0864929f97cdfb7c3feecf33d78a}\label{classUtility_1_1Ini_a166b0864929f97cdfb7c3feecf33d78a}} 
-void {\bfseries write\+\_\+int} (const std\+::string \&section\+\_\+name, const std\+::string \&field\+\_\+name, const int \&value) const
-\item 
-\mbox{\Hypertarget{classUtility_1_1Ini_a60f11c0fd5afab38fabbed67fcf90299}\label{classUtility_1_1Ini_a60f11c0fd5afab38fabbed67fcf90299}} 
-void {\bfseries write\+\_\+double} (const std\+::string \&section\+\_\+name, const std\+::string \&field\+\_\+name, const double \&value) const
-\item 
+\mbox{\hyperlink{classUtility_1_1Ini_ab7ddad6489981dfa72b0561b8dc866c9}{Ini}} (const std\+::string \&file\+\_\+path)
+\begin{DoxyCompactList}\small\item\em コンストラクタ \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classUtility_1_1Ini}{Ini}} \& \mbox{\hyperlink{classUtility_1_1Ini_a880c4c2edcbb1ae78c7f40f574aa7efc}{set\+\_\+field\+\_\+separator}} (const char field\+\_\+separator)
+\begin{DoxyCompactList}\small\item\em フィールド取得時の区切り文字の変更メソッド \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classUtility_1_1Ini}{Ini}} \& \mbox{\hyperlink{classUtility_1_1Ini_ae7aac8583d872d308a90612883748b46}{set\+\_\+comment\+\_\+prefix\+\_\+list}} (const std\+::vector$<$ std\+::string $>$ \&comment\+\_\+prefix\+\_\+list)
+\begin{DoxyCompactList}\small\item\em コメント行の先頭文字列指定メソッド \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classUtility_1_1Ini_aac0e3596d67c30f2fdff80ce5f8bc948}{read\+\_\+bool}} (const std\+::string \&section\+\_\+name, const std\+::string \&field\+\_\+name, const bool \&default\+\_\+value) const
+\begin{DoxyCompactList}\small\item\em 真理値取得メソッド \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classUtility_1_1Ini_a55fa73e5bdb8ceb689f80a873d5c2089}{read\+\_\+int}} (const std\+::string \&section\+\_\+name, const std\+::string \&field\+\_\+name, const int \&default\+\_\+value) const
+\begin{DoxyCompactList}\small\item\em 整数値取得メソッド \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classUtility_1_1Ini_aeb34cf5599148730b8ba5c86992e82a4}{read\+\_\+double}} (const std\+::string \&section\+\_\+name, const std\+::string \&field\+\_\+name, const double \&default\+\_\+value) const
+\begin{DoxyCompactList}\small\item\em 浮動小数点値取得メソッド \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classUtility_1_1Ini_a4ac65dc11df35d1a32a7caebfe81950b}{read\+\_\+str}} (const std\+::string \&section\+\_\+name, const std\+::string \&field\+\_\+name, const std\+::string \&default\+\_\+value) const
+\begin{DoxyCompactList}\small\item\em 文字列取得メソッド \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classUtility_1_1Ini_ad33c5e804d39b02cbcd75eb2591610ea}{write\+\_\+bool}} (const std\+::string \&section\+\_\+name, const std\+::string \&field\+\_\+name, const bool \&value) const
+\begin{DoxyCompactList}\small\item\em 真理値書込メソッド \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classUtility_1_1Ini_ad37199eb5378a8e97be5a3ae50bd22d7}{write\+\_\+int}} (const std\+::string \&section\+\_\+name, const std\+::string \&field\+\_\+name, const int \&value) const
+\begin{DoxyCompactList}\small\item\em 真理値書込メソッド \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classUtility_1_1Ini_a15a446346d14288b19a65572e3325078}{write\+\_\+double}} (const std\+::string \&section\+\_\+name, const std\+::string \&field\+\_\+name, const double \&value) const
+\begin{DoxyCompactList}\small\item\em 浮動小数点値書込メソッド \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classUtility_1_1Ini_a295009e7ac0aaf09f2f0ed26238f0062}\label{classUtility_1_1Ini_a295009e7ac0aaf09f2f0ed26238f0062}} 
 void {\bfseries write\+\_\+str} (const std\+::string \&section\+\_\+name, const std\+::string \&field\+\_\+name, const std\+::string \&value) const
-\item 
-\mbox{\Hypertarget{classUtility_1_1Ini_a27cf66f4ebf57aa8cd814cb883ec2e7c}\label{classUtility_1_1Ini_a27cf66f4ebf57aa8cd814cb883ec2e7c}} 
-std\+::map$<$ std\+::string, std\+::map$<$ std\+::string, std\+::string $>$ $>$ {\bfseries load\+\_\+all} () const
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Iniファイルパース用クラス 
+
+\begin{DoxyNote}{Note}
+
+\end{DoxyNote}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classUtility_1_1Ini_ab7ddad6489981dfa72b0561b8dc866c9}\label{classUtility_1_1Ini_ab7ddad6489981dfa72b0561b8dc866c9}} 
+\index{Utility::Ini@{Utility::Ini}!Ini@{Ini}}
+\index{Ini@{Ini}!Utility::Ini@{Utility::Ini}}
+\doxysubsubsection{\texorpdfstring{Ini()}{Ini()}}
+{\footnotesize\ttfamily Utility\+::\+Ini\+::\+Ini (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+コンストラクタ 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::string} & file\+\_\+path iniファイルへのパス \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classUtility_1_1Ini_aac0e3596d67c30f2fdff80ce5f8bc948}\label{classUtility_1_1Ini_aac0e3596d67c30f2fdff80ce5f8bc948}} 
+\index{Utility::Ini@{Utility::Ini}!read\_bool@{read\_bool}}
+\index{read\_bool@{read\_bool}!Utility::Ini@{Utility::Ini}}
+\doxysubsubsection{\texorpdfstring{read\_bool()}{read\_bool()}}
+{\footnotesize\ttfamily Utility\+::\+Ini\+::read\+\_\+bool (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{section\+\_\+name,  }\item[{const std\+::string \&}]{field\+\_\+name,  }\item[{const bool \&}]{default\+\_\+value }\end{DoxyParamCaption}) const}
+
+
+
+真理値取得メソッド 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::string} & section\+\_\+name \mbox{[}\mbox{]}で囲まれたセクション名 \\
+\hline
+{\em std\+::string} & field\+\_\+name 取得したいフィールド名 \\
+\hline
+{\em bool} & default\+\_\+value 読取失敗時のデフォルト値 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 読取成功時は読み取った値を、失敗した場合はデフォルト値を返却する。 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+真理値を表現文字列としては \char`\"{}true\char`\"{} もしくは \char`\"{}false\char`\"{} とする。(大文字/小文字は問わない。) 
+\end{DoxyNote}
+\mbox{\Hypertarget{classUtility_1_1Ini_aeb34cf5599148730b8ba5c86992e82a4}\label{classUtility_1_1Ini_aeb34cf5599148730b8ba5c86992e82a4}} 
+\index{Utility::Ini@{Utility::Ini}!read\_double@{read\_double}}
+\index{read\_double@{read\_double}!Utility::Ini@{Utility::Ini}}
+\doxysubsubsection{\texorpdfstring{read\_double()}{read\_double()}}
+{\footnotesize\ttfamily Utility\+::\+Ini\+::read\+\_\+double (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{section\+\_\+name,  }\item[{const std\+::string \&}]{field\+\_\+name,  }\item[{const double \&}]{default\+\_\+value }\end{DoxyParamCaption}) const}
+
+
+
+浮動小数点値取得メソッド 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::string} & section\+\_\+name \mbox{[}\mbox{]}で囲まれたセクション名 \\
+\hline
+{\em std\+::string} & field\+\_\+name 取得したいフィールド名 \\
+\hline
+{\em double} & default\+\_\+value 読取失敗時のデフォルト値 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double 読取成功時は読み取った値を、失敗した場合はデフォルト値を返却する。 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classUtility_1_1Ini_a55fa73e5bdb8ceb689f80a873d5c2089}\label{classUtility_1_1Ini_a55fa73e5bdb8ceb689f80a873d5c2089}} 
+\index{Utility::Ini@{Utility::Ini}!read\_int@{read\_int}}
+\index{read\_int@{read\_int}!Utility::Ini@{Utility::Ini}}
+\doxysubsubsection{\texorpdfstring{read\_int()}{read\_int()}}
+{\footnotesize\ttfamily Utility\+::\+Ini\+::read\+\_\+int (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{section\+\_\+name,  }\item[{const std\+::string \&}]{field\+\_\+name,  }\item[{const int \&}]{default\+\_\+value }\end{DoxyParamCaption}) const}
+
+
+
+整数値取得メソッド 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::string} & section\+\_\+name \mbox{[}\mbox{]}で囲まれたセクション名 \\
+\hline
+{\em std\+::string} & field\+\_\+name 取得したいフィールド名 \\
+\hline
+{\em int} & default\+\_\+value 読取失敗時のデフォルト値 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 読取成功時は読み取った値を、失敗した場合はデフォルト値を返却する。 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classUtility_1_1Ini_a4ac65dc11df35d1a32a7caebfe81950b}\label{classUtility_1_1Ini_a4ac65dc11df35d1a32a7caebfe81950b}} 
+\index{Utility::Ini@{Utility::Ini}!read\_str@{read\_str}}
+\index{read\_str@{read\_str}!Utility::Ini@{Utility::Ini}}
+\doxysubsubsection{\texorpdfstring{read\_str()}{read\_str()}}
+{\footnotesize\ttfamily Utility\+::\+Ini\+::read\+\_\+str (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{section\+\_\+name,  }\item[{const std\+::string \&}]{field\+\_\+name,  }\item[{const std\+::string \&}]{default\+\_\+value }\end{DoxyParamCaption}) const}
+
+
+
+文字列取得メソッド 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::string} & section\+\_\+name \mbox{[}\mbox{]}で囲まれたセクション名 \\
+\hline
+{\em std\+::string} & field\+\_\+name 取得したいフィールド名 \\
+\hline
+{\em std\+::string} & default\+\_\+value 読取失敗時のデフォルト値 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::string 読取成功時は読み取った値を、失敗した場合はデフォルト値を返却する。 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classUtility_1_1Ini_ae7aac8583d872d308a90612883748b46}\label{classUtility_1_1Ini_ae7aac8583d872d308a90612883748b46}} 
+\index{Utility::Ini@{Utility::Ini}!set\_comment\_prefix\_list@{set\_comment\_prefix\_list}}
+\index{set\_comment\_prefix\_list@{set\_comment\_prefix\_list}!Utility::Ini@{Utility::Ini}}
+\doxysubsubsection{\texorpdfstring{set\_comment\_prefix\_list()}{set\_comment\_prefix\_list()}}
+{\footnotesize\ttfamily Utility\+::\+Ini\+::set\+\_\+comment\+\_\+prefix\+\_\+list (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{comment\+\_\+prefix\+\_\+list }\end{DoxyParamCaption})}
+
+
+
+コメント行の先頭文字列指定メソッド 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::vector$<$std\+::string$>$} & コメント行の先頭文字列(複数指定可能) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classUtility_1_1Ini}{Ini}}\& コメント行の先頭文字列変更後のパーサインスタンス 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+インスタンス生成時のデフォルトコメント行の先頭文字列は\{ \char`\"{}\#\char`\"{}, \char`\"{};\char`\"{} \}としている。 
+\end{DoxyNote}
+\mbox{\Hypertarget{classUtility_1_1Ini_a880c4c2edcbb1ae78c7f40f574aa7efc}\label{classUtility_1_1Ini_a880c4c2edcbb1ae78c7f40f574aa7efc}} 
+\index{Utility::Ini@{Utility::Ini}!set\_field\_separator@{set\_field\_separator}}
+\index{set\_field\_separator@{set\_field\_separator}!Utility::Ini@{Utility::Ini}}
+\doxysubsubsection{\texorpdfstring{set\_field\_separator()}{set\_field\_separator()}}
+{\footnotesize\ttfamily Utility\+::\+Ini\+::set\+\_\+field\+\_\+separator (\begin{DoxyParamCaption}\item[{const char}]{field\+\_\+separator }\end{DoxyParamCaption})}
+
+
+
+フィールド取得時の区切り文字の変更メソッド 
+
+
+\begin{DoxyParams}{Parameters}
+{\em char} & field\+\_\+separator 区切り文字 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classUtility_1_1Ini}{Ini}}\& 区切り文字変更後のパーサインスタンス 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+インスタンス生成時のデフォルト区切り文字は\textquotesingle{}=\textquotesingle{}としている。 
+\end{DoxyNote}
+\mbox{\Hypertarget{classUtility_1_1Ini_ad33c5e804d39b02cbcd75eb2591610ea}\label{classUtility_1_1Ini_ad33c5e804d39b02cbcd75eb2591610ea}} 
+\index{Utility::Ini@{Utility::Ini}!write\_bool@{write\_bool}}
+\index{write\_bool@{write\_bool}!Utility::Ini@{Utility::Ini}}
+\doxysubsubsection{\texorpdfstring{write\_bool()}{write\_bool()}}
+{\footnotesize\ttfamily Utility\+::\+Ini\+::write\+\_\+bool (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{section\+\_\+name,  }\item[{const std\+::string \&}]{field\+\_\+name,  }\item[{const bool \&}]{value }\end{DoxyParamCaption}) const}
+
+
+
+真理値書込メソッド 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::string} & section\+\_\+name \mbox{[}\mbox{]}で囲まれたセクション名 \\
+\hline
+{\em std\+::string} & field\+\_\+name 取得したいフィールド名 \\
+\hline
+{\em bool} & value 書込値 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+既に対象のセクション・フィールドが存在していた場合上書きする。 
+\end{DoxyNote}
+\mbox{\Hypertarget{classUtility_1_1Ini_a15a446346d14288b19a65572e3325078}\label{classUtility_1_1Ini_a15a446346d14288b19a65572e3325078}} 
+\index{Utility::Ini@{Utility::Ini}!write\_double@{write\_double}}
+\index{write\_double@{write\_double}!Utility::Ini@{Utility::Ini}}
+\doxysubsubsection{\texorpdfstring{write\_double()}{write\_double()}}
+{\footnotesize\ttfamily Utility\+::\+Ini\+::write\+\_\+double (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{section\+\_\+name,  }\item[{const std\+::string \&}]{field\+\_\+name,  }\item[{const double \&}]{value }\end{DoxyParamCaption}) const}
+
+
+
+浮動小数点値書込メソッド 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::string} & section\+\_\+name \mbox{[}\mbox{]}で囲まれたセクション名 \\
+\hline
+{\em std\+::string} & field\+\_\+name 取得したいフィールド名 \\
+\hline
+{\em double} & value 書込値 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+既に対象のセクション・フィールドが存在していた場合上書きする。
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::string} & section\+\_\+name \mbox{[}\mbox{]}で囲まれたセクション名 \\
+\hline
+{\em std\+::string} & field\+\_\+name 取得したいフィールド名 \\
+\hline
+{\em std\+::string} & value 書込値 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+既に対象のセクション・フィールドが存在していた場合上書きする。 
+\end{DoxyNote}
+\mbox{\Hypertarget{classUtility_1_1Ini_ad37199eb5378a8e97be5a3ae50bd22d7}\label{classUtility_1_1Ini_ad37199eb5378a8e97be5a3ae50bd22d7}} 
+\index{Utility::Ini@{Utility::Ini}!write\_int@{write\_int}}
+\index{write\_int@{write\_int}!Utility::Ini@{Utility::Ini}}
+\doxysubsubsection{\texorpdfstring{write\_int()}{write\_int()}}
+{\footnotesize\ttfamily Utility\+::\+Ini\+::write\+\_\+int (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{section\+\_\+name,  }\item[{const std\+::string \&}]{field\+\_\+name,  }\item[{const int \&}]{value }\end{DoxyParamCaption}) const}
+
+
+
+真理値書込メソッド 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::string} & section\+\_\+name \mbox{[}\mbox{]}で囲まれたセクション名 \\
+\hline
+{\em std\+::string} & field\+\_\+name 取得したいフィールド名 \\
+\hline
+{\em int} & value 書込値 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+既に対象のセクション・フィールドが存在していた場合上書きする。 
+\end{DoxyNote}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

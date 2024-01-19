@@ -38,6 +38,11 @@
 namespace Utility
 {
 
+/**
+ * @class Utility::SharedMemory
+ * @brief 共有メモリを管理するためのクラス
+ * 
+ */
 class SharedMemory final
 {
 
@@ -61,15 +66,82 @@ private:
 
 public:
 
+    /**
+     * @fn SharedMemory
+     * @brief コンストラクタ
+     * 
+     * @param const char* shmem_name 共有メモリ名
+     * @param int size 共有メモリでやりとりする構造体のサイズ
+     * @param const char* mutex_name ミューテックス名(省略可能) 省略した場合 shmem_name + "_MTX" という名前で作成される。 
+     */
     explicit SharedMemory(const char* shmem_name, const size_t& size, const char* mutex_name = "");
+
+    /**
+     * @fn ~SharedMemory
+     * @brief デストラクタ
+     * @note  ファイルマップトオブジェクト及びMutexの後始末は自動で行われる。
+     */
     ~SharedMemory();
+
+    /**
+     * @fn mutex
+     * @brief MutexハンドルのGetterメソッド
+     * @note 本メソッドの戻り値を以下のメソッドの引数として使用する。
+     * @n @ref wait_for_single_object
+     * @n @ref release_mutex
+     */    
     Handle mutex() const { return mutex_handle_; }
+
+    /**
+     * @fn wait_for_single_object
+     * @brief WindowsにおけるWaitForSingleObjectのラッパーメソッド
+     * 
+     * @link 
+     * https://learn.microsoft.com/ja-jp/windows/win32/api/synchapi/nf-synchapi-waitforsingleobject
+     * @endlink
+     * 
+     * @note Mutexによる排他制御を行うには引数にとして以下のメソッドの戻り値を使用する。
+     * @n @ref mutex
+     * @n 第2引数のtimeout_msecでタイムアウト時間をミリ秒単位で指定する。省略した場合INFINITを指定したことになる。
+     */     
     bool wait_for_single_object(const Handle& mutex_handle, const int& timeout_msec = 0) const;
+
+    /**
+     * @fn release_mutex
+     * @brief WindowsにおけるReleaseMutexのラッパーメソッド
+     * 
+     * @link
+     * https://learn.microsoft.com/ja-JP/windows/win32/api/synchapi/nf-synchapi-releasemutex
+     * @endlink
+     * 
+     * @note Mutexによる排他制御を行うには引数にとして以下のメソッドの戻り値を使用する。 
+     * @n @ref mutex
+     */        
     void release_mutex(const Handle& mutex_handle) const;
 
+    /**
+     * @fn get<T>
+     * @brief 共有メモリの構造体ポインタのGetterメソッド
+     * 
+     * @tparam T
+     * @return T*
+     * @note クリティカルセクションの管理のため、以下のメソッドを合わせて使用する。
+     * @n @ref wait_for_single_object
+     * @n @ref release_mutex 
+     */
     template<typename T> 
     T* get() { return (T*)data_; };
 
+    /**
+     * @fn try_write
+     * @brief ローカル変数->共有メモリへの書込試行処理
+     * 
+     * @tparam T 
+     * @param T*  data 書き込む共通変数構造体ポインタ変数
+     * @param int timeout_msec タイムアウト時間(省略可能) 省略するとタイムアウト時間を設けない  
+     * @return true  書込成功
+     * @return false 書込失敗
+     */
     template<typename T>
     bool try_write(const T* data, const int& timeout_msec = 0)
     {
@@ -80,6 +152,16 @@ public:
         return true;
     }
 
+    /**
+     * @fn try_read
+     * @brief 共有メモリ→ローカル変数の読取試行処理
+     * 
+     * @tparam T 
+     * @param T*  data 読み取る共通変数構造体ポインタ変数
+     * @param int timeout_msec タイムアウト時間(省略可能) 省略するとタイムアウト時間を設けない  
+     * @return true  読取成功
+     * @return false 読取失敗
+     */
     template<typename T>
     bool try_read(T* data, const int& timeout_msec = 0)
     {
@@ -90,6 +172,16 @@ public:
         return true;
     }
 
+    /**
+     * @fn try_write
+     * @brief ローカル変数->共有メモリへの書込試行処理
+     * 
+     * @tparam T 
+     * @param T  data 書き込む共通変数構造体変数
+     * @param int timeout_msec タイムアウト時間(省略可能) 省略するとタイムアウト時間を設けない  
+     * @return true  書込成功
+     * @return false 書込失敗
+     */
     template<typename T>
     bool try_write(const T& data, const int& timeout_msec = 0)
     {
@@ -100,6 +192,16 @@ public:
         return true;
     }
 
+    /**
+     * @fn try_read
+     * @brief 共有メモリ→ローカル変数の読取試行処理
+     * 
+     * @tparam T 
+     * @param T  data 読み取る共通変数構造体変数
+     * @param int timeout_msec タイムアウト時間(省略可能) 省略するとタイムアウト時間を設けない  
+     * @return true  読取成功
+     * @return false 読取失敗
+     */
     template<typename T>
     bool try_read(T& data, const int& timeout_msec = 0)
     {

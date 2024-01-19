@@ -28,6 +28,11 @@
 namespace Utility
 {
 
+/**
+ * @class Ini
+ * @brief Iniファイルパース用クラス
+ * @note 
+ */
 class Ini
 {
 private:
@@ -35,7 +40,6 @@ private:
     char field_separator_;
     std::vector<std::string> comment_prefix_list_;
     bool is_quiet_;
-
     void trim(std::string &str) const;
     bool is_convertable_to_long(const std::string &value) const;
     bool is_ignore_line(const std::string &line) const;
@@ -43,21 +47,114 @@ private:
     void set_field(const std::string &value, const std::string &target_section, const std::string &target_field) const;
 
 public:
-    Ini(const std::string &iniFilePath)
-     :  file_path_(std::string(iniFilePath.c_str())), field_separator_('='), comment_prefix_list_({"#", ";"})
+
+    /**
+     * @fn Ini
+     * @brief コンストラクタ
+     * 
+     * @param std::string file_path iniファイルへのパス 
+     */
+    Ini(const std::string &file_path)
+     :  file_path_(std::string(file_path.c_str())), field_separator_('='), comment_prefix_list_({"#", ";"})
     {}
 
+    /**
+     * @fn set_field_separator
+     * @brief フィールド取得時の区切り文字の変更メソッド
+     * @param char field_separator 区切り文字
+     * @return Ini& 区切り文字変更後のパーサインスタンス
+     * @note インスタンス生成時のデフォルト区切り文字は'='としている。
+     */
     Ini& set_field_separator(const char field_separator);
+
+    /**
+     * @fn set_comment_prefix_list
+     * @brief コメント行の先頭文字列指定メソッド
+     * @param std::vector<std::string> コメント行の先頭文字列(複数指定可能)
+     * @return Ini& コメント行の先頭文字列変更後のパーサインスタンス
+     * @note インスタンス生成時のデフォルトコメント行の先頭文字列は{ "#", ";" }としている。
+     */
     Ini& set_comment_prefix_list(const std::vector<std::string> &comment_prefix_list);
 
+    /**
+     * @fn read_bool
+     * @brief 真理値取得メソッド
+     * @param std::string section_name []で囲まれたセクション名
+     * @param std::string field_name 取得したいフィールド名
+     * @param bool default_value 読取失敗時のデフォルト値
+     * @return bool 読取成功時は読み取った値を、失敗した場合はデフォルト値を返却する。
+     * @note 真理値を表現文字列としては "true" もしくは "false" とする。(大文字/小文字は問わない。)
+     */
     bool read_bool(const std::string& section_name, const std::string& field_name, const bool& default_value) const;
+
+    /**
+     * @fn read_int
+     * @brief 整数値取得メソッド
+     * @param std::string section_name []で囲まれたセクション名
+     * @param std::string field_name 取得したいフィールド名
+     * @param int default_value 読取失敗時のデフォルト値
+     * @return int 読取成功時は読み取った値を、失敗した場合はデフォルト値を返却する。
+     */
     int read_int(const std::string& section_name, const std::string& field_name, const int& default_value) const;
+
+    /**
+     * @fn read_double
+     * @brief 浮動小数点値取得メソッド
+     * @param std::string section_name []で囲まれたセクション名
+     * @param std::string field_name 取得したいフィールド名
+     * @param double default_value 読取失敗時のデフォルト値
+     * @return double 読取成功時は読み取った値を、失敗した場合はデフォルト値を返却する。
+     */    
     double read_double(const std::string& section_name, const std::string& field_name, const double &default_value) const;
+
+    /**
+     * @fn read_str
+     * @brief 文字列取得メソッド
+     * @param std::string section_name []で囲まれたセクション名
+     * @param std::string field_name 取得したいフィールド名
+     * @param std::string default_value 読取失敗時のデフォルト値
+     * @return std::string 読取成功時は読み取った値を、失敗した場合はデフォルト値を返却する。
+     */    
     std::string read_str(const std::string& section_name, const std::string& field_name, const std::string &default_value) const;
 
+    /**
+     * @fn write_bool
+     * @brief 真理値書込メソッド
+     * @param std::string section_name []で囲まれたセクション名
+     * @param std::string field_name 取得したいフィールド名
+     * @param bool value 書込値
+     * @note 既に対象のセクション・フィールドが存在していた場合上書きする。
+     */
     void write_bool(const std::string& section_name, const std::string& field_name, const bool& value) const;
+
+    /**
+     * @fn write_int
+     * @brief 真理値書込メソッド
+     * @param std::string section_name []で囲まれたセクション名
+     * @param std::string field_name 取得したいフィールド名
+     * @param int value 書込値
+     * @note 既に対象のセクション・フィールドが存在していた場合上書きする。
+     */
     void write_int(const std::string& section_name, const std::string& field_name, const int& value) const;
+
+    /**
+     * @fn write_double
+     * @brief 浮動小数点値書込メソッド
+     * @param std::string section_name []で囲まれたセクション名
+     * @param std::string field_name 取得したいフィールド名
+     * @param double value 書込値
+     * @note 既に対象のセクション・フィールドが存在していた場合上書きする。
+     */
     void write_double(const std::string& section_name, const std::string& field_name, const double& value) const;
+
+    /**
+     * @fn write_double
+     * @brief 浮動小数点値書込メソッド
+     * @param std::string section_name []で囲まれたセクション名
+     * @param std::string field_name 取得したいフィールド名
+     * @param std::string value 書込値
+     * @note 既に対象のセクション・フィールドが存在していた場合上書きする。
+     */
     void write_str(const std::string& section_name, const std::string& field_name, const std::string& value) const;
 };
 
@@ -293,8 +390,8 @@ private:
 
 public:
 
-    Ini(const std::string &iniFilePath, const bool& is_quiet=true)
-     :  file_path_(std::string(iniFilePath.c_str())), field_separator_('='), comment_prefix_list_({"#", ";"}), is_quiet_(is_quiet)
+    Ini(const std::string &file_path, const bool& is_quiet=true)
+     :  file_path_(std::string(file_path.c_str())), field_separator_('='), comment_prefix_list_({"#", ";"}), is_quiet_(is_quiet)
     {}
 
     Ini& set_field_separator(const char field_separator)

@@ -1,17 +1,29 @@
 \hypertarget{classUtility_1_1SharedMemory}{}\doxysection{Utility\+::Shared\+Memory Class Reference}
 \label{classUtility_1_1SharedMemory}\index{Utility::SharedMemory@{Utility::SharedMemory}}
+
+
+共有メモリを管理するためのクラス  
+
+
+
+
+{\ttfamily \#include $<$shared\+\_\+memory.\+hpp$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classUtility_1_1SharedMemory_a8adb9ad5cd59deac895edabe06cf967d}\label{classUtility_1_1SharedMemory_a8adb9ad5cd59deac895edabe06cf967d}} 
-{\bfseries Shared\+Memory} (const char $\ast$shmem\+\_\+name, const size\+\_\+t \&size, const char $\ast$mutex\+\_\+name=\char`\"{}\char`\"{})
-\item 
-\mbox{\Hypertarget{classUtility_1_1SharedMemory_aad834086051535c15b8b0b276bd91f21}\label{classUtility_1_1SharedMemory_aad834086051535c15b8b0b276bd91f21}} 
-Handle {\bfseries mutex} () const
-\item 
-\mbox{\Hypertarget{classUtility_1_1SharedMemory_ad244538cabb5f6bbc0d6021482c73bfd}\label{classUtility_1_1SharedMemory_ad244538cabb5f6bbc0d6021482c73bfd}} 
-{\footnotesize template$<$typename T $>$ }\\T $\ast$ {\bfseries get} ()
-\item 
+\mbox{\hyperlink{classUtility_1_1SharedMemory_a8adb9ad5cd59deac895edabe06cf967d}{Shared\+Memory}} (const char $\ast$shmem\+\_\+name, const size\+\_\+t \&size, const char $\ast$mutex\+\_\+name=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em コンストラクタ \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classUtility_1_1SharedMemory_a9cbc6d4bdfb2ec9ca46ad2dbc83b7265}{$\sim$\+Shared\+Memory}} ()
+\begin{DoxyCompactList}\small\item\em デストラクタ \end{DoxyCompactList}\item 
+Handle \mbox{\hyperlink{classUtility_1_1SharedMemory_a072fcd7fba8eb43f46969e679f55fac7}{mutex}} () const
+\begin{DoxyCompactList}\small\item\em Mutexハンドルの\+Getterメソッド \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classUtility_1_1SharedMemory_ae872229aea581999c4f1ba2fa2b37302}{wait\+\_\+for\+\_\+single\+\_\+object}} (const Handle \&mutex\+\_\+handle, const int \&timeout\+\_\+msec=0) const
+\begin{DoxyCompactList}\small\item\em Windowsにおける\+Wait\+For\+Single\+Objectのラッパーメソッド \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classUtility_1_1SharedMemory_aa4ce88e75b08dc11daf6fa6ceb6d7fc3}{release\+\_\+mutex}} (const Handle \&mutex\+\_\+handle) const
+\begin{DoxyCompactList}\small\item\em Windowsにおける\+Release\+Mutexのラッパーメソッド \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\T $\ast$ \mbox{\hyperlink{classUtility_1_1SharedMemory_a2f9227a678a5b7c190d4d8a3752b4f97}{get}} ()
+\begin{DoxyCompactList}\small\item\em 共有メモリの構造体ポインタの\+Getterメソッド \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classUtility_1_1SharedMemory_a41ae29ba81e7946a4572443551cb901a}\label{classUtility_1_1SharedMemory_a41ae29ba81e7946a4572443551cb901a}} 
 {\footnotesize template$<$typename T $>$ }\\bool {\bfseries try\+\_\+write} (const T $\ast$data, const int \&timeout\+\_\+msec=0)
 \item 
@@ -23,13 +35,120 @@ Handle {\bfseries mutex} () const
 \item 
 \mbox{\Hypertarget{classUtility_1_1SharedMemory_ac263aae8693052f8d7b6388aafe74ef9}\label{classUtility_1_1SharedMemory_ac263aae8693052f8d7b6388aafe74ef9}} 
 {\footnotesize template$<$typename T $>$ }\\bool {\bfseries try\+\_\+read} (T \&data, const int \&timeout\+\_\+msec=0)
-\item 
-\mbox{\Hypertarget{classUtility_1_1SharedMemory_a911b784ba0a30adab3928a3dd623ca28}\label{classUtility_1_1SharedMemory_a911b784ba0a30adab3928a3dd623ca28}} 
-bool {\bfseries wait\+\_\+for\+\_\+single\+\_\+object} (const Handle \&mutex\+\_\+handle, const int \&timeout\+\_\+msec=0) const
-\item 
-\mbox{\Hypertarget{classUtility_1_1SharedMemory_a9ae95475387d34a9903653c37f3781b9}\label{classUtility_1_1SharedMemory_a9ae95475387d34a9903653c37f3781b9}} 
-void {\bfseries release\+\_\+mutex} (const Handle \&mutex\+\_\+handle) const
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+共有メモリを管理するためのクラス 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classUtility_1_1SharedMemory_a8adb9ad5cd59deac895edabe06cf967d}\label{classUtility_1_1SharedMemory_a8adb9ad5cd59deac895edabe06cf967d}} 
+\index{Utility::SharedMemory@{Utility::SharedMemory}!SharedMemory@{SharedMemory}}
+\index{SharedMemory@{SharedMemory}!Utility::SharedMemory@{Utility::SharedMemory}}
+\doxysubsubsection{\texorpdfstring{SharedMemory()}{SharedMemory()}}
+{\footnotesize\ttfamily Utility\+::\+Shared\+Memory\+::\+Shared\+Memory (\begin{DoxyParamCaption}\item[{const char $\ast$}]{shmem\+\_\+name,  }\item[{const size\+\_\+t \&}]{size,  }\item[{const char $\ast$}]{mutex\+\_\+name = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+コンストラクタ 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & char$\ast$ shmem\+\_\+name 共有メモリ名 \\
+\hline
+{\em int} & size 共有メモリでやりとりする構造体のサイズ \\
+\hline
+{\em const} & char$\ast$ mutex\+\_\+name ミューテックス名(省略可能) 省略した場合 shmem\+\_\+name + \char`\"{}\+\_\+\+M\+T\+X\char`\"{} という名前で作成される。 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classUtility_1_1SharedMemory_a9cbc6d4bdfb2ec9ca46ad2dbc83b7265}\label{classUtility_1_1SharedMemory_a9cbc6d4bdfb2ec9ca46ad2dbc83b7265}} 
+\index{Utility::SharedMemory@{Utility::SharedMemory}!````~SharedMemory@{$\sim$SharedMemory}}
+\index{````~SharedMemory@{$\sim$SharedMemory}!Utility::SharedMemory@{Utility::SharedMemory}}
+\doxysubsubsection{\texorpdfstring{$\sim$SharedMemory()}{~SharedMemory()}}
+{\footnotesize\ttfamily Utility\+::\+Shared\+Memory\+::$\sim$\+Shared\+Memory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+デストラクタ 
+
+\begin{DoxyNote}{Note}
+ファイルマップトオブジェクト及び\+Mutexの後始末は自動で行われる。 
+\end{DoxyNote}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classUtility_1_1SharedMemory_a2f9227a678a5b7c190d4d8a3752b4f97}\label{classUtility_1_1SharedMemory_a2f9227a678a5b7c190d4d8a3752b4f97}} 
+\index{Utility::SharedMemory@{Utility::SharedMemory}!get@{get}}
+\index{get@{get}!Utility::SharedMemory@{Utility::SharedMemory}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+Utility\+::\+Shared\+Memory\+::get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+共有メモリの構造体ポインタの\+Getterメソッド 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+T$\ast$ 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+クリティカルセクションの管理のため、以下のメソッドを合わせて使用する。 ~\newline
+ \mbox{\hyperlink{classUtility_1_1SharedMemory_ae872229aea581999c4f1ba2fa2b37302}{wait\+\_\+for\+\_\+single\+\_\+object}} ~\newline
+ \mbox{\hyperlink{classUtility_1_1SharedMemory_aa4ce88e75b08dc11daf6fa6ceb6d7fc3}{release\+\_\+mutex}} 
+\end{DoxyNote}
+\mbox{\Hypertarget{classUtility_1_1SharedMemory_a072fcd7fba8eb43f46969e679f55fac7}\label{classUtility_1_1SharedMemory_a072fcd7fba8eb43f46969e679f55fac7}} 
+\index{Utility::SharedMemory@{Utility::SharedMemory}!mutex@{mutex}}
+\index{mutex@{mutex}!Utility::SharedMemory@{Utility::SharedMemory}}
+\doxysubsubsection{\texorpdfstring{mutex()}{mutex()}}
+{\footnotesize\ttfamily Utility\+::\+Shared\+Memory\+::mutex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Mutexハンドルの\+Getterメソッド 
+
+\begin{DoxyNote}{Note}
+本メソッドの戻り値を以下のメソッドの引数として使用する。 ~\newline
+ \mbox{\hyperlink{classUtility_1_1SharedMemory_ae872229aea581999c4f1ba2fa2b37302}{wait\+\_\+for\+\_\+single\+\_\+object}} ~\newline
+ \mbox{\hyperlink{classUtility_1_1SharedMemory_aa4ce88e75b08dc11daf6fa6ceb6d7fc3}{release\+\_\+mutex}} 
+\end{DoxyNote}
+\mbox{\Hypertarget{classUtility_1_1SharedMemory_aa4ce88e75b08dc11daf6fa6ceb6d7fc3}\label{classUtility_1_1SharedMemory_aa4ce88e75b08dc11daf6fa6ceb6d7fc3}} 
+\index{Utility::SharedMemory@{Utility::SharedMemory}!release\_mutex@{release\_mutex}}
+\index{release\_mutex@{release\_mutex}!Utility::SharedMemory@{Utility::SharedMemory}}
+\doxysubsubsection{\texorpdfstring{release\_mutex()}{release\_mutex()}}
+{\footnotesize\ttfamily Utility\+::\+Shared\+Memory\+::release\+\_\+mutex (\begin{DoxyParamCaption}\item[{const Handle \&}]{mutex\+\_\+handle }\end{DoxyParamCaption}) const}
+
+
+
+Windowsにおける\+Release\+Mutexのラッパーメソッド 
+
+\mbox{\hyperlink{}{https\+://learn.\+microsoft.\+com/ja-\/\+J\+P/windows/win32/api/synchapi/nf-\/synchapi-\/releasemutex}}
+
+\begin{DoxyNote}{Note}
+Mutexによる排他制御を行うには引数にとして以下のメソッドの戻り値を使用する。 ~\newline
+ \mbox{\hyperlink{classUtility_1_1SharedMemory_a072fcd7fba8eb43f46969e679f55fac7}{mutex}} 
+\end{DoxyNote}
+\mbox{\Hypertarget{classUtility_1_1SharedMemory_ae872229aea581999c4f1ba2fa2b37302}\label{classUtility_1_1SharedMemory_ae872229aea581999c4f1ba2fa2b37302}} 
+\index{Utility::SharedMemory@{Utility::SharedMemory}!wait\_for\_single\_object@{wait\_for\_single\_object}}
+\index{wait\_for\_single\_object@{wait\_for\_single\_object}!Utility::SharedMemory@{Utility::SharedMemory}}
+\doxysubsubsection{\texorpdfstring{wait\_for\_single\_object()}{wait\_for\_single\_object()}}
+{\footnotesize\ttfamily Utility\+::\+Shared\+Memory\+::wait\+\_\+for\+\_\+single\+\_\+object (\begin{DoxyParamCaption}\item[{const Handle \&}]{mutex\+\_\+handle,  }\item[{const int \&}]{timeout\+\_\+msec = {\ttfamily 0} }\end{DoxyParamCaption}) const}
+
+
+
+Windowsにおける\+Wait\+For\+Single\+Objectのラッパーメソッド 
+
+\mbox{\hyperlink{}{https\+://learn.\+microsoft.\+com/ja-\/jp/windows/win32/api/synchapi/nf-\/synchapi-\/waitforsingleobject}}
+
+\begin{DoxyNote}{Note}
+Mutexによる排他制御を行うには引数にとして以下のメソッドの戻り値を使用する。 ~\newline
+ \mbox{\hyperlink{classUtility_1_1SharedMemory_a072fcd7fba8eb43f46969e679f55fac7}{mutex}} ~\newline
+ 第2引数のtimeout\+\_\+msecでタイムアウト時間をミリ秒単位で指定する。省略した場合\+I\+N\+F\+I\+N\+I\+Tを指定したことになる。 
+\end{DoxyNote}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

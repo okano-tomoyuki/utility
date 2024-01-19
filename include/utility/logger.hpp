@@ -23,6 +23,11 @@
 namespace Utility
 {
 
+/**
+ * @class Logger
+ * @brief CSV ファイルにロギングするためのライブラリ
+ * 
+ */
 class Logger final
 {
 
@@ -32,20 +37,57 @@ private:
     std::string new_line_;
 
 public:
+    /** @enum Color @brief @ref print でコンソール出力する際の文字色 */
     enum Color { WHITE, YELLOW, GREEN, BLUE, RED };
 
+    /**
+     * @brief コンストラクタ
+     * 
+     * @param std::stirng separator 分割文字 
+     * @param std::stirng new_line 改行文字 
+     */
     explicit Logger(const std::string& separator=" ", const std::string& new_line="\n")
      : separator_(separator), new_line_(new_line)
     {}
 
+    /**
+     * @fn add
+     * @brief ロギングバッファー追加メソッド
+     * 
+     * @tparam T 
+     * @param val 
+     * @return Logger& 追加後の自身のインスタンス
+     * @note 基本的にはプリミティブな型で使用するが対象の型に大して以下のオーバーロードがある場合にも適用可能
+     * @n std::ostream& operator<<(std::ostream& os, T& t);
+     */
     template<typename T>
     Logger& add(const T& val) 
     { buffer_ << val; return *this; }
 
+    /**
+     * @fn add
+     * @brief ロギングバッファー追加メソッド(任意長)
+     * 
+     * @tparam T 
+     * @param val 
+     * @return Logger& 追加後の自身のインスタンス
+     * @note 基本的にはプリミティブな型で使用するが対象の型に大して以下のオーバーロードがある場合にも適用可能
+     * @n std::ostream& operator<<(std::ostream& os, T& t);
+     */
     template<typename T, typename... Remain>
     Logger& add(const T& val, const Remain&... remain) 
     { buffer_ << val << separator_; add(remain...); return *this; }
 
+    /**
+     * @fn add
+     * @brief ロギングバッファー追加メソッド(コンテナ)
+     * 
+     * @tparam T 
+     * @param val 
+     * @return Logger& 追加後の自身のインスタンス
+     * @note 基本的にはプリミティブな型で使用するが対象の型に大して以下のオーバーロードがある場合にも適用可能
+     * @n std::ostream& operator<<(std::ostream& os, T& t);
+     */
     template<typename T>
     Logger& add(const std::vector<T>& val)
     {
@@ -57,6 +99,16 @@ public:
         return *this;
     }
 
+    /**
+     * @fn add
+     * @brief ロギングバッファー追加メソッド(任意長・コンテナ)
+     * 
+     * @tparam T 
+     * @param val 
+     * @return Logger& 追加後の自身のインスタンス
+     * @note 基本的にはプリミティブな型で使用するが対象の型に大して以下のオーバーロードがある場合にも適用可能
+     * @n std::ostream& operator<<(std::ostream& os, T& t);
+     */
     template<typename T, typename... Remain>
     Logger& add(const std::vector<T>& val, const Remain&... remain)
     {
@@ -69,6 +121,16 @@ public:
         return *this;
     }
 
+    /**
+     * @fn add_line
+     * @brief ロギングバッファー追加メソッド(改行指定)
+     * 
+     * @tparam T 
+     * @param val 
+     * @return Logger& 追加後の自身のインスタンス
+     * @note 基本的にはプリミティブな型で使用するが対象の型に大して以下のオーバーロードがある場合にも適用可能
+     * @n std::ostream& operator<<(std::ostream& os, T& t);
+     */
     template<typename T>
     Logger& add_line(const std::vector<T>& val)
     {
@@ -80,6 +142,16 @@ public:
         return *this;
     }
 
+    /**
+     * @fn add_line
+     * @brief ロギングバッファー追加メソッド(改行指定・コンテナ)
+     * 
+     * @tparam T 
+     * @param val 
+     * @return Logger& 追加後の自身のインスタンス
+     * @note 基本的にはプリミティブな型で使用するが対象の型に大して以下のオーバーロードがある場合にも適用可能
+     * @n std::ostream& operator<<(std::ostream& os, T& t);
+     */
     template<typename T, typename... Remain>
     Logger& add_line(const std::vector<T>& val, const Remain&... remain)
     {
@@ -92,6 +164,11 @@ public:
         return *this;
     }
 
+    /**
+     * @fn print
+     * @brief ロギングバッファーコンソール出力メソッド
+     * @param enum Color color 出力文字色 { WHITE : 白, YELLOW : 黄, GREEN : 緑, RED : 赤 }
+     */
     Logger& print(const enum Color& color = WHITE)
     {
         if     ( color ==  WHITE ) std::cout << "\033[m"   << buffer_.str() << "\033[m";
@@ -102,6 +179,15 @@ public:
         return *this;
     }
 
+    /**
+     * @fn format
+     * @brief 
+     * 
+     * @tparam Args 
+     * @param format 
+     * @param args 
+     * @return std::string 
+     */
     template<typename... Args>
     static std::string format(const std::string& format, const Args&... args )
     {

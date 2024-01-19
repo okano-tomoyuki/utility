@@ -1,16 +1,25 @@
 \hypertarget{classUtility_1_1DateTime}{}\doxysection{Utility\+::Date\+Time Class Reference}
 \label{classUtility_1_1DateTime}\index{Utility::DateTime@{Utility::DateTime}}
+
+
+日時を管理するクラス  
+
+
+
+
+{\ttfamily \#include $<$date\+\_\+time.\+hpp$>$}
+
 \doxysubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{classUtility_1_1DateTime_ad0f2d98de02873bb198db4b205b9c263}\label{classUtility_1_1DateTime_ad0f2d98de02873bb198db4b205b9c263}} 
 enum {\bfseries Unit} \{ \newline
-{\bfseries HOUR}
-, {\bfseries MIN}
-, {\bfseries SEC}
-, {\bfseries MSEC}
-, \newline
-{\bfseries USEC}
+{\bfseries H\+O\+UR}, 
+{\bfseries M\+IN}, 
+{\bfseries S\+EC}, 
+{\bfseries M\+S\+EC}, 
+\newline
+{\bfseries U\+S\+EC}
  \}
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions}
@@ -23,7 +32,7 @@ enum {\bfseries Unit} \{ \newline
 {\bfseries Date\+Time} (const char $\ast$str, const char $\ast$fmt)
 \item 
 \mbox{\Hypertarget{classUtility_1_1DateTime_a1dd07af2584f32b064fcc7e8d7b7baa4}\label{classUtility_1_1DateTime_a1dd07af2584f32b064fcc7e8d7b7baa4}} 
-{\bfseries Date\+Time} (const int \&year, const int \&mon, const int \&day, const int \&hour, const int \&min, const int \&sec, const int \&msec, const int \&usec)
+{\bfseries Date\+Time} (const int \&\mbox{\hyperlink{classUtility_1_1DateTime_a3cf1f1006d10731300f082c3d0a6498e}{year}}, const int \&mon, const int \&\mbox{\hyperlink{classUtility_1_1DateTime_a287873d32061c46413c0a347088447a1}{day}}, const int \&\mbox{\hyperlink{classUtility_1_1DateTime_a3ebd229ae647cdf8cdcd4632ec3bc48f}{hour}}, const int \&min, const int \&sec, const int \&msec, const int \&usec)
 \item 
 \mbox{\Hypertarget{classUtility_1_1DateTime_a0abff1c815c02f29cd112c625c9a2bbe}\label{classUtility_1_1DateTime_a0abff1c815c02f29cd112c625c9a2bbe}} 
 {\bfseries Date\+Time} (const \mbox{\hyperlink{classUtility_1_1DateTime}{Date\+Time}} \&other)
@@ -43,50 +52,231 @@ bool {\bfseries operator$<$} (const \mbox{\hyperlink{classUtility_1_1DateTime}{D
 \mbox{\Hypertarget{classUtility_1_1DateTime_a498971d5a3597ca2e0d3b4c489589b05}\label{classUtility_1_1DateTime_a498971d5a3597ca2e0d3b4c489589b05}} 
 bool {\bfseries operator$>$} (const \mbox{\hyperlink{classUtility_1_1DateTime}{Date\+Time}} \&other) const
 \item 
-\mbox{\Hypertarget{classUtility_1_1DateTime_a8f3277df7031f5637538b3c384818467}\label{classUtility_1_1DateTime_a8f3277df7031f5637538b3c384818467}} 
-int {\bfseries year} () const
-\item 
-\mbox{\Hypertarget{classUtility_1_1DateTime_aa64ca0a2eebbfb5a572d839a09bfecab}\label{classUtility_1_1DateTime_aa64ca0a2eebbfb5a572d839a09bfecab}} 
-int {\bfseries month} () const
-\item 
-\mbox{\Hypertarget{classUtility_1_1DateTime_a52dafaf703b530e163e7909d5871a279}\label{classUtility_1_1DateTime_a52dafaf703b530e163e7909d5871a279}} 
-int {\bfseries day} () const
-\item 
-\mbox{\Hypertarget{classUtility_1_1DateTime_ad55180f441e27303b7f7649b9fb1704e}\label{classUtility_1_1DateTime_ad55180f441e27303b7f7649b9fb1704e}} 
-int {\bfseries hour} () const
-\item 
-\mbox{\Hypertarget{classUtility_1_1DateTime_a724f9985511ec07700259d1ed33baa96}\label{classUtility_1_1DateTime_a724f9985511ec07700259d1ed33baa96}} 
-int {\bfseries minute} () const
-\item 
-\mbox{\Hypertarget{classUtility_1_1DateTime_ad50bcb506dd762aa1c25facad87f24a2}\label{classUtility_1_1DateTime_ad50bcb506dd762aa1c25facad87f24a2}} 
-int {\bfseries second} () const
-\item 
-\mbox{\Hypertarget{classUtility_1_1DateTime_ac8cba3d16bd07e45d900af904617e947}\label{classUtility_1_1DateTime_ac8cba3d16bd07e45d900af904617e947}} 
-int {\bfseries millisecond} () const
-\item 
+int \mbox{\hyperlink{classUtility_1_1DateTime_a3cf1f1006d10731300f082c3d0a6498e}{year}} () const
+\begin{DoxyCompactList}\small\item\em 年 取得用\+Getterメソッド \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classUtility_1_1DateTime_aa9772e0d61c9a31b389f4e86ce87faf2}{month}} () const
+\begin{DoxyCompactList}\small\item\em 月 取得用\+Getterメソッド \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classUtility_1_1DateTime_a287873d32061c46413c0a347088447a1}{day}} () const
+\begin{DoxyCompactList}\small\item\em 日 取得用\+Getterメソッド \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classUtility_1_1DateTime_a3ebd229ae647cdf8cdcd4632ec3bc48f}{hour}} () const
+\begin{DoxyCompactList}\small\item\em 時 取得用\+Getterメソッド \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classUtility_1_1DateTime_a71e779294a9c702ae3a6458dcf8ced5d}{minute}} () const
+\begin{DoxyCompactList}\small\item\em 分 取得用\+Getterメソッド \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classUtility_1_1DateTime_ab94eb2c3eb5d0ba3f6e667a68dab229b}{second}} () const
+\begin{DoxyCompactList}\small\item\em 秒 取得用\+Getterメソッド \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classUtility_1_1DateTime_aff7c1039ab1c2f00fafcd2e6785e6404}{millisecond}} () const
+\begin{DoxyCompactList}\small\item\em ミリ秒 取得用\+Getterメソッド \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classUtility_1_1DateTime_ab28d2dd146e028d08279e0bb12fd21c5}\label{classUtility_1_1DateTime_ab28d2dd146e028d08279e0bb12fd21c5}} 
 int {\bfseries microsecond} () const
 \item 
-\mbox{\Hypertarget{classUtility_1_1DateTime_adce4bef2e29b9a11901a2f70039ebc60}\label{classUtility_1_1DateTime_adce4bef2e29b9a11901a2f70039ebc60}} 
-std\+::string {\bfseries to\+\_\+str} (const char $\ast$format) const
-\item 
-\mbox{\Hypertarget{classUtility_1_1DateTime_afe865c3a8f037da1c5c32b74ada9114a}\label{classUtility_1_1DateTime_afe865c3a8f037da1c5c32b74ada9114a}} 
-system\+\_\+clock\+::time\+\_\+point {\bfseries to\+\_\+time\+\_\+point} () const
-\item 
-\mbox{\Hypertarget{classUtility_1_1DateTime_a6393386361b78a1249c96db0661fe2a8}\label{classUtility_1_1DateTime_a6393386361b78a1249c96db0661fe2a8}} 
-\mbox{\hyperlink{classUtility_1_1DateTime}{Date\+Time}} \& {\bfseries add} (const int \&increment, const enum Unit \&unit=Date\+Time\+::\+MSEC)
+std\+::string \mbox{\hyperlink{classUtility_1_1DateTime_ac188510b4cb9c8b244def8c97d2d838e}{to\+\_\+str}} (const char $\ast$format) const
+\begin{DoxyCompactList}\small\item\em フォーマット指定した文字列化メソッド \end{DoxyCompactList}\item 
+system\+\_\+clock\+::time\+\_\+point \mbox{\hyperlink{classUtility_1_1DateTime_a98c2a13dbad9b7dce0ecda4da7a4fe3a}{to\+\_\+time\+\_\+point}} () const
+\begin{DoxyCompactList}\small\item\em time\+\_\+point型への変換メソッド \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classUtility_1_1DateTime_aeb97db593096e30ff24d8ff93b4ff6a7}\label{classUtility_1_1DateTime_aeb97db593096e30ff24d8ff93b4ff6a7}} 
+\mbox{\hyperlink{classUtility_1_1DateTime}{Date\+Time}} \& {\bfseries add} (const int \&increment, const enum Unit \&unit)
 \end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classUtility_1_1DateTime_a35272052a2e375a2c3aa561db989a3ee}\label{classUtility_1_1DateTime_a35272052a2e375a2c3aa561db989a3ee}} 
-static \mbox{\hyperlink{classUtility_1_1DateTime}{Date\+Time}} {\bfseries from\+\_\+str} (const char $\ast$date\+\_\+time\+\_\+str, const char $\ast$format)
-\item 
-\mbox{\Hypertarget{classUtility_1_1DateTime_ac6d8b0a40d923e06b78a45fbd54545f8}\label{classUtility_1_1DateTime_ac6d8b0a40d923e06b78a45fbd54545f8}} 
-static \mbox{\hyperlink{classUtility_1_1DateTime}{Date\+Time}} {\bfseries add} (const \mbox{\hyperlink{classUtility_1_1DateTime}{Date\+Time}} \&other, const int \&increment, const enum Unit \&unit=Date\+Time\+::\+MSEC)
+static \mbox{\hyperlink{classUtility_1_1DateTime}{Date\+Time}} \mbox{\hyperlink{classUtility_1_1DateTime_aeec580fe7e23a0b03fcef5086ea0aea4}{from\+\_\+str}} (const char $\ast$date\+\_\+time\+\_\+str, const char $\ast$format)
+\begin{DoxyCompactList}\small\item\em フォーマット指定し文字列から\+Date\+Timeインスタンスを生成するメソッド(\+Factory Method) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classUtility_1_1DateTime_ab5a3d21dec90f496134a722e171dff23}\label{classUtility_1_1DateTime_ab5a3d21dec90f496134a722e171dff23}} 
+static \mbox{\hyperlink{classUtility_1_1DateTime}{Date\+Time}} {\bfseries add} (const \mbox{\hyperlink{classUtility_1_1DateTime}{Date\+Time}} \&other, const int \&increment, const enum Unit \&unit)
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+日時を管理するクラス 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classUtility_1_1DateTime_a287873d32061c46413c0a347088447a1}\label{classUtility_1_1DateTime_a287873d32061c46413c0a347088447a1}} 
+\index{Utility::DateTime@{Utility::DateTime}!day@{day}}
+\index{day@{day}!Utility::DateTime@{Utility::DateTime}}
+\doxysubsubsection{\texorpdfstring{day()}{day()}}
+{\footnotesize\ttfamily Utility\+::\+Date\+Time\+::day (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+日 取得用\+Getterメソッド 
+
+\begin{DoxyReturn}{Returns}
+int インスタンスが示す 日 情報を返却する。 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+1 $\sim$ その月の最大日数 
+\end{DoxyNote}
+\mbox{\Hypertarget{classUtility_1_1DateTime_aeec580fe7e23a0b03fcef5086ea0aea4}\label{classUtility_1_1DateTime_aeec580fe7e23a0b03fcef5086ea0aea4}} 
+\index{Utility::DateTime@{Utility::DateTime}!from\_str@{from\_str}}
+\index{from\_str@{from\_str}!Utility::DateTime@{Utility::DateTime}}
+\doxysubsubsection{\texorpdfstring{from\_str()}{from\_str()}}
+{\footnotesize\ttfamily Utility\+::\+Date\+Time\+::from\+\_\+str (\begin{DoxyParamCaption}\item[{const char $\ast$}]{date\+\_\+time\+\_\+str,  }\item[{const char $\ast$}]{format }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+フォーマット指定し文字列から\+Date\+Timeインスタンスを生成するメソッド(\+Factory Method) 
+
+\begin{DoxyReturn}{Returns}
+int インスタンスが示す マイクロ秒 情報を返却する。 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+出力時のフォーマット指定方法は以下のフォーマットに従う。 ~\newline
+ yyyy 西暦4桁 1970 $\sim$ 2030 ~\newline
+ ~\newline
+ mm 0埋めされた月 01 $\sim$ 12 ~\newline
+ dd 0埋めされた日 01 $\sim$ 31 ~\newline
+ hh 0埋めされた時 00 $\sim$ 23 ~\newline
+ nn 0埋めされた分 00 $\sim$ 59 ~\newline
+ ss 0埋めされた秒 00 $\sim$ 59 ~\newline
+ zzz 0埋めされたミリ秒 000 $\sim$ 999 ~\newline
+ zzzzzz 0埋めされたミリ+マイクロ秒 000000 $\sim$ 999999 ~\newline
+ ~\newline
+ インスタンスメソッドでないことに注意 
+\end{DoxyNote}
+\mbox{\Hypertarget{classUtility_1_1DateTime_a3ebd229ae647cdf8cdcd4632ec3bc48f}\label{classUtility_1_1DateTime_a3ebd229ae647cdf8cdcd4632ec3bc48f}} 
+\index{Utility::DateTime@{Utility::DateTime}!hour@{hour}}
+\index{hour@{hour}!Utility::DateTime@{Utility::DateTime}}
+\doxysubsubsection{\texorpdfstring{hour()}{hour()}}
+{\footnotesize\ttfamily Utility\+::\+Date\+Time\+::hour (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+時 取得用\+Getterメソッド 
+
+\begin{DoxyReturn}{Returns}
+int インスタンスが示す 時 情報を返却する。 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+0 $\sim$ 23 
+\end{DoxyNote}
+\mbox{\Hypertarget{classUtility_1_1DateTime_aff7c1039ab1c2f00fafcd2e6785e6404}\label{classUtility_1_1DateTime_aff7c1039ab1c2f00fafcd2e6785e6404}} 
+\index{Utility::DateTime@{Utility::DateTime}!millisecond@{millisecond}}
+\index{millisecond@{millisecond}!Utility::DateTime@{Utility::DateTime}}
+\doxysubsubsection{\texorpdfstring{millisecond()}{millisecond()}}
+{\footnotesize\ttfamily Utility\+::\+Date\+Time\+::millisecond (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+ミリ秒 取得用\+Getterメソッド 
+
+マイクロ秒 取得用\+Getterメソッド
+
+\begin{DoxyReturn}{Returns}
+int インスタンスが示す 秒 情報を返却する。 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+0 $\sim$ 999
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+int インスタンスが示す マイクロ秒 情報を返却する。 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+0 $\sim$ 999 
+\end{DoxyNote}
+\mbox{\Hypertarget{classUtility_1_1DateTime_a71e779294a9c702ae3a6458dcf8ced5d}\label{classUtility_1_1DateTime_a71e779294a9c702ae3a6458dcf8ced5d}} 
+\index{Utility::DateTime@{Utility::DateTime}!minute@{minute}}
+\index{minute@{minute}!Utility::DateTime@{Utility::DateTime}}
+\doxysubsubsection{\texorpdfstring{minute()}{minute()}}
+{\footnotesize\ttfamily Utility\+::\+Date\+Time\+::minute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+分 取得用\+Getterメソッド 
+
+\begin{DoxyReturn}{Returns}
+int インスタンスが示す 分 情報を返却する。 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+0 $\sim$ 59 
+\end{DoxyNote}
+\mbox{\Hypertarget{classUtility_1_1DateTime_aa9772e0d61c9a31b389f4e86ce87faf2}\label{classUtility_1_1DateTime_aa9772e0d61c9a31b389f4e86ce87faf2}} 
+\index{Utility::DateTime@{Utility::DateTime}!month@{month}}
+\index{month@{month}!Utility::DateTime@{Utility::DateTime}}
+\doxysubsubsection{\texorpdfstring{month()}{month()}}
+{\footnotesize\ttfamily Utility\+::\+Date\+Time\+::month (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+月 取得用\+Getterメソッド 
+
+\begin{DoxyReturn}{Returns}
+int インスタンスが示す 月 情報を返却する。 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+1 $\sim$ 12 
+\end{DoxyNote}
+\mbox{\Hypertarget{classUtility_1_1DateTime_ab94eb2c3eb5d0ba3f6e667a68dab229b}\label{classUtility_1_1DateTime_ab94eb2c3eb5d0ba3f6e667a68dab229b}} 
+\index{Utility::DateTime@{Utility::DateTime}!second@{second}}
+\index{second@{second}!Utility::DateTime@{Utility::DateTime}}
+\doxysubsubsection{\texorpdfstring{second()}{second()}}
+{\footnotesize\ttfamily Utility\+::\+Date\+Time\+::second (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+秒 取得用\+Getterメソッド 
+
+\begin{DoxyReturn}{Returns}
+int インスタンスが示す 秒 情報を返却する。 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+0 $\sim$ 59 
+\end{DoxyNote}
+\mbox{\Hypertarget{classUtility_1_1DateTime_ac188510b4cb9c8b244def8c97d2d838e}\label{classUtility_1_1DateTime_ac188510b4cb9c8b244def8c97d2d838e}} 
+\index{Utility::DateTime@{Utility::DateTime}!to\_str@{to\_str}}
+\index{to\_str@{to\_str}!Utility::DateTime@{Utility::DateTime}}
+\doxysubsubsection{\texorpdfstring{to\_str()}{to\_str()}}
+{\footnotesize\ttfamily Utility\+::\+Date\+Time\+::to\+\_\+str (\begin{DoxyParamCaption}\item[{const char $\ast$}]{format }\end{DoxyParamCaption}) const}
+
+
+
+フォーマット指定した文字列化メソッド 
+
+\begin{DoxyReturn}{Returns}
+int インスタンスが示す マイクロ秒 情報を返却する。 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+出力時のフォーマット指定方法は以下のフォーマットに従う。 ~\newline
+ yyyy 西暦4桁 1970 $\sim$ 2030 ~\newline
+ ~\newline
+ mm 0埋めされた月 01 $\sim$ 12 ~\newline
+ dd 0埋めされた日 01 $\sim$ 31 ~\newline
+ hh 0埋めされた時 00 $\sim$ 23 ~\newline
+ nn 0埋めされた分 00 $\sim$ 59 ~\newline
+ ss 0埋めされた秒 00 $\sim$ 59 ~\newline
+ zzz 0埋めされたミリ秒 000 $\sim$ 999 ~\newline
+ zzzzzz 0埋めされたミリ+マイクロ秒 000000 $\sim$ 999999 
+\end{DoxyNote}
+\mbox{\Hypertarget{classUtility_1_1DateTime_a98c2a13dbad9b7dce0ecda4da7a4fe3a}\label{classUtility_1_1DateTime_a98c2a13dbad9b7dce0ecda4da7a4fe3a}} 
+\index{Utility::DateTime@{Utility::DateTime}!to\_time\_point@{to\_time\_point}}
+\index{to\_time\_point@{to\_time\_point}!Utility::DateTime@{Utility::DateTime}}
+\doxysubsubsection{\texorpdfstring{to\_time\_point()}{to\_time\_point()}}
+{\footnotesize\ttfamily Utility\+::\+Date\+Time\+::to\+\_\+time\+\_\+point (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+time\+\_\+point型への変換メソッド 
+
+\begin{DoxyReturn}{Returns}
+system\+\_\+clock\+::time\+\_\+point 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classUtility_1_1DateTime_a3cf1f1006d10731300f082c3d0a6498e}\label{classUtility_1_1DateTime_a3cf1f1006d10731300f082c3d0a6498e}} 
+\index{Utility::DateTime@{Utility::DateTime}!year@{year}}
+\index{year@{year}!Utility::DateTime@{Utility::DateTime}}
+\doxysubsubsection{\texorpdfstring{year()}{year()}}
+{\footnotesize\ttfamily Utility\+::\+Date\+Time\+::year (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+年 取得用\+Getterメソッド 
+
+\begin{DoxyReturn}{Returns}
+int インスタンスが示す 年 情報を返却する。 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+1970 $\sim$ 2030 
+\end{DoxyNote}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-include/utility/date\+\_\+time.\+hpp\end{DoxyCompactItemize}
+include/utility/\mbox{\hyperlink{date__time_8hpp}{date\+\_\+time.\+hpp}}\end{DoxyCompactItemize}

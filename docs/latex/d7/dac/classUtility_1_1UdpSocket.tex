@@ -1,0 +1,99 @@
+\hypertarget{classUtility_1_1UdpSocket}{}\doxysection{Utility\+::Udp\+Socket Class Reference}
+\label{classUtility_1_1UdpSocket}\index{Utility::UdpSocket@{Utility::UdpSocket}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classUtility_1_1UdpSocket_ad3e4039d681a3c16d02162d601ed8368}{Udp\+Socket}} ()
+\item 
+\mbox{\hyperlink{classUtility_1_1UdpSocket}{Udp\+Socket}} \& \mbox{\hyperlink{classUtility_1_1UdpSocket_a9d9f4297b016427dddff299c26688c96}{set\+\_\+listen\+\_\+port}} (const int \&port)
+\item 
+\mbox{\hyperlink{classUtility_1_1UdpSocket}{Udp\+Socket}} \& \mbox{\hyperlink{classUtility_1_1UdpSocket_a1c2af0d285ec4722151216f711098376}{set\+\_\+target\+\_\+ports}} (const std\+::vector$<$ std\+::tuple$<$ std\+::string, int $>$$>$ \&targets)
+\item 
+\mbox{\hyperlink{classUtility_1_1UdpSocket}{Udp\+Socket}} \& \mbox{\hyperlink{classUtility_1_1UdpSocket_aaea415bcb00511902c852e292e9e1d6a}{set\+\_\+target\+\_\+ports}} (const std\+::vector$<$ int $>$ \&target\+\_\+ports)
+\item 
+\mbox{\hyperlink{classUtility_1_1UdpSocket}{Udp\+Socket}} \& \mbox{\hyperlink{classUtility_1_1UdpSocket_a2eaa0261670af6ffa0f09a721b93ee37}{set\+\_\+timeout}} (const double \&timeout\+\_\+msec)
+\item 
+bool \mbox{\hyperlink{classUtility_1_1UdpSocket_a5b4fb705252520f41f2571a4616ccba7}{try\+\_\+write}} (const char $\ast$buffer, const int \&len) const
+\item 
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{classUtility_1_1UdpSocket_a3193bf818cf39b138886eab958a473a2}{try\+\_\+write}} (const T \&data) const
+\item 
+bool \mbox{\hyperlink{classUtility_1_1UdpSocket_a268b513f04a607e2c7a02ec9761eb30e}{try\+\_\+read\+\_\+string}} (std\+::string \&buffer, const int \&buffer\+\_\+capacity=1024) const
+\item 
+bool \mbox{\hyperlink{classUtility_1_1UdpSocket_a635dd6f0de2382643a21a27b0e5d943a}{try\+\_\+read}} (char $\ast$buffer, const int \&len) const
+\item 
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{classUtility_1_1UdpSocket_a66eb53d17b060c62dd6897f6ae019c4b}{try\+\_\+read}} (T \&data) const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classUtility_1_1UdpSocket_ad3e4039d681a3c16d02162d601ed8368}\label{classUtility_1_1UdpSocket_ad3e4039d681a3c16d02162d601ed8368}} 
+\index{Utility::UdpSocket@{Utility::UdpSocket}!UdpSocket@{UdpSocket}}
+\index{UdpSocket@{UdpSocket}!Utility::UdpSocket@{Utility::UdpSocket}}
+\doxysubsubsection{\texorpdfstring{UdpSocket()}{UdpSocket()}}
+{\footnotesize\ttfamily Utility\+::\+Udp\+Socket\+::\+Udp\+Socket (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+! 送信先アドレス ~\newline
+ 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classUtility_1_1UdpSocket_a9d9f4297b016427dddff299c26688c96}\label{classUtility_1_1UdpSocket_a9d9f4297b016427dddff299c26688c96}} 
+\index{Utility::UdpSocket@{Utility::UdpSocket}!set\_listen\_port@{set\_listen\_port}}
+\index{set\_listen\_port@{set\_listen\_port}!Utility::UdpSocket@{Utility::UdpSocket}}
+\doxysubsubsection{\texorpdfstring{set\_listen\_port()}{set\_listen\_port()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classUtility_1_1UdpSocket}{Udp\+Socket}}\& Utility\+::\+Udp\+Socket\+::set\+\_\+listen\+\_\+port (\begin{DoxyParamCaption}\item[{const int \&}]{port }\end{DoxyParamCaption})}
+
+! 受信ポートを設定 \mbox{\Hypertarget{classUtility_1_1UdpSocket_aaea415bcb00511902c852e292e9e1d6a}\label{classUtility_1_1UdpSocket_aaea415bcb00511902c852e292e9e1d6a}} 
+\index{Utility::UdpSocket@{Utility::UdpSocket}!set\_target\_ports@{set\_target\_ports}}
+\index{set\_target\_ports@{set\_target\_ports}!Utility::UdpSocket@{Utility::UdpSocket}}
+\doxysubsubsection{\texorpdfstring{set\_target\_ports()}{set\_target\_ports()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classUtility_1_1UdpSocket}{Udp\+Socket}}\& Utility\+::\+Udp\+Socket\+::set\+\_\+target\+\_\+ports (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ int $>$ \&}]{target\+\_\+ports }\end{DoxyParamCaption})}
+
+! 送信先ポートを設定(ローカルホスト用) \mbox{\Hypertarget{classUtility_1_1UdpSocket_a1c2af0d285ec4722151216f711098376}\label{classUtility_1_1UdpSocket_a1c2af0d285ec4722151216f711098376}} 
+\index{Utility::UdpSocket@{Utility::UdpSocket}!set\_target\_ports@{set\_target\_ports}}
+\index{set\_target\_ports@{set\_target\_ports}!Utility::UdpSocket@{Utility::UdpSocket}}
+\doxysubsubsection{\texorpdfstring{set\_target\_ports()}{set\_target\_ports()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classUtility_1_1UdpSocket}{Udp\+Socket}}\& Utility\+::\+Udp\+Socket\+::set\+\_\+target\+\_\+ports (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::tuple$<$ std\+::string, int $>$$>$ \&}]{targets }\end{DoxyParamCaption})}
+
+! 送信先アドレス・ポートを設定 \mbox{\Hypertarget{classUtility_1_1UdpSocket_a2eaa0261670af6ffa0f09a721b93ee37}\label{classUtility_1_1UdpSocket_a2eaa0261670af6ffa0f09a721b93ee37}} 
+\index{Utility::UdpSocket@{Utility::UdpSocket}!set\_timeout@{set\_timeout}}
+\index{set\_timeout@{set\_timeout}!Utility::UdpSocket@{Utility::UdpSocket}}
+\doxysubsubsection{\texorpdfstring{set\_timeout()}{set\_timeout()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classUtility_1_1UdpSocket}{Udp\+Socket}}\& Utility\+::\+Udp\+Socket\+::set\+\_\+timeout (\begin{DoxyParamCaption}\item[{const double \&}]{timeout\+\_\+msec }\end{DoxyParamCaption})}
+
+! 受信タイムアウト設定 \mbox{\Hypertarget{classUtility_1_1UdpSocket_a635dd6f0de2382643a21a27b0e5d943a}\label{classUtility_1_1UdpSocket_a635dd6f0de2382643a21a27b0e5d943a}} 
+\index{Utility::UdpSocket@{Utility::UdpSocket}!try\_read@{try\_read}}
+\index{try\_read@{try\_read}!Utility::UdpSocket@{Utility::UdpSocket}}
+\doxysubsubsection{\texorpdfstring{try\_read()}{try\_read()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Utility\+::\+Udp\+Socket\+::try\+\_\+read (\begin{DoxyParamCaption}\item[{char $\ast$}]{buffer,  }\item[{const int \&}]{len }\end{DoxyParamCaption}) const}
+
+! 固定長データをchar$\ast$として受信 \mbox{\Hypertarget{classUtility_1_1UdpSocket_a66eb53d17b060c62dd6897f6ae019c4b}\label{classUtility_1_1UdpSocket_a66eb53d17b060c62dd6897f6ae019c4b}} 
+\index{Utility::UdpSocket@{Utility::UdpSocket}!try\_read@{try\_read}}
+\index{try\_read@{try\_read}!Utility::UdpSocket@{Utility::UdpSocket}}
+\doxysubsubsection{\texorpdfstring{try\_read()}{try\_read()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool Utility\+::\+Udp\+Socket\+::try\+\_\+read (\begin{DoxyParamCaption}\item[{T \&}]{data }\end{DoxyParamCaption}) const}
+
+! 構造体データを受信 \mbox{\Hypertarget{classUtility_1_1UdpSocket_a268b513f04a607e2c7a02ec9761eb30e}\label{classUtility_1_1UdpSocket_a268b513f04a607e2c7a02ec9761eb30e}} 
+\index{Utility::UdpSocket@{Utility::UdpSocket}!try\_read\_string@{try\_read\_string}}
+\index{try\_read\_string@{try\_read\_string}!Utility::UdpSocket@{Utility::UdpSocket}}
+\doxysubsubsection{\texorpdfstring{try\_read\_string()}{try\_read\_string()}}
+{\footnotesize\ttfamily bool Utility\+::\+Udp\+Socket\+::try\+\_\+read\+\_\+string (\begin{DoxyParamCaption}\item[{std\+::string \&}]{buffer,  }\item[{const int \&}]{buffer\+\_\+capacity = {\ttfamily 1024} }\end{DoxyParamCaption}) const}
+
+! 可変長データをstringとして取得 \mbox{\Hypertarget{classUtility_1_1UdpSocket_a5b4fb705252520f41f2571a4616ccba7}\label{classUtility_1_1UdpSocket_a5b4fb705252520f41f2571a4616ccba7}} 
+\index{Utility::UdpSocket@{Utility::UdpSocket}!try\_write@{try\_write}}
+\index{try\_write@{try\_write}!Utility::UdpSocket@{Utility::UdpSocket}}
+\doxysubsubsection{\texorpdfstring{try\_write()}{try\_write()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Utility\+::\+Udp\+Socket\+::try\+\_\+write (\begin{DoxyParamCaption}\item[{const char $\ast$}]{buffer,  }\item[{const int \&}]{len }\end{DoxyParamCaption}) const}
+
+! 固定長データをchar$\ast$データとして送信 \mbox{\Hypertarget{classUtility_1_1UdpSocket_a3193bf818cf39b138886eab958a473a2}\label{classUtility_1_1UdpSocket_a3193bf818cf39b138886eab958a473a2}} 
+\index{Utility::UdpSocket@{Utility::UdpSocket}!try\_write@{try\_write}}
+\index{try\_write@{try\_write}!Utility::UdpSocket@{Utility::UdpSocket}}
+\doxysubsubsection{\texorpdfstring{try\_write()}{try\_write()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool Utility\+::\+Udp\+Socket\+::try\+\_\+write (\begin{DoxyParamCaption}\item[{const T \&}]{data }\end{DoxyParamCaption}) const}
+
+! 構造体データを送信 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/utility/udp\+\_\+socket.\+hpp\end{DoxyCompactItemize}

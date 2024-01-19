@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['process_5ftimer_2ehpp_11',['process_timer.hpp',['../d1/de5/process__timer_8hpp.html',1,'']]],
-  ['processtimer_12',['ProcessTimer',['../d4/dda/classUtility_1_1ProcessTimer.html',1,'Utility']]]
+  ['hour_17',['hour',['../d1/d84/classUtility_1_1DateTime.html#a3ebd229ae647cdf8cdcd4632ec3bc48f',1,'Utility::DateTime']]]
 ];

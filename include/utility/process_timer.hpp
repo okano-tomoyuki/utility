@@ -1,6 +1,6 @@
 /**
  * @file process_timer.hpp
- * @author your name (you@domain.com)
+ * @author okano tomoyuki (tomoyuki.okano@tsuneishi.com)
  * @brief 
  * @version 0.1
  * @date 2024-01-14
@@ -16,6 +16,7 @@
 #include <string>
 #include <sstream>
 #include <iostream>
+#include <stdexcept>
 #include <thread>
 
 #ifdef GLOBAL_USE_BUILD_LIBLARY
@@ -23,21 +24,68 @@
 namespace Utility
 {
 
+/**
+ * @class ProcessTimer
+ * @brief 自動待機/計測用タイマークラス
+ * @note  本クラスは直接コンストラクタを呼び出さず、用途に応じて2種類のFactoryMethodを使用してインスタンス化する。
+ * @n @ref create_auto_wait
+ * @n @ref create_mesure
+ * @n 本ライブラリはSOLIDの原則のうち、単一責任の原則に違反しているため今後変更する可能性がある。
+ * @n @link
+ * https://qiita.com/baby-degu/items/d058a62f145235a0f007
+ * @endlink
+ */
 class ProcessTimer final
 {
-
 using system_clock = std::chrono::system_clock;
-
+public:
+    /** @enum WaitType @brief @ref create_auto_wait における待機仕様 */
+    enum WaitType { BUSSY, SLEEP };
 private:
     int interval_;
     std::string name_;
     system_clock::time_point base_time_;
-
+    enum WaitType wait_type_;
+    explicit ProcessTimer(const std::string& name, const int& interval, const enum WaitType& wait_type=BUSSY);
 public:
-    explicit ProcessTimer(const int& interval);
-    explicit ProcessTimer(const std::string& name);
+
+    /**
+     * @fn create_auto_wait
+     * @brief 一定周期で特定の動作を実行させるための自動待機タイマーを生成するFactory Method
+     * 
+     * @param int interval 動作周期[ミリ秒]
+     * @param enum WaitType wait_type デストラクタ呼出時の待機方法 { BUSSY : スリープせず待機, SLEEP : スリープして待機 }
+     * @return ProcessTimer 自動待機タイマーとしてインスタンス化されたProcessTimerインスタンス
+     */
+    static ProcessTimer create_auto_wait(const int& interval, const enum WaitType& wait_type=BUSSY);
+
+    /**
+     * @fn create_mesure
+     * @brief 処理時間計測用タイマーインスタンス生成するFactory Method
+     * 
+     * @param std::string name 処理時間計測用タイマー名 
+     * @return ProcessTimer 処理時間計測用タイマーとしてインスタンス化されたProcessTimerインスタンス
+     */
+    static ProcessTimer create_mesure(const std::string& name);
+
+    /**
+     * @fn ~ProcessTimer
+     * @brief デストラクタ
+     * @note 
+     */
     ~ProcessTimer();
+
+    /**
+     * @fn restart
+     * @brief 計測開始時刻のリセット処理
+     */
     void restart();
+
+    /**
+     * @fn mesure
+     * @brief 計測開始時刻からの経過時間取得
+     * @return std::string 計測開始時刻からの経過時間文字列 時:分:秒.ミリ秒
+     */
     std::string measure() const;
 };
 
@@ -50,24 +98,35 @@ namespace Utility
 
 class ProcessTimer final
 {
-
 using system_clock = std::chrono::system_clock;
-
+public:
+    enum WaitType { BUSSY, SLEEP };
 private:
     int interval_;
     std::string name_;
     system_clock::time_point base_time_;
+    enum WaitType wait_type_;
+    explicit ProcessTimer(const std::string& name, const int& interval, const enum WaitType& wait_type=BUSSY)
+     : name_(std::string()), interval_(interval), wait_type_(wait_type), base_time_(system_clock::now())
+    {}
 
 public:
-    
-    explicit ProcessTimer(const int& interval) 
-     :  interval_(interval), name_(std::string()), base_time_(system_clock::now())
+
+    static ProcessTimer create_auto_wait(const int& interval, const enum WaitType& wait_type=BUSSY)
     {
+        if(interval<=0)
+        {
+            std::stringstream ss;
+            ss << "Exception throw by " << __func__ << ".";
+            ss << "If you use auto wait timer instance, interval value must be larger than 0."; 
+            throw std::runtime_error(ss.str());
+        }
+        return ProcessTimer(std::string(), interval, wait_type);
     }
 
-    explicit ProcessTimer(const std::string& name) 
-     :  interval_(0), name_(name), base_time_(system_clock::now())
+    static ProcessTimer create_mesure(const std::string& name)
     {
+        return ProcessTimer(name, 0, BUSSY);
     }
 
     ~ProcessTimer()
@@ -77,8 +136,17 @@ public:
 
         if(interval_>0)
         {
-            auto waste = milliseconds{interval_ - duration_cast<milliseconds>(system_clock::now()-base_time_).count()};
-            std::this_thread::sleep_for(waste);
+            if(wait_type_ == BUSSY)
+            {
+                while(true)
+                    if(system_clock::now() > base_time_ + milliseconds{interval_})
+                        break;
+            }
+            else // wait_type_ == SLEEP
+            {
+                auto waste = milliseconds{interval_ - duration_cast<milliseconds>(system_clock::now()-base_time_).count()};
+                std::this_thread::sleep_for(waste);
+            }
         }
         else
             std::cout << name_ << " : mesured time " << measure() << std::endl;
