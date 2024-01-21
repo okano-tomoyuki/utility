@@ -1,10 +1,7 @@
 /**
  * @file ini.hpp
- * @author okano tomoyuki (okano.development@gmail.com)
- * @brief class library of handling ini file like C++ Builder's TIniFile.
- * @note TIniFile class is defined in /include/builder_alternative/System.hpp
- * @note reffered Embacadero Technologies's web site
- * @note inspired by https://github.com/Rookfighter/inifile-cpp.git
+ * @author okano tomoyuki (tomoyuki.okano@tsuneishi.com)
+ * @brief ini ファイルのパースを行う @ref Utility::Ini クラスの定義ヘッダー
  * @version 0.1
  * @date 2024-01-14
  * 
@@ -31,7 +28,14 @@ namespace Utility
 /**
  * @class Ini
  * @brief Iniファイルパース用クラス
- * @note 
+ * @note 本クラス作成に当たり以下のサイトを参考にした。
+ * @n クロスプラットフォームのini ファイルパーサ
+ * @n @link https://github.com/Rookfighter/inifile-cpp.git @endlink
+ * @n 本家と異なる点は以下のとおり。
+ * @n 読込時に全セクション・全フィールドを読み込まず、read~ やwrite~ でそれぞれ指定したものだけ読み取れるようにする。
+ * @n 上記に伴い対象のセクション・フィールドがiniファイル中に存在しなかった場合第3引数で指定したデフォルト値を読み取る。
+ * 
+ * @example test/utility/ini/test_ini.cpp
  */
 class Ini
 {

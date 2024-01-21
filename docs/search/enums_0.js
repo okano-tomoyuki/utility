@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['color_144',['Color',['../de/d49/classUtility_1_1Logger.html#ad62a3a76b2668dfcc580cb1389ad84d4',1,'Utility::Logger']]]
+  ['axis_164',['Axis',['../d7/da6/classUtility_1_1DataFrame.html#a9c75ea18c1af60e79127341f0306b808',1,'Utility::DataFrame']]]
 ];

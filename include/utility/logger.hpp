@@ -1,7 +1,7 @@
 /**
  * @file logger.hpp
- * @author okano tomoyuki (okano.development@gmail.com)
- * @brief class library for csv logging or console debug.
+ * @author okano tomoyuki (tomoyuki.okano@tsuneishi.com)
+ * @brief CSV 形式によるロギングを行う @ref Utility::Logger クラスの定義ヘッダー
  * @version 0.1
  * @date 2024-01-14
  * 

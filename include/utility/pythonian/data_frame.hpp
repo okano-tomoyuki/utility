@@ -1,7 +1,7 @@
 /**
- * @file utility/pythonian/data_frame.hpp
- * @author okano tomoyuki (okano.development@gmail.com)
- * @brief class library for python's data frame handling.
+ * @file data_frame.hpp
+ * @author okano tomoyuki (tomoyuki.okano@tsuneishi.com)
+ * @brief 表形式データを取り扱う @ref Utility::DataFrame クラスの定義ヘッダー
  * @version 0.1
  * @date 2024-01-14
  * 
@@ -30,7 +30,14 @@ namespace Utility
 /**
  * @class DataFrame
  * @brief Pythonにおける表形式データハンドリング用ライブラリPandasの代替ライブラリ
- * 
+ * @note 本家リンクは下記参照のこと
+ * @n @link
+ * https://pandas.pydata.org/pandas-docs/stable/reference/index.html
+ * @endlink
+ * @n 現状は Factory Method @ref read_csv からのみインスタンス化可能にしてCSVデータ読込にのみ特化させている。
+ * @n 本家と異なり各列の型情報を保持するようにはしていない。各行をtuple化したvectorコンテナとする実装も考えたが、現状は対応させていない。
+ * @n また、基本的には静的データの解析に用いることを前提で本クラスは作成しており、全行データをDataFrameとして取り込んだ後、
+ * @n 加工して使用することを想定している。高速な読取処理については今後も本クラスで対応する予定はないため要望に応じて別クラスを作成する。
  * 
  */
 class DataFrame final
@@ -51,7 +58,11 @@ private:
     {}
 
 public:
+    
+    /** @enum Axis @brief @ref to_vector メソッドで指定する軸 */
     enum Axis   { COLUMN, ROW    };
+
+    /** @enum Format @brief @ref describe メソッドで指定する出力フォーマット */
     enum Format { SIMPLE, PRETTY };
 
     /**
@@ -175,7 +186,7 @@ public:
      * @brief 列・行いずれかを指定の型の1次元ベクターに変換するメソッド
      * 
      * @tparam T 
-     * @param enum Axis axis 行・列 { ROW, COLUMN } 
+     * @param enum Axis axis ベクター化したい軸 { ROW : 行, COLUMN : 列 } 
      * @return std::vector<T> 
      */
     template<typename T>

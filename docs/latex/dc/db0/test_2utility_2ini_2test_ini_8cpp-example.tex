@@ -1,0 +1,68 @@
+\hypertarget{test_2utility_2ini_2test_ini_8cpp-example}{}\doxysection{test/utility/ini/test\+\_\+ini.\+cpp}
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <cassert>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{ini_8hpp}{utility/ini.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int} main()}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    \textcolor{keyword}{using} \mbox{\hyperlink{classUtility_1_1Ini}{Utility::Ini}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keyword}{const} std::string INI\_FILE\_PATH(\textcolor{stringliteral}{"{}example.ini"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{comment}{// テスト用iniファイルの作成}}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{        \textcolor{keyword}{const} \textcolor{keywordtype}{char}* sample\_ini\_string = }
+\DoxyCodeLine{            \textcolor{stringliteral}{"{}[SECTION\_A]\(\backslash\)n"{}}}
+\DoxyCodeLine{            \textcolor{stringliteral}{"{}INTEGER\_FIELD = 1000\(\backslash\)n"{}}}
+\DoxyCodeLine{            \textcolor{stringliteral}{"{}DOUBLE\_FIELD = 10.5\(\backslash\)n"{}}}
+\DoxyCodeLine{            \textcolor{stringliteral}{"{}STRING\_FIELD = hoge\(\backslash\)n"{}}}
+\DoxyCodeLine{            \textcolor{stringliteral}{"{}BOOLEAN\_FIELD = true\(\backslash\)n"{}}}
+\DoxyCodeLine{            \textcolor{stringliteral}{"{}[SECTION\_B]\(\backslash\)n"{}}}
+\DoxyCodeLine{            \textcolor{stringliteral}{"{}INTEGER\_FIELD = 150\(\backslash\)n"{}}}
+\DoxyCodeLine{            \textcolor{stringliteral}{"{}DOUBLE\_FIELD = -\/2.466\(\backslash\)n"{}}}
+\DoxyCodeLine{            \textcolor{stringliteral}{"{}STRING\_FIELD = fuga\(\backslash\)n"{}}}
+\DoxyCodeLine{            \textcolor{stringliteral}{"{}BOOLEAN\_FIELD = FALSE\(\backslash\)n"{}}}
+\DoxyCodeLine{            \textcolor{stringliteral}{"{}[SECTION\_C]\(\backslash\)n"{}}}
+\DoxyCodeLine{            \textcolor{stringliteral}{"{}INTEGER\_FIELD = -\/30\(\backslash\)n"{}}}
+\DoxyCodeLine{            \textcolor{stringliteral}{"{}DOUBLE\_FIELD = 2.3338\(\backslash\)n"{}}}
+\DoxyCodeLine{            \textcolor{stringliteral}{"{}STRING\_FIELD = piyo\(\backslash\)n"{}}}
+\DoxyCodeLine{            \textcolor{stringliteral}{"{}BOOLEAN\_FIELD = tRue\(\backslash\)n"{}};}
+\DoxyCodeLine{        std::ofstream ofs(INI\_FILE\_PATH);}
+\DoxyCodeLine{        ofs << sample\_ini\_string;}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keyword}{auto} ini = Ini(INI\_FILE\_PATH);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{comment}{// 読込テスト 該当セクション・フィールド有の場合}}
+\DoxyCodeLine{    assert(1000   == ini.read\_int(\textcolor{stringliteral}{"{}SECTION\_A"{}},     \textcolor{stringliteral}{"{}INTEGER\_FIELD"{}},  -\/999));}
+\DoxyCodeLine{    assert(10.5   == ini.read\_double(\textcolor{stringliteral}{"{}SECTION\_A"{}},  \textcolor{stringliteral}{"{}DOUBLE\_FIELD"{}}, -\/999.9));}
+\DoxyCodeLine{    assert(\textcolor{stringliteral}{"{}hoge"{}} == ini.read\_str(\textcolor{stringliteral}{"{}SECTION\_A"{}},     \textcolor{stringliteral}{"{}STRING\_FIELD"{}},     \textcolor{stringliteral}{"{}"{}}));}
+\DoxyCodeLine{    assert(\textcolor{keyword}{true}   == ini.read\_bool(\textcolor{stringliteral}{"{}SECTION\_A"{}},    \textcolor{stringliteral}{"{}BOOLEAN\_FIELD"{}}, \textcolor{keyword}{false}));}
+\DoxyCodeLine{    assert(150    == ini.read\_int(\textcolor{stringliteral}{"{}SECTION\_B"{}},     \textcolor{stringliteral}{"{}INTEGER\_FIELD"{}},  -\/999));}
+\DoxyCodeLine{    assert(-\/2.466 == ini.read\_double(\textcolor{stringliteral}{"{}SECTION\_B"{}},  \textcolor{stringliteral}{"{}DOUBLE\_FIELD"{}}, -\/999.9));}
+\DoxyCodeLine{    assert(\textcolor{stringliteral}{"{}fuga"{}} == ini.read\_str(\textcolor{stringliteral}{"{}SECTION\_B"{}},     \textcolor{stringliteral}{"{}STRING\_FIELD"{}},     \textcolor{stringliteral}{"{}"{}}));}
+\DoxyCodeLine{    assert(\textcolor{keyword}{false}  == ini.read\_bool(\textcolor{stringliteral}{"{}SECTION\_B"{}},    \textcolor{stringliteral}{"{}BOOLEAN\_FIELD"{}},  \textcolor{keyword}{true}));}
+\DoxyCodeLine{    assert(-\/30    == ini.read\_int(\textcolor{stringliteral}{"{}SECTION\_C"{}},     \textcolor{stringliteral}{"{}INTEGER\_FIELD"{}},  -\/999));}
+\DoxyCodeLine{    assert(-\/2.338 == ini.read\_double(\textcolor{stringliteral}{"{}SECTION\_C"{}},  \textcolor{stringliteral}{"{}DOUBLE\_FIELD"{}}, -\/999.9));}
+\DoxyCodeLine{    assert(\textcolor{stringliteral}{"{}piyo"{}} == ini.read\_str(\textcolor{stringliteral}{"{}SECTION\_C"{}},     \textcolor{stringliteral}{"{}STRING\_FIELD"{}},     \textcolor{stringliteral}{"{}"{}}));}
+\DoxyCodeLine{    assert(\textcolor{keyword}{true}   == ini.read\_bool(\textcolor{stringliteral}{"{}SECTION\_C"{}},    \textcolor{stringliteral}{"{}BOOLEAN\_FIELD"{}}, \textcolor{keyword}{false}));}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{comment}{// 読込テスト 該当セクション・フィールド有の場合}}
+\DoxyCodeLine{    assert(-\/999   == ini.read\_int(\textcolor{stringliteral}{"{}SECTION\_D"{}},     \textcolor{stringliteral}{"{}INTEGER\_FIELD"{}},  -\/999));}
+\DoxyCodeLine{    assert(-\/999.9 == ini.read\_double(\textcolor{stringliteral}{"{}SECTION\_D"{}},  \textcolor{stringliteral}{"{}DOUBLE\_FIELD"{}}, -\/999.9));}
+\DoxyCodeLine{    assert(\textcolor{stringliteral}{"{}"{}}     == ini.read\_str(\textcolor{stringliteral}{"{}SECTION\_D"{}},     \textcolor{stringliteral}{"{}STRING\_FIELD"{}},     \textcolor{stringliteral}{"{}"{}}));}
+\DoxyCodeLine{    assert(\textcolor{keyword}{true}   == ini.read\_bool(\textcolor{stringliteral}{"{}SECTION\_D"{}},    \textcolor{stringliteral}{"{}BOOLEAN\_FIELD"{}}, \textcolor{keyword}{false}));}
+\DoxyCodeLine{    assert(-\/999   == ini.read\_int(\textcolor{stringliteral}{"{}SECTION\_A"{}},     \textcolor{stringliteral}{"{}\_INTEGER\_FIELD\_"{}},  -\/999));}
+\DoxyCodeLine{    assert(-\/999.9 == ini.read\_double(\textcolor{stringliteral}{"{}SECTION\_A"{}},  \textcolor{stringliteral}{"{}\_DOUBLE\_FIELD\_"{}}, -\/999.9));}
+\DoxyCodeLine{    assert(\textcolor{stringliteral}{"{}"{}}     == ini.read\_str(\textcolor{stringliteral}{"{}SECTION\_A"{}},     \textcolor{stringliteral}{"{}\_STRING\_FIELD\_"{}},     \textcolor{stringliteral}{"{}"{}}));}
+\DoxyCodeLine{    assert(\textcolor{keyword}{true}   == ini.read\_bool(\textcolor{stringliteral}{"{}SECTION\_A"{}},    \textcolor{stringliteral}{"{}\_BOOLEAN\_FIELD\_"{}}, \textcolor{keyword}{false}));}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+ 

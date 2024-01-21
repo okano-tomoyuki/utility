@@ -1,0 +1,75 @@
+\hypertarget{test_2utility_2shared_memory_2test_shared_memory_2_8cpp-example}{}\doxysection{test/utility/shared\+\_\+memory/test\+\_\+shared\+\_\+memory\+\_\+2.\+cpp}
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <thread>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <chrono>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <cstring>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <csignal>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}./sample\_data.hpp"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{date__time_8hpp}{utility/date\_time.hpp}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{process__timer_8hpp}{utility/process\_timer.hpp}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{shared__memory_8hpp}{utility/shared\_memory.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{// シグナル管理用namespace}}
+\DoxyCodeLine{\textcolor{keyword}{namespace }Signal}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\textcolor{comment}{// 終了シグナル 1:終了 0:継続}}
+\DoxyCodeLine{\textcolor{keyword}{static} \textcolor{keywordtype}{int} end\_sign = 0;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{// 終了シグナルキャッチ時のハンドラー}}
+\DoxyCodeLine{\textcolor{keywordtype}{void} abort\_handler(\textcolor{keywordtype}{int} sig)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    end\_sign = 1;}
+\DoxyCodeLine{    \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int} main()}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    \textcolor{keyword}{using} \mbox{\hyperlink{classUtility_1_1SharedMemory}{Utility::SharedMemory}};}
+\DoxyCodeLine{    \textcolor{keyword}{using} \mbox{\hyperlink{classUtility_1_1DateTime}{Utility::DateTime}};}
+\DoxyCodeLine{    \textcolor{keyword}{using} \mbox{\hyperlink{classUtility_1_1ProcessTimer}{Utility::ProcessTimer}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{comment}{// キーボード割り込み「Ctrl + C」でSignal::abort\_handlerに通知}}
+\DoxyCodeLine{    \textcolor{keywordflow}{if}(signal(SIGINT, Signal::abort\_handler) == SIG\_ERR)}
+\DoxyCodeLine{        exit(1);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{comment}{// 共有メモリインスタンスを生成}}
+\DoxyCodeLine{    \textcolor{keyword}{auto} sm = SharedMemory(SM\_DATA\_PATH, \textcolor{keyword}{sizeof}(Sample));}
+\DoxyCodeLine{    }
+\DoxyCodeLine{    \textcolor{comment}{// 共有メモリの構造体ポインタ変数を取得}}
+\DoxyCodeLine{    \textcolor{keyword}{auto} sample\_ptr = sm.get<Sample>();}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{comment}{// 終了をキャッチするまで継続}}
+\DoxyCodeLine{    \textcolor{keywordflow}{while}(!Signal::end\_sign)}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{        \textcolor{keyword}{auto} pt = ProcessTimer::create\_auto\_wait(500);}
+\DoxyCodeLine{        \textcolor{keywordflow}{if}(sm.wait\_for\_single\_object(sm.mutex(), 30))}
+\DoxyCodeLine{        \{}
+\DoxyCodeLine{            std::cout << \textcolor{stringliteral}{"{}read  success"{}} << std::endl;}
+\DoxyCodeLine{}
+\DoxyCodeLine{            sample\_ptr-\/>d\_data += 1.1;}
+\DoxyCodeLine{            std::strcpy(sample\_ptr-\/>update\_time, DateTime().to\_str(\textcolor{stringliteral}{"{}yyyy-\/mm-\/ddThh:nn:ss.zzzZ"{}}).c\_str());}
+\DoxyCodeLine{}
+\DoxyCodeLine{            std::cout << \textcolor{stringliteral}{"{}update\_time : "{}} << sample\_ptr-\/>update\_time << std::endl;}
+\DoxyCodeLine{            std::cout << \textcolor{stringliteral}{"{}d\_data      : "{}} << sample\_ptr-\/>d\_data << std::endl;}
+\DoxyCodeLine{}
+\DoxyCodeLine{            std::cout << \textcolor{stringliteral}{"{}write success"{}} << std::endl;}
+\DoxyCodeLine{}
+\DoxyCodeLine{            sm.release\_mutex(sm.mutex());}
+\DoxyCodeLine{        \}}
+\DoxyCodeLine{        \textcolor{keywordflow}{else}}
+\DoxyCodeLine{        \{}
+\DoxyCodeLine{            std::cout << \textcolor{stringliteral}{"{}read  failed"{}} << std::endl;}
+\DoxyCodeLine{            std::cout << \textcolor{stringliteral}{"{}write failed"{}} << std::endl;}
+\DoxyCodeLine{        \}}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+ 

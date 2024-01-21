@@ -1,0 +1,23 @@
+\hypertarget{test_2utility_2process_timer_2test_process_timer_8cpp-example}{}\doxysection{test/utility/process\+\_\+timer/test\+\_\+process\+\_\+timer.\+cpp}
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{date__time_8hpp}{utility/date\_time.hpp}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{process__timer_8hpp}{utility/process\_timer.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int} main()}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    \textcolor{keyword}{using} \mbox{\hyperlink{classUtility_1_1DateTime}{Utility::DateTime}};}
+\DoxyCodeLine{    \textcolor{keyword}{using} \mbox{\hyperlink{classUtility_1_1ProcessTimer}{Utility::ProcessTimer}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{    std::cout << DateTime().to\_str(\textcolor{stringliteral}{"{}hh:nn:ss.zzz"{}}) << std::endl;}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{        \textcolor{keyword}{auto} mesurement\_timer = ProcessTimer::create\_mesure(\textcolor{stringliteral}{"{}AAAA"{}});}
+\DoxyCodeLine{        \textcolor{keyword}{auto} auto\_wait\_timer  = ProcessTimer::create\_auto\_wait(3000);}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{    std::cout << DateTime().to\_str(\textcolor{stringliteral}{"{}hh:nn:ss.zzz"{}}) << std::endl;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+ 

@@ -41,8 +41,20 @@ void {\bfseries write\+\_\+str} (const std\+::string \&section\+\_\+name, const 
 Iniファイルパース用クラス 
 
 \begin{DoxyNote}{Note}
-
+本クラス作成に当たり以下のサイトを参考にした。 ~\newline
+ クロスプラットフォームのini ファイルパーサ ~\newline
+ \mbox{\hyperlink{}{https\+://github.\+com/\+Rookfighter/inifile-\/cpp.\+git}} ~\newline
+ 本家と異なる点は以下のとおり。 ~\newline
+ 読込時に全セクション・全フィールドを読み込まず、read$\sim$ やwrite$\sim$ でそれぞれ指定したものだけ読み取れるようにする。 ~\newline
+ 上記に伴い対象のセクション・フィールドがiniファイル中に存在しなかった場合第3引数で指定したデフォルト値を読み取る。 
 \end{DoxyNote}
+\begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{test_2utility_2ini_2test_ini_8cpp-example}{test/utility/ini/test\+\_\+ini.\+cpp}}.\end{Desc}
+
+
+Definition at line 40 of file ini.\+hpp.
+
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
@@ -50,7 +62,7 @@ Iniファイルパース用クラス
 \index{Utility::Ini@{Utility::Ini}!Ini@{Ini}}
 \index{Ini@{Ini}!Utility::Ini@{Utility::Ini}}
 \doxysubsubsection{\texorpdfstring{Ini()}{Ini()}}
-{\footnotesize\ttfamily Utility\+::\+Ini\+::\+Ini (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+\_\+path }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Utility\+::\+Ini\+::\+Ini (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+\_\+path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -61,6 +73,10 @@ Iniファイルパース用クラス
 {\em std\+::string} & file\+\_\+path iniファイルへのパス \\
 \hline
 \end{DoxyParams}
+
+
+Definition at line 61 of file ini.\+hpp.
+
 
 
 \doxysubsection{Member Function Documentation}

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['get_105',['get',['../dd/d3c/classUtility_1_1SharedMemory.html#a2f9227a678a5b7c190d4d8a3752b4f97',1,'Utility::SharedMemory']]]
+  ['format_108',['format',['../de/d49/classUtility_1_1Logger.html#a2c88cbb7939efe4cdda556579f8b2152',1,'Utility::Logger']]],
+  ['from_5fstr_109',['from_str',['../d1/d84/classUtility_1_1DateTime.html#aeec580fe7e23a0b03fcef5086ea0aea4',1,'Utility::DateTime']]]
 ];

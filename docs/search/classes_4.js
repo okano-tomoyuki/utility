@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['logger_76',['Logger',['../de/d49/classUtility_1_1Logger.html',1,'Utility']]]
+  ['processtimer_87',['ProcessTimer',['../d4/dda/classUtility_1_1ProcessTimer.html',1,'Utility']]]
 ];

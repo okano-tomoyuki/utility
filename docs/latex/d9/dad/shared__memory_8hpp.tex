@@ -2,7 +2,7 @@
 \label{shared__memory_8hpp}\index{include/utility/shared\_memory.hpp@{include/utility/shared\_memory.hpp}}
 
 
-cross-\/plattform class library for handling shared memory object.  
+共有メモリを管理する \mbox{\hyperlink{classUtility_1_1SharedMemory}{Utility\+::\+Shared\+Memory}} クラスの定義ヘッダー  
 
 
 {\ttfamily \#include $<$iostream$>$}\newline
@@ -28,23 +28,21 @@ class \mbox{\hyperlink{classUtility_1_1SharedMemory}{Utility\+::\+Shared\+Memory
 \begin{DoxyCompactItemize}
 \item 
  \mbox{\hyperlink{namespaceUtility}{Utility}}
-\begin{DoxyCompactList}\small\item\em インフラストラクチャー層を中心に関係各者が再利用できるクラス、関数を定義する名前空間 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em 再利用性の高い定数・関数・クラス等を管理する名前空間 \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-cross-\/plattform class library for handling shared memory object. 
+共有メモリを管理する \mbox{\hyperlink{classUtility_1_1SharedMemory}{Utility\+::\+Shared\+Memory}} クラスの定義ヘッダー 
 
 \begin{DoxyAuthor}{Author}
-okano tomoyuki (\href{mailto:okano.development@gmail.com}{\texttt{ okano.\+development@gmail.\+com}}) 
+okano tomoyuki (\href{mailto:tomoyuki.okano@tsuneishi.com}{\texttt{ tomoyuki.\+okano@tsuneishi.\+com}}) 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
-highly inspired by \href{https://github.com/husty530/mmap-template}{\texttt{ https\+://github.\+com/husty530/mmap-\/template}} 
-
-reffered system v shared memory man page in ubuntu \href{https://manpages.ubuntu.com/manpages/focal/ja/man2/shmdt.2.html}{\texttt{ https\+://manpages.\+ubuntu.\+com/manpages/focal/ja/man2/shmdt.\+2.\+html}} 
-
-reffered system v semaphore man page in ubuntu \href{https://manpages.ubuntu.com/manpages/focal/ja/man2/semget.2.html}{\texttt{ https\+://manpages.\+ubuntu.\+com/manpages/focal/ja/man2/semget.\+2.\+html}} 
-
-create 32bit hash from string \href{https://norizn.hatenablog.com/entry/2020/10/18/145628}{\texttt{ https\+://norizn.\+hatenablog.\+com/entry/2020/10/18/145628}} 
+本クラス作成にあたって参考にしたリンク集 ~\newline
+ Memory Mapped による\+PIC関連 \mbox{\hyperlink{}{https\+://github.\+com/husty530/mmap-\/template}} ~\newline
+ System V系の共有メモリ\+PIC関連 \mbox{\hyperlink{}{https\+://manpages.\+ubuntu.\+com/manpages/focal/ja/man2/shmdt.\+2.\+html}} ~\newline
+ System V系のセマフォ関連 \mbox{\hyperlink{}{https\+://manpages.\+ubuntu.\+com/manpages/focal/ja/man2/semget.\+2.\+html}} ~\newline
+ ファイルディスクリプタを必要としない32bitハッシュ値生成関連 \mbox{\hyperlink{}{https\+://norizn.\+hatenablog.\+com/entry/2020/10/18/145628}} 
 \end{DoxyNote}
 \begin{DoxyVersion}{Version}
 0.\+1 

@@ -2,7 +2,7 @@
 \label{classUtility_1_1Logger}\index{Utility::Logger@{Utility::Logger}}
 
 
-C\+SV ファイルにロギングするためのライブラリ  
+CSV ファイルにロギングするためのライブラリ  
 
 
 
@@ -14,12 +14,12 @@ C\+SV ファイルにロギングするためのライブラリ
 \item 
 \mbox{\Hypertarget{classUtility_1_1Logger_ad62a3a76b2668dfcc580cb1389ad84d4}\label{classUtility_1_1Logger_ad62a3a76b2668dfcc580cb1389ad84d4}} 
 enum \mbox{\hyperlink{classUtility_1_1Logger_ad62a3a76b2668dfcc580cb1389ad84d4}{Color}} \{ \newline
-{\bfseries W\+H\+I\+TE}, 
-{\bfseries Y\+E\+L\+L\+OW}, 
-{\bfseries G\+R\+E\+EN}, 
-{\bfseries B\+L\+UE}, 
-\newline
-{\bfseries R\+ED}
+{\bfseries WHITE}
+, {\bfseries YELLOW}
+, {\bfseries GREEN}
+, {\bfseries BLUE}
+, \newline
+{\bfseries RED}
  \}
 \begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classUtility_1_1Logger_a3cf9193db1e0f37b09cc893bf857ae6c}{print}} でコンソール出力する際の文字色 \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions}
@@ -45,7 +45,7 @@ enum \mbox{\hyperlink{classUtility_1_1Logger_ad62a3a76b2668dfcc580cb1389ad84d4}{
 \mbox{\Hypertarget{classUtility_1_1Logger_ac95f3babdccb52cfa2ae0cf5703a6d5c}\label{classUtility_1_1Logger_ac95f3babdccb52cfa2ae0cf5703a6d5c}} 
 {\footnotesize template$<$typename T , typename... Remain$>$ }\\\mbox{\hyperlink{classUtility_1_1Logger}{Logger}} \& {\bfseries add\+\_\+line} (const std\+::vector$<$ T $>$ \&val, const Remain \&... remain)
 \item 
-\mbox{\hyperlink{classUtility_1_1Logger}{Logger}} \& \mbox{\hyperlink{classUtility_1_1Logger_a3cf9193db1e0f37b09cc893bf857ae6c}{print}} (const enum \mbox{\hyperlink{classUtility_1_1Logger_ad62a3a76b2668dfcc580cb1389ad84d4}{Color}} \&color=W\+H\+I\+TE)
+\mbox{\hyperlink{classUtility_1_1Logger}{Logger}} \& \mbox{\hyperlink{classUtility_1_1Logger_a3cf9193db1e0f37b09cc893bf857ae6c}{print}} (const enum \mbox{\hyperlink{classUtility_1_1Logger_ad62a3a76b2668dfcc580cb1389ad84d4}{Color}} \&color=WHITE)
 \begin{DoxyCompactList}\small\item\em ロギングバッファーコンソール出力メソッド \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classUtility_1_1Logger_a2965c0308cae1134d8d679775a728ca7}\label{classUtility_1_1Logger_a2965c0308cae1134d8d679775a728ca7}} 
 \mbox{\hyperlink{classUtility_1_1Logger}{Logger}} \& {\bfseries flush} ()
@@ -82,14 +82,18 @@ std\+::string {\bfseries get\+\_\+buffer} () const
 
 
 \doxysubsection{Detailed Description}
-C\+SV ファイルにロギングするためのライブラリ 
+CSV ファイルにロギングするためのライブラリ 
+
+Definition at line 31 of file logger.\+hpp.
+
+
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classUtility_1_1Logger_a0ecf03480f5f20c17bb9833343d93f7e}\label{classUtility_1_1Logger_a0ecf03480f5f20c17bb9833343d93f7e}} 
 \index{Utility::Logger@{Utility::Logger}!Logger@{Logger}}
 \index{Logger@{Logger}!Utility::Logger@{Utility::Logger}}
 \doxysubsubsection{\texorpdfstring{Logger()}{Logger()}}
-{\footnotesize\ttfamily Utility\+::\+Logger\+::\+Logger (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{separator = {\ttfamily \char`\"{}~\char`\"{}},  }\item[{const std\+::string \&}]{new\+\_\+line = {\ttfamily \char`\"{}\textbackslash{}n\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+{\footnotesize\ttfamily Utility\+::\+Logger\+::\+Logger (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{separator = {\ttfamily \char`\"{}~\char`\"{}},  }\item[{const std\+::string \&}]{new\+\_\+line = {\ttfamily \char`\"{}\textbackslash{}n\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
 
 
 
@@ -104,13 +108,17 @@ C\+SV ファイルにロギングするためのライブラリ
 \end{DoxyParams}
 
 
+Definition at line 49 of file logger.\+hpp.
+
+
+
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classUtility_1_1Logger_a2c88cbb7939efe4cdda556579f8b2152}\label{classUtility_1_1Logger_a2c88cbb7939efe4cdda556579f8b2152}} 
 \index{Utility::Logger@{Utility::Logger}!format@{format}}
 \index{format@{format}!Utility::Logger@{Utility::Logger}}
 \doxysubsubsection{\texorpdfstring{format()}{format()}}
 {\footnotesize\ttfamily template$<$typename... Args$>$ \\
-Utility\+::\+Logger\+::format (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{format,  }\item[{const Args \&...}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+Utility\+::\+Logger\+::format (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{format,  }\item[{const Args \&...}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
 
 
 \begin{DoxyTemplParams}{Template Parameters}
@@ -127,11 +135,15 @@ Utility\+::\+Logger\+::format (\begin{DoxyParamCaption}\item[{const std\+::strin
 \begin{DoxyReturn}{Returns}
 std\+::string 
 \end{DoxyReturn}
+
+
+Definition at line 192 of file logger.\+hpp.
+
 \mbox{\Hypertarget{classUtility_1_1Logger_a3cf9193db1e0f37b09cc893bf857ae6c}\label{classUtility_1_1Logger_a3cf9193db1e0f37b09cc893bf857ae6c}} 
 \index{Utility::Logger@{Utility::Logger}!print@{print}}
 \index{print@{print}!Utility::Logger@{Utility::Logger}}
 \doxysubsubsection{\texorpdfstring{print()}{print()}}
-{\footnotesize\ttfamily Utility\+::\+Logger\+::print (\begin{DoxyParamCaption}\item[{const enum \mbox{\hyperlink{classUtility_1_1Logger_ad62a3a76b2668dfcc580cb1389ad84d4}{Color}} \&}]{color = {\ttfamily WHITE} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Utility\+::\+Logger\+::print (\begin{DoxyParamCaption}\item[{const enum \mbox{\hyperlink{classUtility_1_1Logger_ad62a3a76b2668dfcc580cb1389ad84d4}{Color}} \&}]{color = {\ttfamily WHITE} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -139,9 +151,13 @@ std\+::string
 
 
 \begin{DoxyParams}{Parameters}
-{\em enum} & Color color 出力文字色 \{ W\+H\+I\+TE \+: 白, Y\+E\+L\+L\+OW \+: 黄, G\+R\+E\+EN \+: 緑, R\+ED \+: 赤 \} \\
+{\em enum} & Color color 出力文字色 \{ WHITE \+: 白, YELLOW \+: 黄, GREEN \+: 緑, RED \+: 赤 \} \\
 \hline
 \end{DoxyParams}
+
+
+Definition at line 172 of file logger.\+hpp.
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

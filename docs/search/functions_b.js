@@ -1,10 +1,12 @@
 var searchData=
 [
-  ['to_5fcsv_129',['to_csv',['../d7/da6/classUtility_1_1DataFrame.html#a542b8401bce85917bb5d1af2e39b3c07',1,'Utility::DataFrame']]],
-  ['to_5fstr_130',['to_str',['../d1/d84/classUtility_1_1DateTime.html#ac188510b4cb9c8b244def8c97d2d838e',1,'Utility::DateTime']]],
-  ['to_5ftime_5fpoint_131',['to_time_point',['../d1/d84/classUtility_1_1DateTime.html#a98c2a13dbad9b7dce0ecda4da7a4fe3a',1,'Utility::DateTime']]],
-  ['to_5fvector_132',['to_vector',['../d7/da6/classUtility_1_1DataFrame.html#aeeb8f00435b2a80da7ef15f6260b087c',1,'Utility::DataFrame']]],
-  ['try_5fread_133',['try_read',['../d7/dac/classUtility_1_1UdpSocket.html#a635dd6f0de2382643a21a27b0e5d943a',1,'Utility::UdpSocket::try_read(char *buffer, const int &amp;len) const'],['../d7/dac/classUtility_1_1UdpSocket.html#a66eb53d17b060c62dd6897f6ae019c4b',1,'Utility::UdpSocket::try_read(T &amp;data) const']]],
-  ['try_5fread_5fstring_134',['try_read_string',['../d7/dac/classUtility_1_1UdpSocket.html#a268b513f04a607e2c7a02ec9761eb30e',1,'Utility::UdpSocket']]],
-  ['try_5fwrite_135',['try_write',['../d7/dac/classUtility_1_1UdpSocket.html#a5b4fb705252520f41f2571a4616ccba7',1,'Utility::UdpSocket::try_write(const char *buffer, const int &amp;len) const'],['../d7/dac/classUtility_1_1UdpSocket.html#a3193bf818cf39b138886eab958a473a2',1,'Utility::UdpSocket::try_write(const T &amp;data) const']]]
+  ['radians_125',['radians',['../da/d1f/namespaceUtility.html#ae65a1d70383807ac4c2c538934104ee7',1,'Utility']]],
+  ['range_126',['range',['../da/d1f/namespaceUtility.html#a70e6233ba2ebfa6161862a8880036d12',1,'Utility::range(const int &amp;end) noexcept'],['../da/d1f/namespaceUtility.html#a2420d72ee5b21ec3323c3e729a943fe9',1,'Utility::range(const int &amp;start, const int &amp;end, const int &amp;interval=1) noexcept']]],
+  ['read_5fbool_127',['read_bool',['../d0/d68/classUtility_1_1Ini.html#aac0e3596d67c30f2fdff80ce5f8bc948',1,'Utility::Ini']]],
+  ['read_5fcsv_128',['read_csv',['../d7/da6/classUtility_1_1DataFrame.html#afb2c2a0c27d4ad6056b3137d5d28201e',1,'Utility::DataFrame']]],
+  ['read_5fdouble_129',['read_double',['../d0/d68/classUtility_1_1Ini.html#aeb34cf5599148730b8ba5c86992e82a4',1,'Utility::Ini']]],
+  ['read_5fint_130',['read_int',['../d0/d68/classUtility_1_1Ini.html#a55fa73e5bdb8ceb689f80a873d5c2089',1,'Utility::Ini']]],
+  ['read_5fstr_131',['read_str',['../d0/d68/classUtility_1_1Ini.html#a4ac65dc11df35d1a32a7caebfe81950b',1,'Utility::Ini']]],
+  ['release_5fmutex_132',['release_mutex',['../dd/d3c/classUtility_1_1SharedMemory.html#aa4ce88e75b08dc11daf6fa6ceb6d7fc3',1,'Utility::SharedMemory']]],
+  ['restart_133',['restart',['../d4/dda/classUtility_1_1ProcessTimer.html#a8575fbd3a2733d8b049923973d236e8d',1,'Utility::ProcessTimer']]]
 ];

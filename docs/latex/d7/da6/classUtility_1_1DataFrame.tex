@@ -13,15 +13,15 @@ Pythonにおける表形式データハンドリング用ライブラリ\+Pandas
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{classUtility_1_1DataFrame_a9c75ea18c1af60e79127341f0306b808}\label{classUtility_1_1DataFrame_a9c75ea18c1af60e79127341f0306b808}} 
-enum {\bfseries Axis} \{ {\bfseries C\+O\+L\+U\+MN}, 
-{\bfseries R\+OW}
+enum \mbox{\hyperlink{classUtility_1_1DataFrame_a9c75ea18c1af60e79127341f0306b808}{Axis}} \{ {\bfseries COLUMN}
+, {\bfseries ROW}
  \}
-\item 
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classUtility_1_1DataFrame_aeeb8f00435b2a80da7ef15f6260b087c}{to\+\_\+vector}} メソッドで指定する軸 \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classUtility_1_1DataFrame_a3abd42404dec63088abccba58d3e6d92}\label{classUtility_1_1DataFrame_a3abd42404dec63088abccba58d3e6d92}} 
-enum {\bfseries Format} \{ {\bfseries S\+I\+M\+P\+LE}, 
-{\bfseries P\+R\+E\+T\+TY}
+enum \mbox{\hyperlink{classUtility_1_1DataFrame_a3abd42404dec63088abccba58d3e6d92}{Format}} \{ {\bfseries SIMPLE}
+, {\bfseries PRETTY}
  \}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classUtility_1_1DataFrame_a23ba31e9c449bdaec7ba6a352b9ddcf8}{describe}} メソッドで指定する出力フォーマット \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -40,7 +40,7 @@ void \mbox{\hyperlink{classUtility_1_1DataFrame_a542b8401bce85917bb5d1af2e39b3c0
 \mbox{\hyperlink{classUtility_1_1DataFrame}{Data\+Frame}} {\bfseries operator\mbox{[}$\,$\mbox{]}} (const int \&target\+\_\+row) const
 \item 
 \mbox{\Hypertarget{classUtility_1_1DataFrame_a100981f30f346bdbed2e2eba235977fd}\label{classUtility_1_1DataFrame_a100981f30f346bdbed2e2eba235977fd}} 
-\mbox{\hyperlink{classUtility_1_1DataFrame}{Data\+Frame}} {\bfseries operator\mbox{[}$\,$\mbox{]}} (const std\+::pair$<$ int, int $>$ \&range) const
+\mbox{\hyperlink{classUtility_1_1DataFrame}{Data\+Frame}} {\bfseries operator\mbox{[}$\,$\mbox{]}} (const std\+::pair$<$ int, int $>$ \&\mbox{\hyperlink{namespaceUtility_a70e6233ba2ebfa6161862a8880036d12}{range}}) const
 \item 
 \mbox{\Hypertarget{classUtility_1_1DataFrame_aea49a5e5b9d79e143b9fba0f7250b5eb}\label{classUtility_1_1DataFrame_aea49a5e5b9d79e143b9fba0f7250b5eb}} 
 \mbox{\hyperlink{classUtility_1_1DataFrame}{Data\+Frame}} {\bfseries operator\mbox{[}$\,$\mbox{]}} (const std\+::initializer\+\_\+list$<$ std\+::string $>$ \&target\+\_\+column\+\_\+list) const
@@ -54,22 +54,36 @@ void \mbox{\hyperlink{classUtility_1_1DataFrame_a542b8401bce85917bb5d1af2e39b3c0
 std\+::vector$<$ std\+::vector$<$ std\+::string $>$ $>$ \mbox{\hyperlink{classUtility_1_1DataFrame_a9913dbd491a11c915ee9960f638e26e4}{data}} () const
 \begin{DoxyCompactList}\small\item\em 2次元ベクトルの\+Getterメソッド \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classUtility_1_1DataFrame_a7a88a88854e3f29affdb99a848b6bca3}\label{classUtility_1_1DataFrame_a7a88a88854e3f29affdb99a848b6bca3}} 
-void \mbox{\hyperlink{classUtility_1_1DataFrame_a7a88a88854e3f29affdb99a848b6bca3}{show}} (const enum Format \&format=S\+I\+M\+P\+LE) const
+void \mbox{\hyperlink{classUtility_1_1DataFrame_a7a88a88854e3f29affdb99a848b6bca3}{show}} (const enum \mbox{\hyperlink{classUtility_1_1DataFrame_a3abd42404dec63088abccba58d3e6d92}{Format}} \&format=SIMPLE) const
 \begin{DoxyCompactList}\small\item\em ヘッダー部・データ部の表示メソッド \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classUtility_1_1DataFrame_a23ba31e9c449bdaec7ba6a352b9ddcf8}\label{classUtility_1_1DataFrame_a23ba31e9c449bdaec7ba6a352b9ddcf8}} 
 void \mbox{\hyperlink{classUtility_1_1DataFrame_a23ba31e9c449bdaec7ba6a352b9ddcf8}{describe}} () const
 \begin{DoxyCompactList}\small\item\em メタ情報取得表示メソッド \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename T $>$ }\\std\+::vector$<$ T $>$ \mbox{\hyperlink{classUtility_1_1DataFrame_aeeb8f00435b2a80da7ef15f6260b087c}{to\+\_\+vector}} (const enum Axis \&axis=C\+O\+L\+U\+MN) const
+{\footnotesize template$<$typename T $>$ }\\std\+::vector$<$ T $>$ \mbox{\hyperlink{classUtility_1_1DataFrame_aeeb8f00435b2a80da7ef15f6260b087c}{to\+\_\+vector}} (const enum \mbox{\hyperlink{classUtility_1_1DataFrame_a9c75ea18c1af60e79127341f0306b808}{Axis}} \&axis=COLUMN) const
 \begin{DoxyCompactList}\small\item\em 列・行いずれかを指定の型の1次元ベクターに変換するメソッド \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static \mbox{\hyperlink{classUtility_1_1DataFrame}{Data\+Frame}} \mbox{\hyperlink{classUtility_1_1DataFrame_afb2c2a0c27d4ad6056b3137d5d28201e}{read\+\_\+csv}} (const std\+::string \&file\+\_\+path, const bool \&header=true, const char \&separator=\textquotesingle{},\textquotesingle{})
-\begin{DoxyCompactList}\small\item\em C\+S\+V読取メソッド (Factory Method) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em CSV読取メソッド (Factory Method) \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Pythonにおける表形式データハンドリング用ライブラリ\+Pandasの代替ライブラリ 
+
+\begin{DoxyNote}{Note}
+本家リンクは下記参照のこと ~\newline
+ \mbox{\hyperlink{}{https\+://pandas.\+pydata.\+org/pandas-\/docs/stable/reference/index.\+html}} ~\newline
+ 現状は Factory Method \mbox{\hyperlink{classUtility_1_1DataFrame_afb2c2a0c27d4ad6056b3137d5d28201e}{read\+\_\+csv}} からのみインスタンス化可能にして\+CSVデータ読込にのみ特化させている。 ~\newline
+ 本家と異なり各列の型情報を保持するようにはしていない。各行をtuple化したvectorコンテナとする実装も考えたが、現状は対応させていない。 ~\newline
+ また、基本的には静的データの解析に用いることを前提で本クラスは作成しており、全行データを\+Data\+Frameとして取り込んだ後、 ~\newline
+ 加工して使用することを想定している。高速な読取処理については今後も本クラスで対応する予定はないため要望に応じて別クラスを作成する。 
+\end{DoxyNote}
+
+
+Definition at line 43 of file data\+\_\+frame.\+hpp.
+
+
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classUtility_1_1DataFrame_a9913dbd491a11c915ee9960f638e26e4}\label{classUtility_1_1DataFrame_a9913dbd491a11c915ee9960f638e26e4}} 
@@ -93,7 +107,7 @@ std\+::vector$<$std\+::vector$<$std\+::string$>$ data
 
 
 
-C\+S\+V読取メソッド (Factory Method) 
+CSV読取メソッド (Factory Method) 
 
 
 \begin{DoxyParams}{Parameters}
@@ -133,7 +147,7 @@ csvファイルへの書込メソッド
 \index{to\_vector@{to\_vector}!Utility::DataFrame@{Utility::DataFrame}}
 \doxysubsubsection{\texorpdfstring{to\_vector()}{to\_vector()}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
-Utility\+::\+Data\+Frame\+::to\+\_\+vector (\begin{DoxyParamCaption}\item[{const enum Axis \&}]{axis = {\ttfamily COLUMN} }\end{DoxyParamCaption}) const}
+Utility\+::\+Data\+Frame\+::to\+\_\+vector (\begin{DoxyParamCaption}\item[{const enum \mbox{\hyperlink{classUtility_1_1DataFrame_a9c75ea18c1af60e79127341f0306b808}{Axis}} \&}]{axis = {\ttfamily COLUMN} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -146,12 +160,16 @@ Utility\+::\+Data\+Frame\+::to\+\_\+vector (\begin{DoxyParamCaption}\item[{const
 \end{DoxyTemplParams}
 
 \begin{DoxyParams}{Parameters}
-{\em enum} & Axis axis 行・列 \{ R\+OW, C\+O\+L\+U\+MN \} \\
+{\em enum} & Axis axis ベクター化したい軸 \{ ROW \+: 行, COLUMN \+: 列 \} \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 std\+::vector$<$\+T$>$ 
 \end{DoxyReturn}
+
+
+Definition at line 193 of file data\+\_\+frame.\+hpp.
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

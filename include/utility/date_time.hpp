@@ -1,8 +1,7 @@
 /**
  * @file date_time.hpp
- * @author okano tomoyuki (okano.development@gmail.com)
- * @brief class library of handling date and time like C++ Builder's TDateTime.
- * @note reffered Embacadero Technologies's web site
+ * @author okano tomoyuki (tomoyuki.okano@tsuneishi.com)
+ * @brief 日時情報の管理を行う @ref Utility::DateTime クラスの定義ヘッダー
  * @version 0.1
  * @date 2024-01-14
  * 
@@ -29,7 +28,9 @@ namespace Utility
 /**
  * @class DateTime
  * @brief 日時を管理するクラス
+ * @note 
  * 
+ * @snippet test/utility/date_time/test_date_time.cpp DateTime
  */
 class DateTime final
 {

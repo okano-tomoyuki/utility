@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['_7eprocesstimer_69',['~ProcessTimer',['../d4/dda/classUtility_1_1ProcessTimer.html#ab134587e7d996fdf10ca4ca733cc535f',1,'Utility::ProcessTimer']]],
-  ['_7esharedmemory_70',['~SharedMemory',['../dd/d3c/classUtility_1_1SharedMemory.html#a9cbc6d4bdfb2ec9ca46ad2dbc83b7265',1,'Utility::SharedMemory']]]
+  ['year_79',['year',['../d1/d84/classUtility_1_1DateTime.html#a3cf1f1006d10731300f082c3d0a6498e',1,'Utility::DateTime']]]
 ];

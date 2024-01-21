@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['enumerate_74',['Enumerate',['../dd/d38/classUtility_1_1Enumerate.html',1,'Utility']]]
+  ['ini_85',['Ini',['../d0/d68/classUtility_1_1Ini.html',1,'Utility']]]
 ];

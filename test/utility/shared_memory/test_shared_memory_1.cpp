@@ -1,3 +1,14 @@
+/**
+ * @file test_shared_memory_1.cpp
+ * @author okano tomoyuki (tomoyuki.okano@tsuneishi.com)
+ * @brief @ref Utility::SharedMemory クラスのテストコード及びクライアントコード例
+ * @version 0.1
+ * @date 2024-01-19
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #include <string>
 #include <iostream>
 #include <thread>
@@ -42,7 +53,7 @@ int main()
     // 終了をキャッチするまで継続
     while(!Signal::end_sign)
     {
-        auto pt = ProcessTimer(500);
+        auto pt = ProcessTimer::create_auto_wait(500);
         if(sm.try_read(sample, 30))
         {
             std::cout << "read  success" << std::endl;

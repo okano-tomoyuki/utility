@@ -2,24 +2,24 @@
 \label{namespaceUtility}\index{Utility@{Utility}}
 
 
-インフラストラクチャー層を中心に関係各者が再利用できるクラス、関数を定義する名前空間  
+再利用性の高い定数・関数・クラス等を管理する名前空間  
 
 
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \mbox{\hyperlink{classUtility_1_1DataFrame}{Data\+Frame}}
-\begin{DoxyCompactList}\small\item\em Pythonにおける表形式データハンドリング用ライブラリ\+Pandasの代替ライブラリ \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classUtility_1_1DateTime}{Date\+Time}}
 \begin{DoxyCompactList}\small\item\em 日時を管理するクラス \end{DoxyCompactList}\item 
-class \mbox{\hyperlink{classUtility_1_1Enumerate}{Enumerate}}
-\item 
 class \mbox{\hyperlink{classUtility_1_1Ini}{Ini}}
 \begin{DoxyCompactList}\small\item\em Iniファイルパース用クラス \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classUtility_1_1Logger}{Logger}}
-\begin{DoxyCompactList}\small\item\em C\+SV ファイルにロギングするためのライブラリ \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em CSV ファイルにロギングするためのライブラリ \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classUtility_1_1ProcessTimer}{Process\+Timer}}
 \begin{DoxyCompactList}\small\item\em 自動待機/計測用タイマークラス \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classUtility_1_1DataFrame}{Data\+Frame}}
+\begin{DoxyCompactList}\small\item\em Pythonにおける表形式データハンドリング用ライブラリ\+Pandasの代替ライブラリ \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classUtility_1_1Enumerate}{Enumerate}}
+\item 
 class \mbox{\hyperlink{classUtility_1_1SharedMemory}{Shared\+Memory}}
 \begin{DoxyCompactList}\small\item\em 共有メモリを管理するためのクラス \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classUtility_1_1UdpSocket}{Udp\+Socket}}
@@ -27,42 +27,32 @@ class \mbox{\hyperlink{classUtility_1_1UdpSocket}{Udp\+Socket}}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{namespaceUtility_a67a639d36c03aa812d3c6553e3bd3f7a}\label{namespaceUtility_a67a639d36c03aa812d3c6553e3bd3f7a}} 
-double {\bfseries radians} (const double \&value) noexcept
-\item 
-\mbox{\Hypertarget{namespaceUtility_a1ab9d720af4b57cc6a46b62b3246e5e2}\label{namespaceUtility_a1ab9d720af4b57cc6a46b62b3246e5e2}} 
-double {\bfseries degrees} (const double \&value) noexcept
-\item 
-\mbox{\Hypertarget{namespaceUtility_a2ca5cb0f76fbc8a543faee76df35a440}\label{namespaceUtility_a2ca5cb0f76fbc8a543faee76df35a440}} 
-double {\bfseries meter\+\_\+per\+\_\+seconds} (const double \&value) noexcept
-\item 
-\mbox{\Hypertarget{namespaceUtility_ab6033ec10966b44590630df965ecabe0}\label{namespaceUtility_ab6033ec10966b44590630df965ecabe0}} 
-double {\bfseries knots} (const double \&value) noexcept
-\item 
-\mbox{\Hypertarget{namespaceUtility_aba3dde3dd856cd5648695d6083ad910c}\label{namespaceUtility_aba3dde3dd856cd5648695d6083ad910c}} 
-{\footnotesize template$<$typename T $>$ }\\T {\bfseries limit} (const T \&value, const T \&limit) noexcept
-\item 
-\mbox{\Hypertarget{namespaceUtility_ab3484e80b2aab17d66c281cf6fdc3e70}\label{namespaceUtility_ab3484e80b2aab17d66c281cf6fdc3e70}} 
-{\footnotesize template$<$typename T $>$ }\\T {\bfseries limit} (const T \&value, const T \&lower\+\_\+limit, const T \&upper\+\_\+limit) noexcept
-\item 
-\mbox{\Hypertarget{namespaceUtility_a4b53a154a7e1c11aa88fee21d1da9277}\label{namespaceUtility_a4b53a154a7e1c11aa88fee21d1da9277}} 
-double {\bfseries adjust\+\_\+pi} (const double \&value) noexcept
-\item 
-\mbox{\Hypertarget{namespaceUtility_a6aa8f538664f6ce797b645142643659b}\label{namespaceUtility_a6aa8f538664f6ce797b645142643659b}} 
-double {\bfseries adjust\+\_\+180} (const double \&value) noexcept
-\item 
-\mbox{\Hypertarget{namespaceUtility_a4a981669ecb3a16092b230ed42e394d6}\label{namespaceUtility_a4a981669ecb3a16092b230ed42e394d6}} 
-{\footnotesize template$<$typename T $>$ }\\std\+::string {\bfseries concat} (const std\+::vector$<$ T $>$ \&origin, const std\+::string \&separator) noexcept
-\item 
-\mbox{\Hypertarget{namespaceUtility_a07357805b7a795be6bc1f0b23596df79}\label{namespaceUtility_a07357805b7a795be6bc1f0b23596df79}} 
-std\+::vector$<$ std\+::string $>$ {\bfseries split} (const std\+::string \&origin, const std\+::string \&separator)
-\item 
-\mbox{\Hypertarget{namespaceUtility_a92f568aac5570db16c615b81e0482a82}\label{namespaceUtility_a92f568aac5570db16c615b81e0482a82}} 
-std\+::vector$<$ int $>$ {\bfseries range} (const int \&end) noexcept
-\item 
-\mbox{\Hypertarget{namespaceUtility_ac672a172e44c70be260c4d74b324de9b}\label{namespaceUtility_ac672a172e44c70be260c4d74b324de9b}} 
-std\+::vector$<$ int $>$ {\bfseries range} (const int \&start, const int \&end, const int \&interval=1) noexcept
-\item 
+double \mbox{\hyperlink{namespaceUtility_ae65a1d70383807ac4c2c538934104ee7}{radians}} (const double \&value) noexcept
+\begin{DoxyCompactList}\small\item\em degree =$>$ radian への変換関数 \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespaceUtility_ac7a90c1aa7c9b5c65023ddba5417464b}{degrees}} (const double \&value) noexcept
+\begin{DoxyCompactList}\small\item\em radian =$>$ degree への変換関数 \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespaceUtility_a3c81e6e6587c601d8efb6856eded199e}{meter\+\_\+per\+\_\+seconds}} (const double \&value) noexcept
+\begin{DoxyCompactList}\small\item\em knot =$>$ m/s への変換関数 \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespaceUtility_a44d53f836e0294c7031a24c1ad4b05a5}{knots}} (const double \&value) noexcept
+\begin{DoxyCompactList}\small\item\em m/s =$>$ knot への変換関数 \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceUtility_adbb5aea3141a76691bf574099e73b93f}{sgn}} (const T \&value)
+\begin{DoxyCompactList}\small\item\em 符号取得関数 \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceUtility_a5e94293ad72099ce9393657f0ba6eceb}{limit}} (const T \&value, const T \&limit\+\_\+value) noexcept
+\begin{DoxyCompactList}\small\item\em limit関数 \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceUtility_a60a0f2bc67b1f61080fb35af49014f31}{limit}} (const T \&value, const T \&limit\+\_\+value1, const T \&limit\+\_\+value2) noexcept
+\begin{DoxyCompactList}\small\item\em limit関数 \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespaceUtility_af54800880476074f4a211c154cba32e5}{adjust\+\_\+pi}} (const double \&value) noexcept
+\begin{DoxyCompactList}\small\item\em -\/π$\sim$π へのレンジ調整関数 \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespaceUtility_aec116e80f7ca2940aff68827a9bd67e9}{adjust\+\_\+180}} (const double \&value) noexcept
+\begin{DoxyCompactList}\small\item\em -\/180° $\sim$ 180° へのレンジ調整関数 \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\std\+::string \mbox{\hyperlink{namespaceUtility_a9afd8a7c078b9de0c1f08a70b3a7f83a}{concat}} (const std\+::vector$<$ T $>$ \&origin, const std\+::string \&separator) noexcept
+\begin{DoxyCompactList}\small\item\em vectorデータからの文字列連結関数 \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{namespaceUtility_af00956a1f3538a39b7add392c5b6c38a}{split}} (const std\+::string \&origin, const std\+::string \&separator)
+\begin{DoxyCompactList}\small\item\em 文字列分割関数 \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{namespaceUtility_a70e6233ba2ebfa6161862a8880036d12}{range}} (const int \&end) noexcept
+\begin{DoxyCompactList}\small\item\em Pythonにおけるrange関数の代替 \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{namespaceUtility_a2420d72ee5b21ec3323c3e729a943fe9}{range}} (const int \&start, const int \&end, const int \&interval=1) noexcept
+\begin{DoxyCompactList}\small\item\em Pythonにおけるrange関数の代替 \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespaceUtility_acc1b82cbfcfb9f42e06ca57931b2dbab}\label{namespaceUtility_acc1b82cbfcfb9f42e06ca57931b2dbab}} 
 {\footnotesize template$<$typename T $>$ }\\void {\bfseries show} (T e) noexcept
 \item 
@@ -72,25 +62,485 @@ std\+::vector$<$ int $>$ {\bfseries range} (const int \&start, const int \&end, 
 \mbox{\Hypertarget{namespaceUtility_ab193b968ad8574e74f05dac0fb8e2854}\label{namespaceUtility_ab193b968ad8574e74f05dac0fb8e2854}} 
 {\footnotesize template$<$typename T $>$ }\\void {\bfseries show} (const std\+::vector$<$ std\+::vector$<$ T $>$$>$ \&vv) noexcept
 \item 
-\mbox{\Hypertarget{namespaceUtility_a2176b98f2f97c82c92157075916540fc}\label{namespaceUtility_a2176b98f2f97c82c92157075916540fc}} 
-std\+::string {\bfseries zero\+\_\+fill} (const int \&number, const int \&digits) noexcept
-\item 
-\mbox{\Hypertarget{namespaceUtility_af8a42ac238c1c0945f96d4d5659e018b}\label{namespaceUtility_af8a42ac238c1c0945f96d4d5659e018b}} 
-{\footnotesize template$<$typename T $>$ }\\std\+::string {\bfseries get\+\_\+type} (const T \&t)
-\item 
-\mbox{\Hypertarget{namespaceUtility_ab02d8d631426e7855fe8d5584b18d960}\label{namespaceUtility_ab02d8d631426e7855fe8d5584b18d960}} 
-void {\bfseries sleep} (const int \&milli\+\_\+second) noexcept
-\item 
-\mbox{\Hypertarget{namespaceUtility_a096bbadfc40527cf5cc045d1313d7e52}\label{namespaceUtility_a096bbadfc40527cf5cc045d1313d7e52}} 
-{\footnotesize template$<$typename T $>$ }\\bool {\bfseries is\+\_\+exist} (const T \&val, const std\+::vector$<$ T $>$ \&list)
-\item 
+{\footnotesize template$<$typename T $>$ }\\std\+::string \mbox{\hyperlink{namespaceUtility_a2996ffe3bd22b55525430476b374b8be}{get\+\_\+type}} (const T \&t)
+\begin{DoxyCompactList}\small\item\em 型名取り出し用関数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceUtility_a815f5ed99e702ee4c641d59ac374f6c4}{sleep}} (const int \&milli\+\_\+second) noexcept
+\begin{DoxyCompactList}\small\item\em スリープ関数 \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{namespaceUtility_acd8aebde33a3902f5fe947433bbe8ce8}{is\+\_\+exist}} (const T \&value, const std\+::vector$<$ T $>$ \&list)
+\begin{DoxyCompactList}\small\item\em vectorデータ内に指定した要素があるか確認する関数 \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{namespaceUtility_afa10e1619766619c817d5cea4b04e661}{is\+\_\+in\+\_\+range}} (const T \&value, const T \&limit\+\_\+value)
+\begin{DoxyCompactList}\small\item\em 値が指定した閾値以内に入っているか確認する関数 \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{namespaceUtility_ab570741774d345d69ee6f18bce0f51f2}{is\+\_\+in\+\_\+range}} (const T \&value, const T \&limit\+\_\+value1, const T \&limit\+\_\+value2)
+\begin{DoxyCompactList}\small\item\em 値が指定した閾値以内に入っているか確認する関数 \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespaceUtility_ad97cfc9656f27ad9da11410f1e4f380c}\label{namespaceUtility_ad97cfc9656f27ad9da11410f1e4f380c}} 
 {\footnotesize template$<$typename Iter $>$ }\\\mbox{\hyperlink{classUtility_1_1Enumerate}{Enumerate}}$<$ Iter $>$ {\bfseries enumerate} (Iter \&\&iter)
 \item 
 \mbox{\Hypertarget{namespaceUtility_a0d158e2859e5d6250e15a2e990be707d}\label{namespaceUtility_a0d158e2859e5d6250e15a2e990be707d}} 
 {\footnotesize template$<$typename Iter $>$ }\\\mbox{\hyperlink{classUtility_1_1Enumerate}{Enumerate}}$<$ Iter $>$ {\bfseries enumerate} (const Iter \&iter)
 \end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr double \mbox{\hyperlink{namespaceUtility_a96ce96c77531dfaa878c00e6fbdecce6}{RHO\+\_\+\+WATER}} = 104.\+61
+\item 
+static constexpr double \mbox{\hyperlink{namespaceUtility_a296c3c8aa066974604a93379a0a2d29f}{RHO\+\_\+\+AIR}} = 0.\+125
+\item 
+static constexpr double \mbox{\hyperlink{namespaceUtility_ae8ff593f52265f6d53cd61e878ac615b}{GRAVITY}} = 9.\+80665
+\item 
+static constexpr double \mbox{\hyperlink{namespaceUtility_aeffbc6c1657cdf0ee0021efd94cb4ef5}{NAUTICAL\+\_\+\+MILE}} = 1852.\+0
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-インフラストラクチャー層を中心に関係各者が再利用できるクラス、関数を定義する名前空間 
+再利用性の高い定数・関数・クラス等を管理する名前空間 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespaceUtility_aec116e80f7ca2940aff68827a9bd67e9}\label{namespaceUtility_aec116e80f7ca2940aff68827a9bd67e9}} 
+\index{Utility@{Utility}!adjust\_180@{adjust\_180}}
+\index{adjust\_180@{adjust\_180}!Utility@{Utility}}
+\doxysubsubsection{\texorpdfstring{adjust\_180()}{adjust\_180()}}
+{\footnotesize\ttfamily Utility\+::adjust\+\_\+180 (\begin{DoxyParamCaption}\item[{const double \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+-\/180° $\sim$ 180° へのレンジ調整関数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em double} & value \+: 単位 degree　のデータ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+value が -\/180 $\sim$ 180 のレンジの値になった値 
+\end{DoxyReturn}
+
+
+Definition at line 159 of file core.\+hpp.
+
+\mbox{\Hypertarget{namespaceUtility_af54800880476074f4a211c154cba32e5}\label{namespaceUtility_af54800880476074f4a211c154cba32e5}} 
+\index{Utility@{Utility}!adjust\_pi@{adjust\_pi}}
+\index{adjust\_pi@{adjust\_pi}!Utility@{Utility}}
+\doxysubsubsection{\texorpdfstring{adjust\_pi()}{adjust\_pi()}}
+{\footnotesize\ttfamily Utility\+::adjust\+\_\+pi (\begin{DoxyParamCaption}\item[{const double \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+-\/π$\sim$π へのレンジ調整関数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em double} & value \+: 単位 radian　のデータ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+value が -\/π $\sim$ π のレンジの値になった値 
+\end{DoxyReturn}
+
+
+Definition at line 143 of file core.\+hpp.
+
+\mbox{\Hypertarget{namespaceUtility_a9afd8a7c078b9de0c1f08a70b3a7f83a}\label{namespaceUtility_a9afd8a7c078b9de0c1f08a70b3a7f83a}} 
+\index{Utility@{Utility}!concat@{concat}}
+\index{concat@{concat}!Utility@{Utility}}
+\doxysubsubsection{\texorpdfstring{concat()}{concat()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+template$<$ typename T $>$ Utility\+::concat (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{origin,  }\item[{const std\+::string \&}]{separator }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+vectorデータからの文字列連結関数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em origin} & \+: 要素がプリミティブな型であるvectorデータ \\
+\hline
+{\em separator} & \+: 文字列データにして連結する際の区切り文字列 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+origin の各要素を separator でつないだ文字列 
+\end{DoxyReturn}
+
+
+Definition at line 177 of file core.\+hpp.
+
+\mbox{\Hypertarget{namespaceUtility_ac7a90c1aa7c9b5c65023ddba5417464b}\label{namespaceUtility_ac7a90c1aa7c9b5c65023ddba5417464b}} 
+\index{Utility@{Utility}!degrees@{degrees}}
+\index{degrees@{degrees}!Utility@{Utility}}
+\doxysubsubsection{\texorpdfstring{degrees()}{degrees()}}
+{\footnotesize\ttfamily Utility\+::degrees (\begin{DoxyParamCaption}\item[{const double \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+radian =$>$ degree への変換関数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em double} & value \+: radian 単位 の値 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+value を degree 単位に変換した値 
+\end{DoxyReturn}
+
+
+Definition at line 67 of file core.\+hpp.
+
+\mbox{\Hypertarget{namespaceUtility_a2996ffe3bd22b55525430476b374b8be}\label{namespaceUtility_a2996ffe3bd22b55525430476b374b8be}} 
+\index{Utility@{Utility}!get\_type@{get\_type}}
+\index{get\_type@{get\_type}!Utility@{Utility}}
+\doxysubsubsection{\texorpdfstring{get\_type()}{get\_type()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+template$<$ typename T $>$ Utility\+::get\+\_\+type (\begin{DoxyParamCaption}\item[{const T \&}]{t }\end{DoxyParamCaption})}
+
+
+
+型名取り出し用関数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & \+: 型名を取得したい変数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+t の型名の文字列 
+\end{DoxyReturn}
+
+
+Definition at line 284 of file core.\+hpp.
+
+\mbox{\Hypertarget{namespaceUtility_acd8aebde33a3902f5fe947433bbe8ce8}\label{namespaceUtility_acd8aebde33a3902f5fe947433bbe8ce8}} 
+\index{Utility@{Utility}!is\_exist@{is\_exist}}
+\index{is\_exist@{is\_exist}!Utility@{Utility}}
+\doxysubsubsection{\texorpdfstring{is\_exist()}{is\_exist()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+template$<$ typename T $>$ Utility\+::is\+\_\+exist (\begin{DoxyParamCaption}\item[{const T \&}]{value,  }\item[{const std\+::vector$<$ T $>$ \&}]{list }\end{DoxyParamCaption})}
+
+
+
+vectorデータ内に指定した要素があるか確認する関数 
+
+!
+
+
+\begin{DoxyParams}{Parameters}
+{\em double} & value \+: 存在するか確認したいデータ \\
+\hline
+{\em list} & \+: 確認対象のリスト \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true -\/ list内にvalue有, false -\/ list内にvalue無 
+\end{DoxyReturn}
+
+
+Definition at line 316 of file core.\+hpp.
+
+\mbox{\Hypertarget{namespaceUtility_afa10e1619766619c817d5cea4b04e661}\label{namespaceUtility_afa10e1619766619c817d5cea4b04e661}} 
+\index{Utility@{Utility}!is\_in\_range@{is\_in\_range}}
+\index{is\_in\_range@{is\_in\_range}!Utility@{Utility}}
+\doxysubsubsection{\texorpdfstring{is\_in\_range()}{is\_in\_range()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+template$<$ typename T $>$ Utility\+::is\+\_\+in\+\_\+range (\begin{DoxyParamCaption}\item[{const T \&}]{value,  }\item[{const T \&}]{limit\+\_\+value }\end{DoxyParamCaption})}
+
+
+
+値が指定した閾値以内に入っているか確認する関数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em double} & value \+: 確認対象の値 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true -\/ valueが -\/std\+::abs(limit\+\_\+value) $\sim$ std\+::abs(limit\+\_\+value) の範囲内, false -\/ 範囲外 
+\end{DoxyReturn}
+
+
+Definition at line 328 of file core.\+hpp.
+
+\mbox{\Hypertarget{namespaceUtility_ab570741774d345d69ee6f18bce0f51f2}\label{namespaceUtility_ab570741774d345d69ee6f18bce0f51f2}} 
+\index{Utility@{Utility}!is\_in\_range@{is\_in\_range}}
+\index{is\_in\_range@{is\_in\_range}!Utility@{Utility}}
+\doxysubsubsection{\texorpdfstring{is\_in\_range()}{is\_in\_range()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+template$<$ typename T $>$ Utility\+::is\+\_\+in\+\_\+range (\begin{DoxyParamCaption}\item[{const T \&}]{value,  }\item[{const T \&}]{limit\+\_\+value1,  }\item[{const T \&}]{limit\+\_\+value2 }\end{DoxyParamCaption})}
+
+
+
+値が指定した閾値以内に入っているか確認する関数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em double} & value \+: 確認対象の値 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true -\/ valueが limit\+\_\+value1 $\sim$ limit\+\_\+value2 の範囲内, false -\/ 範囲外 
+\end{DoxyReturn}
+
+
+Definition at line 340 of file core.\+hpp.
+
+\mbox{\Hypertarget{namespaceUtility_a44d53f836e0294c7031a24c1ad4b05a5}\label{namespaceUtility_a44d53f836e0294c7031a24c1ad4b05a5}} 
+\index{Utility@{Utility}!knots@{knots}}
+\index{knots@{knots}!Utility@{Utility}}
+\doxysubsubsection{\texorpdfstring{knots()}{knots()}}
+{\footnotesize\ttfamily Utility\+::knots (\begin{DoxyParamCaption}\item[{const double \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+m/s =$>$ knot への変換関数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em double} & value \+: m/s単位 の値 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+valueをknot単位に変換した値 
+\end{DoxyReturn}
+
+
+Definition at line 89 of file core.\+hpp.
+
+\mbox{\Hypertarget{namespaceUtility_a5e94293ad72099ce9393657f0ba6eceb}\label{namespaceUtility_a5e94293ad72099ce9393657f0ba6eceb}} 
+\index{Utility@{Utility}!limit@{limit}}
+\index{limit@{limit}!Utility@{Utility}}
+\doxysubsubsection{\texorpdfstring{limit()}{limit()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+template$<$ typename T $>$ Utility\+::limit (\begin{DoxyParamCaption}\item[{const T \&}]{value,  }\item[{const T \&}]{limit\+\_\+value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+limit関数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em double} & value \+: 制限前の引数 \\
+\hline
+{\em limit\+\_\+value} & \+: 閾値 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+value が ±limit\+\_\+value 以内に制限する。(範囲内であった場合そのままの値を出力する。) 
+\end{DoxyReturn}
+
+
+Definition at line 114 of file core.\+hpp.
+
+\mbox{\Hypertarget{namespaceUtility_a60a0f2bc67b1f61080fb35af49014f31}\label{namespaceUtility_a60a0f2bc67b1f61080fb35af49014f31}} 
+\index{Utility@{Utility}!limit@{limit}}
+\index{limit@{limit}!Utility@{Utility}}
+\doxysubsubsection{\texorpdfstring{limit()}{limit()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+template$<$ typename T $>$ Utility\+::limit (\begin{DoxyParamCaption}\item[{const T \&}]{value,  }\item[{const T \&}]{limit\+\_\+value1,  }\item[{const T \&}]{limit\+\_\+value2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+limit関数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em double} & value \+: 制限前の引数 \\
+\hline
+{\em limit\+\_\+value1} & \+: 閾値(片側) \\
+\hline
+{\em limit\+\_\+value2} & \+: 閾値(片側) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+value が limit\+\_\+value1 $\sim$ limit\+\_\+value2 以内に制限する。(範囲内であった場合そのままの値を出力する。) 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+引数の順序間違いの可能性を考慮し、limit\+\_\+value1, limit\+\_\+value2の大小関係が逆順でも同様の結果が得られるようにする。 
+\end{DoxyNote}
+
+
+Definition at line 129 of file core.\+hpp.
+
+\mbox{\Hypertarget{namespaceUtility_a3c81e6e6587c601d8efb6856eded199e}\label{namespaceUtility_a3c81e6e6587c601d8efb6856eded199e}} 
+\index{Utility@{Utility}!meter\_per\_seconds@{meter\_per\_seconds}}
+\index{meter\_per\_seconds@{meter\_per\_seconds}!Utility@{Utility}}
+\doxysubsubsection{\texorpdfstring{meter\_per\_seconds()}{meter\_per\_seconds()}}
+{\footnotesize\ttfamily Utility\+::meter\+\_\+per\+\_\+seconds (\begin{DoxyParamCaption}\item[{const double \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+knot =$>$ m/s への変換関数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em double} & value \+: knot 単位 の値 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+value を m/s 単位に変換した値 
+\end{DoxyReturn}
+
+
+Definition at line 78 of file core.\+hpp.
+
+\mbox{\Hypertarget{namespaceUtility_ae65a1d70383807ac4c2c538934104ee7}\label{namespaceUtility_ae65a1d70383807ac4c2c538934104ee7}} 
+\index{Utility@{Utility}!radians@{radians}}
+\index{radians@{radians}!Utility@{Utility}}
+\doxysubsubsection{\texorpdfstring{radians()}{radians()}}
+{\footnotesize\ttfamily Utility\+::radians (\begin{DoxyParamCaption}\item[{const double \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+degree =$>$ radian への変換関数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em double} & value \+: degree 単位 の値 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+value を radian 単位に変換した値 
+\end{DoxyReturn}
+
+
+Definition at line 56 of file core.\+hpp.
+
+\mbox{\Hypertarget{namespaceUtility_a70e6233ba2ebfa6161862a8880036d12}\label{namespaceUtility_a70e6233ba2ebfa6161862a8880036d12}} 
+\index{Utility@{Utility}!range@{range}}
+\index{range@{range}!Utility@{Utility}}
+\doxysubsubsection{\texorpdfstring{range()}{range()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Utility\+::range (\begin{DoxyParamCaption}\item[{const int \&}]{end }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Pythonにおけるrange関数の代替 
+
+\begin{DoxyNote}{Note}
+範囲ベースforループで使用 
+\end{DoxyNote}
+
+
+Definition at line 231 of file core.\+hpp.
+
+\mbox{\Hypertarget{namespaceUtility_a2420d72ee5b21ec3323c3e729a943fe9}\label{namespaceUtility_a2420d72ee5b21ec3323c3e729a943fe9}} 
+\index{Utility@{Utility}!range@{range}}
+\index{range@{range}!Utility@{Utility}}
+\doxysubsubsection{\texorpdfstring{range()}{range()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Utility\+::range (\begin{DoxyParamCaption}\item[{const int \&}]{start,  }\item[{const int \&}]{end,  }\item[{const int \&}]{interval = {\ttfamily 1} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Pythonにおけるrange関数の代替 
+
+\begin{DoxyNote}{Note}
+範囲ベースforループで使用 
+\end{DoxyNote}
+
+
+Definition at line 243 of file core.\+hpp.
+
+\mbox{\Hypertarget{namespaceUtility_adbb5aea3141a76691bf574099e73b93f}\label{namespaceUtility_adbb5aea3141a76691bf574099e73b93f}} 
+\index{Utility@{Utility}!sgn@{sgn}}
+\index{sgn@{sgn}!Utility@{Utility}}
+\doxysubsubsection{\texorpdfstring{sgn()}{sgn()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+template$<$ type T $>$ Utility\+::sgn (\begin{DoxyParamCaption}\item[{const T \&}]{value }\end{DoxyParamCaption})}
+
+
+
+符号取得関数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em double} & value \+: 符号を取得したい変数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+valueの符号(値が0の場合のみ0を返却する。) 
+\end{DoxyReturn}
+
+
+Definition at line 101 of file core.\+hpp.
+
+\mbox{\Hypertarget{namespaceUtility_a815f5ed99e702ee4c641d59ac374f6c4}\label{namespaceUtility_a815f5ed99e702ee4c641d59ac374f6c4}} 
+\index{Utility@{Utility}!sleep@{sleep}}
+\index{sleep@{sleep}!Utility@{Utility}}
+\doxysubsubsection{\texorpdfstring{sleep()}{sleep()}}
+{\footnotesize\ttfamily Utility\+::sleep (\begin{DoxyParamCaption}\item[{const int \&}]{milli\+\_\+second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+スリープ関数 
+
+\begin{DoxyNote}{Note}
+休止関数は\+Windows/\+Linuxともに存在するが動作仕様が異なるため、共通でこの関数を使用する。 
+\end{DoxyNote}
+
+
+Definition at line 299 of file core.\+hpp.
+
+\mbox{\Hypertarget{namespaceUtility_af00956a1f3538a39b7add392c5b6c38a}\label{namespaceUtility_af00956a1f3538a39b7add392c5b6c38a}} 
+\index{Utility@{Utility}!split@{split}}
+\index{split@{split}!Utility@{Utility}}
+\doxysubsubsection{\texorpdfstring{split()}{split()}}
+{\footnotesize\ttfamily Utility\+::split (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{origin,  }\item[{const std\+::string \&}]{separator }\end{DoxyParamCaption})}
+
+
+
+文字列分割関数 
+
+
+\begin{DoxyParams}{Parameters}
+{\em origin} & \+: 分割前文字列 \\
+\hline
+{\em separator} & \+: 区切り文字列 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+origin を separator で分割し、各要素としたvectorデータ 
+\end{DoxyReturn}
+
+
+Definition at line 195 of file core.\+hpp.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceUtility_ae8ff593f52265f6d53cd61e878ac615b}\label{namespaceUtility_ae8ff593f52265f6d53cd61e878ac615b}} 
+\index{Utility@{Utility}!GRAVITY@{GRAVITY}}
+\index{GRAVITY@{GRAVITY}!Utility@{Utility}}
+\doxysubsubsection{\texorpdfstring{GRAVITY}{GRAVITY}}
+{\footnotesize\ttfamily constexpr double Utility\+::\+GRAVITY = 9.\+80665\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+重力加速度 \mbox{[}m/s$^\wedge$2\mbox{]} 
+
+Definition at line 45 of file core.\+hpp.
+
+\mbox{\Hypertarget{namespaceUtility_aeffbc6c1657cdf0ee0021efd94cb4ef5}\label{namespaceUtility_aeffbc6c1657cdf0ee0021efd94cb4ef5}} 
+\index{Utility@{Utility}!NAUTICAL\_MILE@{NAUTICAL\_MILE}}
+\index{NAUTICAL\_MILE@{NAUTICAL\_MILE}!Utility@{Utility}}
+\doxysubsubsection{\texorpdfstring{NAUTICAL\_MILE}{NAUTICAL\_MILE}}
+{\footnotesize\ttfamily constexpr double Utility\+::\+NAUTICAL\+\_\+\+MILE = 1852.\+0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+1海里 1852.\+0\mbox{[}m\mbox{]} 
+
+Definition at line 48 of file core.\+hpp.
+
+\mbox{\Hypertarget{namespaceUtility_a296c3c8aa066974604a93379a0a2d29f}\label{namespaceUtility_a296c3c8aa066974604a93379a0a2d29f}} 
+\index{Utility@{Utility}!RHO\_AIR@{RHO\_AIR}}
+\index{RHO\_AIR@{RHO\_AIR}!Utility@{Utility}}
+\doxysubsubsection{\texorpdfstring{RHO\_AIR}{RHO\_AIR}}
+{\footnotesize\ttfamily constexpr double Utility\+::\+RHO\+\_\+\+AIR = 0.\+125\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+空気密度 \mbox{[}kgf s$^\wedge$2/m$^\wedge$4\mbox{]} 
+
+Definition at line 42 of file core.\+hpp.
+
+\mbox{\Hypertarget{namespaceUtility_a96ce96c77531dfaa878c00e6fbdecce6}\label{namespaceUtility_a96ce96c77531dfaa878c00e6fbdecce6}} 
+\index{Utility@{Utility}!RHO\_WATER@{RHO\_WATER}}
+\index{RHO\_WATER@{RHO\_WATER}!Utility@{Utility}}
+\doxysubsubsection{\texorpdfstring{RHO\_WATER}{RHO\_WATER}}
+{\footnotesize\ttfamily constexpr double Utility\+::\+RHO\+\_\+\+WATER = 104.\+61\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+海水密度 \mbox{[}kgf s$^\wedge$2/m$^\wedge$4\mbox{]} 
+
+Definition at line 39 of file core.\+hpp.
+

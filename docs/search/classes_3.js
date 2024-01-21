@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ini_75',['Ini',['../d0/d68/classUtility_1_1Ini.html',1,'Utility']]]
+  ['logger_86',['Logger',['../de/d49/classUtility_1_1Logger.html',1,'Utility']]]
 ];

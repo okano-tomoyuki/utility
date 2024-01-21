@@ -1,7 +1,7 @@
 /**
  * @file process_timer.hpp
  * @author okano tomoyuki (tomoyuki.okano@tsuneishi.com)
- * @brief 
+ * @brief 周期動作/処理時間計測に用いる @ref Utility::ProcessTimer クラスの定義ヘッダー
  * @version 0.1
  * @date 2024-01-14
  * 
@@ -34,6 +34,9 @@ namespace Utility
  * @n @link
  * https://qiita.com/baby-degu/items/d058a62f145235a0f007
  * @endlink
+ * 
+ * @example test/utility/process_timer/test_process_timer.cpp 
+ * 
  */
 class ProcessTimer final
 {

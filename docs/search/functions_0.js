@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['create_5fauto_5fwait_98',['create_auto_wait',['../d4/dda/classUtility_1_1ProcessTimer.html#a42ba644420e84fa0286159174e73208b',1,'Utility::ProcessTimer']]],
-  ['create_5fmesure_99',['create_mesure',['../d4/dda/classUtility_1_1ProcessTimer.html#aeaacffa3d52f0bfcb745f42db7e15837',1,'Utility::ProcessTimer']]]
+  ['adjust_5f180_99',['adjust_180',['../da/d1f/namespaceUtility.html#aec116e80f7ca2940aff68827a9bd67e9',1,'Utility']]],
+  ['adjust_5fpi_100',['adjust_pi',['../da/d1f/namespaceUtility.html#af54800880476074f4a211c154cba32e5',1,'Utility']]]
 ];

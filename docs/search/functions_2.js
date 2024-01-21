@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['format_103',['format',['../de/d49/classUtility_1_1Logger.html#a2c88cbb7939efe4cdda556579f8b2152',1,'Utility::Logger']]],
-  ['from_5fstr_104',['from_str',['../d1/d84/classUtility_1_1DateTime.html#aeec580fe7e23a0b03fcef5086ea0aea4',1,'Utility::DateTime']]]
+  ['data_104',['data',['../d7/da6/classUtility_1_1DataFrame.html#a9913dbd491a11c915ee9960f638e26e4',1,'Utility::DataFrame']]],
+  ['day_105',['day',['../d1/d84/classUtility_1_1DateTime.html#a287873d32061c46413c0a347088447a1',1,'Utility::DateTime']]],
+  ['degrees_106',['degrees',['../da/d1f/namespaceUtility.html#ac7a90c1aa7c9b5c65023ddba5417464b',1,'Utility']]],
+  ['describe_107',['describe',['../d7/da6/classUtility_1_1DataFrame.html#a23ba31e9c449bdaec7ba6a352b9ddcf8',1,'Utility::DataFrame']]]
 ];

@@ -1,11 +1,12 @@
 /**
  * @file shared_memory.hpp
- * @author okano tomoyuki (okano.development@gmail.com)
- * @brief cross-plattform class library for handling shared memory object.
- * @note highly inspired by https://github.com/husty530/mmap-template
- * @note reffered system v shared memory man page in ubuntu https://manpages.ubuntu.com/manpages/focal/ja/man2/shmdt.2.html
- * @note reffered system v semaphore man page in ubuntu https://manpages.ubuntu.com/manpages/focal/ja/man2/semget.2.html
- * @note create 32bit hash from string https://norizn.hatenablog.com/entry/2020/10/18/145628
+ * @author okano tomoyuki (tomoyuki.okano@tsuneishi.com)
+ * @brief 共有メモリを管理する @ref Utility::SharedMemory クラスの定義ヘッダー
+ * @note 本クラス作成にあたって参考にしたリンク集
+ * @n Memory Mapped によるPIC関連 @link https://github.com/husty530/mmap-template @endlink
+ * @n System V系の共有メモリPIC関連 @link https://manpages.ubuntu.com/manpages/focal/ja/man2/shmdt.2.html @endlink
+ * @n System V系のセマフォ関連 @link https://manpages.ubuntu.com/manpages/focal/ja/man2/semget.2.html @endlink
+ * @n ファイルディスクリプタを必要としない32bitハッシュ値生成関連 @link https://norizn.hatenablog.com/entry/2020/10/18/145628 @endlink
  * @version 0.1
  * @date 2024-01-14
  * 
@@ -42,6 +43,8 @@ namespace Utility
  * @class Utility::SharedMemory
  * @brief 共有メモリを管理するためのクラス
  * 
+ * @example test/utility/shared_memory/test_shared_memory_1.cpp 
+ * @example test/utility/shared_memory/test_shared_memory_2.cpp
  */
 class SharedMemory final
 {
@@ -96,6 +99,7 @@ public:
      * @fn wait_for_single_object
      * @brief WindowsにおけるWaitForSingleObjectのラッパーメソッド
      * 
+     * 
      * @link 
      * https://learn.microsoft.com/ja-jp/windows/win32/api/synchapi/nf-synchapi-waitforsingleobject
      * @endlink
@@ -103,6 +107,7 @@ public:
      * @note Mutexによる排他制御を行うには引数にとして以下のメソッドの戻り値を使用する。
      * @n @ref mutex
      * @n 第2引数のtimeout_msecでタイムアウト時間をミリ秒単位で指定する。省略した場合INFINITを指定したことになる。
+     * 
      */     
     bool wait_for_single_object(const Handle& mutex_handle, const int& timeout_msec = 0) const;
 

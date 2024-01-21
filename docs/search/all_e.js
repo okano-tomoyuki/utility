@@ -1,18 +1,15 @@
 var searchData=
 [
-  ['tdatetime_46',['TDateTime',['../dc/dea/classTDateTime.html',1,'']]],
-  ['tdirectory_47',['TDirectory',['../dd/dce/classTDirectory.html',1,'']]],
-  ['tfilestream_48',['TFileStream',['../dc/d97/classTFileStream.html',1,'']]],
-  ['tinifile_49',['TIniFile',['../de/d76/classTIniFile.html',1,'']]],
-  ['to_5fcsv_50',['to_csv',['../d7/da6/classUtility_1_1DataFrame.html#a542b8401bce85917bb5d1af2e39b3c07',1,'Utility::DataFrame']]],
-  ['to_5fstr_51',['to_str',['../d1/d84/classUtility_1_1DateTime.html#ac188510b4cb9c8b244def8c97d2d838e',1,'Utility::DateTime']]],
-  ['to_5ftime_5fpoint_52',['to_time_point',['../d1/d84/classUtility_1_1DateTime.html#a98c2a13dbad9b7dce0ecda4da7a4fe3a',1,'Utility::DateTime']]],
-  ['to_5fvector_53',['to_vector',['../d7/da6/classUtility_1_1DataFrame.html#aeeb8f00435b2a80da7ef15f6260b087c',1,'Utility::DataFrame']]],
-  ['tpath_54',['TPath',['../d4/dc0/classTPath.html',1,'']]],
-  ['try_5fread_55',['try_read',['../d7/dac/classUtility_1_1UdpSocket.html#a635dd6f0de2382643a21a27b0e5d943a',1,'Utility::UdpSocket::try_read(char *buffer, const int &amp;len) const'],['../d7/dac/classUtility_1_1UdpSocket.html#a66eb53d17b060c62dd6897f6ae019c4b',1,'Utility::UdpSocket::try_read(T &amp;data) const']]],
-  ['try_5fread_5fstring_56',['try_read_string',['../d7/dac/classUtility_1_1UdpSocket.html#a268b513f04a607e2c7a02ec9761eb30e',1,'Utility::UdpSocket']]],
-  ['try_5fwrite_57',['try_write',['../d7/dac/classUtility_1_1UdpSocket.html#a5b4fb705252520f41f2571a4616ccba7',1,'Utility::UdpSocket::try_write(const char *buffer, const int &amp;len) const'],['../d7/dac/classUtility_1_1UdpSocket.html#a3193bf818cf39b138886eab958a473a2',1,'Utility::UdpSocket::try_write(const T &amp;data) const']]],
-  ['tstringdynarray_58',['TStringDynArray',['../d8/d9a/classTStringDynArray.html',1,'']]],
-  ['tthread_59',['TThread',['../da/dce/classTThread.html',1,'']]],
-  ['tzipfile_60',['TZipFile',['../d5/d64/classTZipFile.html',1,'']]]
+  ['second_53',['second',['../d1/d84/classUtility_1_1DateTime.html#ab94eb2c3eb5d0ba3f6e667a68dab229b',1,'Utility::DateTime']]],
+  ['set_5fcomment_5fprefix_5flist_54',['set_comment_prefix_list',['../d0/d68/classUtility_1_1Ini.html#ae7aac8583d872d308a90612883748b46',1,'Utility::Ini']]],
+  ['set_5ffield_5fseparator_55',['set_field_separator',['../d0/d68/classUtility_1_1Ini.html#a880c4c2edcbb1ae78c7f40f574aa7efc',1,'Utility::Ini']]],
+  ['set_5flisten_5fport_56',['set_listen_port',['../d7/dac/classUtility_1_1UdpSocket.html#a9d9f4297b016427dddff299c26688c96',1,'Utility::UdpSocket']]],
+  ['set_5ftarget_5fports_57',['set_target_ports',['../d7/dac/classUtility_1_1UdpSocket.html#a1c2af0d285ec4722151216f711098376',1,'Utility::UdpSocket::set_target_ports(const std::vector&lt; std::tuple&lt; std::string, int &gt;&gt; &amp;targets)'],['../d7/dac/classUtility_1_1UdpSocket.html#aaea415bcb00511902c852e292e9e1d6a',1,'Utility::UdpSocket::set_target_ports(const std::vector&lt; int &gt; &amp;target_ports)']]],
+  ['set_5ftimeout_58',['set_timeout',['../d7/dac/classUtility_1_1UdpSocket.html#a2eaa0261670af6ffa0f09a721b93ee37',1,'Utility::UdpSocket']]],
+  ['sgn_59',['sgn',['../da/d1f/namespaceUtility.html#adbb5aea3141a76691bf574099e73b93f',1,'Utility']]],
+  ['shared_5fmemory_2ehpp_60',['shared_memory.hpp',['../d9/dad/shared__memory_8hpp.html',1,'']]],
+  ['sharedmemory_61',['SharedMemory',['../dd/d3c/classUtility_1_1SharedMemory.html#a8adb9ad5cd59deac895edabe06cf967d',1,'Utility::SharedMemory::SharedMemory()'],['../dd/d3c/classUtility_1_1SharedMemory.html',1,'Utility::SharedMemory']]],
+  ['show_62',['show',['../d7/da6/classUtility_1_1DataFrame.html#a7a88a88854e3f29affdb99a848b6bca3',1,'Utility::DataFrame']]],
+  ['sleep_63',['sleep',['../da/d1f/namespaceUtility.html#a815f5ed99e702ee4c641d59ac374f6c4',1,'Utility']]],
+  ['split_64',['split',['../da/d1f/namespaceUtility.html#af00956a1f3538a39b7add392c5b6c38a',1,'Utility']]]
 ];

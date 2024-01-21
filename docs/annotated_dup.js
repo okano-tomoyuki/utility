@@ -1,14 +1,13 @@
 var annotated_dup =
 [
-    [ "Utility", "da/d1f/namespaceUtility.html", "da/d1f/namespaceUtility" ],
-    [ "AnsiString", "dd/d0a/classAnsiString.html", "dd/d0a/classAnsiString" ],
-    [ "NotImplementedExeption", "d4/df2/structNotImplementedExeption.html", "d4/df2/structNotImplementedExeption" ],
-    [ "TDateTime", "dc/dea/classTDateTime.html", "dc/dea/classTDateTime" ],
-    [ "TDirectory", "dd/dce/classTDirectory.html", "dd/dce/classTDirectory" ],
-    [ "TFileStream", "dc/d97/classTFileStream.html", "dc/d97/classTFileStream" ],
-    [ "TIniFile", "de/d76/classTIniFile.html", "de/d76/classTIniFile" ],
-    [ "TPath", "d4/dc0/classTPath.html", "d4/dc0/classTPath" ],
-    [ "TStringDynArray", "d8/d9a/classTStringDynArray.html", "d8/d9a/classTStringDynArray" ],
-    [ "TThread", "da/dce/classTThread.html", null ],
-    [ "TZipFile", "d5/d64/classTZipFile.html", "d5/d64/classTZipFile" ]
+    [ "Utility", "da/d1f/namespaceUtility.html", [
+      [ "DateTime", "d1/d84/classUtility_1_1DateTime.html", "d1/d84/classUtility_1_1DateTime" ],
+      [ "Ini", "d0/d68/classUtility_1_1Ini.html", "d0/d68/classUtility_1_1Ini" ],
+      [ "Logger", "de/d49/classUtility_1_1Logger.html", "de/d49/classUtility_1_1Logger" ],
+      [ "ProcessTimer", "d4/dda/classUtility_1_1ProcessTimer.html", "d4/dda/classUtility_1_1ProcessTimer" ],
+      [ "DataFrame", "d7/da6/classUtility_1_1DataFrame.html", "d7/da6/classUtility_1_1DataFrame" ],
+      [ "Enumerate", "dd/d38/classUtility_1_1Enumerate.html", "dd/d38/classUtility_1_1Enumerate" ],
+      [ "SharedMemory", "dd/d3c/classUtility_1_1SharedMemory.html", "dd/d3c/classUtility_1_1SharedMemory" ],
+      [ "UdpSocket", "d7/dac/classUtility_1_1UdpSocket.html", "d7/dac/classUtility_1_1UdpSocket" ]
+    ] ]
 ];

@@ -13,8 +13,8 @@
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{classUtility_1_1ProcessTimer_a554342212a8da284233cb21bcd4f2ce3}\label{classUtility_1_1ProcessTimer_a554342212a8da284233cb21bcd4f2ce3}} 
-enum \mbox{\hyperlink{classUtility_1_1ProcessTimer_a554342212a8da284233cb21bcd4f2ce3}{Wait\+Type}} \{ {\bfseries B\+U\+S\+SY}, 
-{\bfseries S\+L\+E\+EP}
+enum \mbox{\hyperlink{classUtility_1_1ProcessTimer_a554342212a8da284233cb21bcd4f2ce3}{Wait\+Type}} \{ {\bfseries BUSSY}
+, {\bfseries SLEEP}
  \}
 \begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classUtility_1_1ProcessTimer_a42ba644420e84fa0286159174e73208b}{create\+\_\+auto\+\_\+wait}} における待機仕様 \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions}
@@ -31,7 +31,7 @@ std\+::string {\bfseries measure} () const
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \mbox{\hyperlink{classUtility_1_1ProcessTimer}{Process\+Timer}} \mbox{\hyperlink{classUtility_1_1ProcessTimer_a42ba644420e84fa0286159174e73208b}{create\+\_\+auto\+\_\+wait}} (const int \&interval, const enum \mbox{\hyperlink{classUtility_1_1ProcessTimer_a554342212a8da284233cb21bcd4f2ce3}{Wait\+Type}} \&wait\+\_\+type=B\+U\+S\+SY)
+static \mbox{\hyperlink{classUtility_1_1ProcessTimer}{Process\+Timer}} \mbox{\hyperlink{classUtility_1_1ProcessTimer_a42ba644420e84fa0286159174e73208b}{create\+\_\+auto\+\_\+wait}} (const int \&interval, const enum \mbox{\hyperlink{classUtility_1_1ProcessTimer_a554342212a8da284233cb21bcd4f2ce3}{Wait\+Type}} \&wait\+\_\+type=BUSSY)
 \begin{DoxyCompactList}\small\item\em 一定周期で特定の動作を実行させるための自動待機タイマーを生成する\+Factory Method \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{classUtility_1_1ProcessTimer}{Process\+Timer}} \mbox{\hyperlink{classUtility_1_1ProcessTimer_aeaacffa3d52f0bfcb745f42db7e15837}{create\+\_\+mesure}} (const std\+::string \&name)
 \begin{DoxyCompactList}\small\item\em 処理時間計測用タイマーインスタンス生成する\+Factory Method \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -44,9 +44,16 @@ static \mbox{\hyperlink{classUtility_1_1ProcessTimer}{Process\+Timer}} \mbox{\hy
 本クラスは直接コンストラクタを呼び出さず、用途に応じて2種類の\+Factory\+Methodを使用してインスタンス化する。 ~\newline
  \mbox{\hyperlink{classUtility_1_1ProcessTimer_a42ba644420e84fa0286159174e73208b}{create\+\_\+auto\+\_\+wait}} ~\newline
  \mbox{\hyperlink{classUtility_1_1ProcessTimer_aeaacffa3d52f0bfcb745f42db7e15837}{create\+\_\+mesure}} ~\newline
- 本ライブラリは\+S\+O\+L\+I\+Dの原則のうち、単一責任の原則に違反しているため今後変更する可能性がある。 ~\newline
+ 本ライブラリは\+SOLIDの原則のうち、単一責任の原則に違反しているため今後変更する可能性がある。 ~\newline
  \mbox{\hyperlink{}{https\+://qiita.\+com/baby-\/degu/items/d058a62f145235a0f007}} 
 \end{DoxyNote}
+\begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{test_2utility_2process_timer_2test_process_timer_8cpp-example}{test/utility/process\+\_\+timer/test\+\_\+process\+\_\+timer.\+cpp}}, \mbox{\hyperlink{test_2utility_2shared_memory_2test_shared_memory_1_8cpp-example}{test/utility/shared\+\_\+memory/test\+\_\+shared\+\_\+memory\+\_\+1.\+cpp}}, and \mbox{\hyperlink{test_2utility_2shared_memory_2test_shared_memory_2_8cpp-example}{test/utility/shared\+\_\+memory/test\+\_\+shared\+\_\+memory\+\_\+2.\+cpp}}.\end{Desc}
+
+
+Definition at line 41 of file process\+\_\+timer.\+hpp.
+
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
@@ -80,7 +87,7 @@ static \mbox{\hyperlink{classUtility_1_1ProcessTimer}{Process\+Timer}} \mbox{\hy
 \begin{DoxyParams}{Parameters}
 {\em int} & interval 動作周期\mbox{[}ミリ秒\mbox{]} \\
 \hline
-{\em enum} & Wait\+Type wait\+\_\+type デストラクタ呼出時の待機方法 \{ B\+U\+S\+SY \+: スリープせず待機, S\+L\+E\+EP \+: スリープして待機 \} \\
+{\em enum} & Wait\+Type wait\+\_\+type デストラクタ呼出時の待機方法 \{ BUSSY \+: スリープせず待機, SLEEP \+: スリープして待機 \} \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

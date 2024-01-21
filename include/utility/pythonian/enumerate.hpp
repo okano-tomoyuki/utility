@@ -1,7 +1,7 @@
 /**
- * @file utility/pythonian/enumerate.hpp
- * @author okano tomoyuki (okano.development@gmail.com)
- * @brief function of range-based for loop with index like python's enumerate. 
+ * @file enumerate.hpp
+ * @author okano tomoyuki (tomoyuki.okano@tsuneishi.com)
+ * @brief 範囲ベースforループでindexとvalueの両方を取得する @ref Utility::enumerate 関数の定義ヘッダー
  * @version 0.1
  * @date 2024-01-14
  * 
@@ -38,9 +38,25 @@ public:
     std::pair<std::size_t, decltype(*begin_)> operator*() const { return { size_, *begin_ }; }
 };
 
+/**
+ * @fn enumerate
+ * @brief 範囲ベースforループでindexとvalueの両方を取得する関数
+ * 
+ * @tparam Iter 
+ * @param iter 
+ * @return Enumerate<Iter> 
+ */
 template<typename Iter>
 Enumerate<Iter> enumerate(Iter&& iter)      { return {std::forward<Iter>(iter)}; }
 
+/**
+ * @fn enumerate
+ * @brief 範囲ベースforループでindexとvalueの両方を取得する関数
+ * 
+ * @tparam Iter 
+ * @param iter 
+ * @return Enumerate<Iter> 
+ */
 template<typename Iter>
 Enumerate<Iter> enumerate(const Iter& iter) { return {std::forward<Iter>(iter)};}
 

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ini_107',['Ini',['../d0/d68/classUtility_1_1Ini.html#ab7ddad6489981dfa72b0561b8dc866c9',1,'Utility::Ini']]]
+  ['hour_112',['hour',['../d1/d84/classUtility_1_1DateTime.html#a3ebd229ae647cdf8cdcd4632ec3bc48f',1,'Utility::DateTime']]]
 ];

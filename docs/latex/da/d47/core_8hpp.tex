@@ -2,7 +2,7 @@
 \label{core_8hpp}\index{include/utility/core.hpp@{include/utility/core.hpp}}
 
 
-利用頻度の高い関数を定義するためのヘッダー  
+再利用性の高い関数・定数群定義ヘッダー  
 
 
 {\ttfamily \#include $<$numeric$>$}\newline
@@ -12,7 +12,6 @@
 {\ttfamily \#include $<$sstream$>$}\newline
 {\ttfamily \#include $<$typeinfo$>$}\newline
 {\ttfamily \#include $<$algorithm$>$}\newline
-{\ttfamily \#include $<$iostream$>$}\newline
 {\ttfamily \#include $<$windows.\+h$>$}\newline
 Include dependency graph for core.\+hpp\+:\nopagebreak
 \begin{figure}[H]
@@ -25,46 +24,36 @@ Include dependency graph for core.\+hpp\+:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
  \mbox{\hyperlink{namespaceUtility}{Utility}}
-\begin{DoxyCompactList}\small\item\em インフラストラクチャー層を中心に関係各者が再利用できるクラス、関数を定義する名前空間 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em 再利用性の高い定数・関数・クラス等を管理する名前空間 \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{namespaceUtility_a67a639d36c03aa812d3c6553e3bd3f7a}\label{namespaceUtility_a67a639d36c03aa812d3c6553e3bd3f7a}} 
-double {\bfseries Utility\+::radians} (const double \&value) noexcept
-\item 
-\mbox{\Hypertarget{namespaceUtility_a1ab9d720af4b57cc6a46b62b3246e5e2}\label{namespaceUtility_a1ab9d720af4b57cc6a46b62b3246e5e2}} 
-double {\bfseries Utility\+::degrees} (const double \&value) noexcept
-\item 
-\mbox{\Hypertarget{namespaceUtility_a2ca5cb0f76fbc8a543faee76df35a440}\label{namespaceUtility_a2ca5cb0f76fbc8a543faee76df35a440}} 
-double {\bfseries Utility\+::meter\+\_\+per\+\_\+seconds} (const double \&value) noexcept
-\item 
-\mbox{\Hypertarget{namespaceUtility_ab6033ec10966b44590630df965ecabe0}\label{namespaceUtility_ab6033ec10966b44590630df965ecabe0}} 
-double {\bfseries Utility\+::knots} (const double \&value) noexcept
-\item 
-\mbox{\Hypertarget{namespaceUtility_aba3dde3dd856cd5648695d6083ad910c}\label{namespaceUtility_aba3dde3dd856cd5648695d6083ad910c}} 
-{\footnotesize template$<$typename T $>$ }\\T {\bfseries Utility\+::limit} (const T \&value, const T \&limit) noexcept
-\item 
-\mbox{\Hypertarget{namespaceUtility_ab3484e80b2aab17d66c281cf6fdc3e70}\label{namespaceUtility_ab3484e80b2aab17d66c281cf6fdc3e70}} 
-{\footnotesize template$<$typename T $>$ }\\T {\bfseries Utility\+::limit} (const T \&value, const T \&lower\+\_\+limit, const T \&upper\+\_\+limit) noexcept
-\item 
-\mbox{\Hypertarget{namespaceUtility_a4b53a154a7e1c11aa88fee21d1da9277}\label{namespaceUtility_a4b53a154a7e1c11aa88fee21d1da9277}} 
-double {\bfseries Utility\+::adjust\+\_\+pi} (const double \&value) noexcept
-\item 
-\mbox{\Hypertarget{namespaceUtility_a6aa8f538664f6ce797b645142643659b}\label{namespaceUtility_a6aa8f538664f6ce797b645142643659b}} 
-double {\bfseries Utility\+::adjust\+\_\+180} (const double \&value) noexcept
-\item 
-\mbox{\Hypertarget{namespaceUtility_a4a981669ecb3a16092b230ed42e394d6}\label{namespaceUtility_a4a981669ecb3a16092b230ed42e394d6}} 
-{\footnotesize template$<$typename T $>$ }\\std\+::string {\bfseries Utility\+::concat} (const std\+::vector$<$ T $>$ \&origin, const std\+::string \&separator) noexcept
-\item 
-\mbox{\Hypertarget{namespaceUtility_a07357805b7a795be6bc1f0b23596df79}\label{namespaceUtility_a07357805b7a795be6bc1f0b23596df79}} 
-std\+::vector$<$ std\+::string $>$ {\bfseries Utility\+::split} (const std\+::string \&origin, const std\+::string \&separator)
-\item 
-\mbox{\Hypertarget{namespaceUtility_a92f568aac5570db16c615b81e0482a82}\label{namespaceUtility_a92f568aac5570db16c615b81e0482a82}} 
-std\+::vector$<$ int $>$ {\bfseries Utility\+::range} (const int \&end) noexcept
-\item 
-\mbox{\Hypertarget{namespaceUtility_ac672a172e44c70be260c4d74b324de9b}\label{namespaceUtility_ac672a172e44c70be260c4d74b324de9b}} 
-std\+::vector$<$ int $>$ {\bfseries Utility\+::range} (const int \&start, const int \&end, const int \&interval=1) noexcept
-\item 
+double \mbox{\hyperlink{namespaceUtility_ae65a1d70383807ac4c2c538934104ee7}{Utility\+::radians}} (const double \&value) noexcept
+\begin{DoxyCompactList}\small\item\em degree =$>$ radian への変換関数 \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespaceUtility_ac7a90c1aa7c9b5c65023ddba5417464b}{Utility\+::degrees}} (const double \&value) noexcept
+\begin{DoxyCompactList}\small\item\em radian =$>$ degree への変換関数 \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespaceUtility_a3c81e6e6587c601d8efb6856eded199e}{Utility\+::meter\+\_\+per\+\_\+seconds}} (const double \&value) noexcept
+\begin{DoxyCompactList}\small\item\em knot =$>$ m/s への変換関数 \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespaceUtility_a44d53f836e0294c7031a24c1ad4b05a5}{Utility\+::knots}} (const double \&value) noexcept
+\begin{DoxyCompactList}\small\item\em m/s =$>$ knot への変換関数 \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceUtility_adbb5aea3141a76691bf574099e73b93f}{Utility\+::sgn}} (const T \&value)
+\begin{DoxyCompactList}\small\item\em 符号取得関数 \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceUtility_a5e94293ad72099ce9393657f0ba6eceb}{Utility\+::limit}} (const T \&value, const T \&limit\+\_\+value) noexcept
+\begin{DoxyCompactList}\small\item\em limit関数 \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{namespaceUtility_a60a0f2bc67b1f61080fb35af49014f31}{Utility\+::limit}} (const T \&value, const T \&limit\+\_\+value1, const T \&limit\+\_\+value2) noexcept
+\begin{DoxyCompactList}\small\item\em limit関数 \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespaceUtility_af54800880476074f4a211c154cba32e5}{Utility\+::adjust\+\_\+pi}} (const double \&value) noexcept
+\begin{DoxyCompactList}\small\item\em -\/π$\sim$π へのレンジ調整関数 \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespaceUtility_aec116e80f7ca2940aff68827a9bd67e9}{Utility\+::adjust\+\_\+180}} (const double \&value) noexcept
+\begin{DoxyCompactList}\small\item\em -\/180° $\sim$ 180° へのレンジ調整関数 \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\std\+::string \mbox{\hyperlink{namespaceUtility_a9afd8a7c078b9de0c1f08a70b3a7f83a}{Utility\+::concat}} (const std\+::vector$<$ T $>$ \&origin, const std\+::string \&separator) noexcept
+\begin{DoxyCompactList}\small\item\em vectorデータからの文字列連結関数 \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{namespaceUtility_af00956a1f3538a39b7add392c5b6c38a}{Utility\+::split}} (const std\+::string \&origin, const std\+::string \&separator)
+\begin{DoxyCompactList}\small\item\em 文字列分割関数 \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{namespaceUtility_a70e6233ba2ebfa6161862a8880036d12}{Utility\+::range}} (const int \&end) noexcept
+\begin{DoxyCompactList}\small\item\em Pythonにおけるrange関数の代替 \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{namespaceUtility_a2420d72ee5b21ec3323c3e729a943fe9}{Utility\+::range}} (const int \&start, const int \&end, const int \&interval=1) noexcept
+\begin{DoxyCompactList}\small\item\em Pythonにおけるrange関数の代替 \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespaceUtility_acc1b82cbfcfb9f42e06ca57931b2dbab}\label{namespaceUtility_acc1b82cbfcfb9f42e06ca57931b2dbab}} 
 {\footnotesize template$<$typename T $>$ }\\void {\bfseries Utility\+::show} (T e) noexcept
 \item 
@@ -74,22 +63,31 @@ std\+::vector$<$ int $>$ {\bfseries Utility\+::range} (const int \&start, const 
 \mbox{\Hypertarget{namespaceUtility_ab193b968ad8574e74f05dac0fb8e2854}\label{namespaceUtility_ab193b968ad8574e74f05dac0fb8e2854}} 
 {\footnotesize template$<$typename T $>$ }\\void {\bfseries Utility\+::show} (const std\+::vector$<$ std\+::vector$<$ T $>$$>$ \&vv) noexcept
 \item 
-\mbox{\Hypertarget{namespaceUtility_a2176b98f2f97c82c92157075916540fc}\label{namespaceUtility_a2176b98f2f97c82c92157075916540fc}} 
-std\+::string {\bfseries Utility\+::zero\+\_\+fill} (const int \&number, const int \&digits) noexcept
+{\footnotesize template$<$typename T $>$ }\\std\+::string \mbox{\hyperlink{namespaceUtility_a2996ffe3bd22b55525430476b374b8be}{Utility\+::get\+\_\+type}} (const T \&t)
+\begin{DoxyCompactList}\small\item\em 型名取り出し用関数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceUtility_a815f5ed99e702ee4c641d59ac374f6c4}{Utility\+::sleep}} (const int \&milli\+\_\+second) noexcept
+\begin{DoxyCompactList}\small\item\em スリープ関数 \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{namespaceUtility_acd8aebde33a3902f5fe947433bbe8ce8}{Utility\+::is\+\_\+exist}} (const T \&value, const std\+::vector$<$ T $>$ \&list)
+\begin{DoxyCompactList}\small\item\em vectorデータ内に指定した要素があるか確認する関数 \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{namespaceUtility_afa10e1619766619c817d5cea4b04e661}{Utility\+::is\+\_\+in\+\_\+range}} (const T \&value, const T \&limit\+\_\+value)
+\begin{DoxyCompactList}\small\item\em 値が指定した閾値以内に入っているか確認する関数 \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{namespaceUtility_ab570741774d345d69ee6f18bce0f51f2}{Utility\+::is\+\_\+in\+\_\+range}} (const T \&value, const T \&limit\+\_\+value1, const T \&limit\+\_\+value2)
+\begin{DoxyCompactList}\small\item\em 値が指定した閾値以内に入っているか確認する関数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{namespaceUtility_af8a42ac238c1c0945f96d4d5659e018b}\label{namespaceUtility_af8a42ac238c1c0945f96d4d5659e018b}} 
-{\footnotesize template$<$typename T $>$ }\\std\+::string {\bfseries Utility\+::get\+\_\+type} (const T \&t)
+static constexpr double \mbox{\hyperlink{namespaceUtility_a96ce96c77531dfaa878c00e6fbdecce6}{Utility\+::\+RHO\+\_\+\+WATER}} = 104.\+61
 \item 
-\mbox{\Hypertarget{namespaceUtility_ab02d8d631426e7855fe8d5584b18d960}\label{namespaceUtility_ab02d8d631426e7855fe8d5584b18d960}} 
-void {\bfseries Utility\+::sleep} (const int \&milli\+\_\+second) noexcept
+static constexpr double \mbox{\hyperlink{namespaceUtility_a296c3c8aa066974604a93379a0a2d29f}{Utility\+::\+RHO\+\_\+\+AIR}} = 0.\+125
 \item 
-\mbox{\Hypertarget{namespaceUtility_a096bbadfc40527cf5cc045d1313d7e52}\label{namespaceUtility_a096bbadfc40527cf5cc045d1313d7e52}} 
-{\footnotesize template$<$typename T $>$ }\\bool {\bfseries Utility\+::is\+\_\+exist} (const T \&val, const std\+::vector$<$ T $>$ \&list)
+static constexpr double \mbox{\hyperlink{namespaceUtility_ae8ff593f52265f6d53cd61e878ac615b}{Utility\+::\+GRAVITY}} = 9.\+80665
+\item 
+static constexpr double \mbox{\hyperlink{namespaceUtility_aeffbc6c1657cdf0ee0021efd94cb4ef5}{Utility\+::\+NAUTICAL\+\_\+\+MILE}} = 1852.\+0
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-利用頻度の高い関数を定義するためのヘッダー 
+再利用性の高い関数・定数群定義ヘッダー 
 
 \begin{DoxyAuthor}{Author}
 okano tomoyuki (\href{mailto:tomoyuki.okano@tsuneishi.com}{\texttt{ tomoyuki.\+okano@tsuneishi.\+com}}) 
@@ -98,7 +96,7 @@ okano tomoyuki (\href{mailto:tomoyuki.okano@tsuneishi.com}{\texttt{ tomoyuki.\+o
 0.\+1 
 \end{DoxyVersion}
 \begin{DoxyDate}{Date}
-2024-\/01-\/18
+2024-\/01-\/19
 \end{DoxyDate}
 \begin{DoxyCopyright}{Copyright}
 Copyright (c) 2024 
